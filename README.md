@@ -25,3 +25,6 @@ present
 ```
 
 open browser to [http://127.0.0.1:3999](http://127.0.0.1:3999) to browse slides. 
+
+Should look something like this:
+![Picture of present slideshow](_assets/present_screenshot.png)
