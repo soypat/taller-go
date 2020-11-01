@@ -63,9 +63,9 @@ Where we are:
 If we have many files we must tell Go where to start the program.
 We do this using the special **`main`** function. 
 
-All functions in Go are defined as follows
+Typical go function syntax:
 
-.code hello.go /TYPICAL_FUNC_START/,/TYPICAL_FUNC_END/
+.code trash.go /TYPICAL_FUNC_START/,/TYPICAL_FUNC_END/
 
 The special `main` function takes no argument and returns nothing.
 When our Go program starts, this is where it begins (_almost always!_)
@@ -85,13 +85,28 @@ The package declaration is followed by the **imports**
 
 All imports are declared after the package declaration and
 are usually written as follows:
-```
 
-    import (
-        "fmt"
-        "io"
-        "os"
-    )
-    // ordered alphabetically!
-```
+.code trash.go /3IMP_START/,/3IMP_END/
+
+
+## that out of the way...
+
+Let's run it!
+
+.play -edit hello.go
+
+
+## Things to keep in mind
+
+- There are only 2 special functions in Go: `main` and `init`
+: Not really important to know `init`
+- `main` package needs a `main()` function to run
+- `main` function can only be declared **once**
+
+**Functions warning!**:
+- When learning Go for the first time use capital letters for functions. 
+  More on this later!
+: Capital letter functions are exported
+: What this means is that they are available when imported by other packages/programs
+
 // comment
