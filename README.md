@@ -23,3 +23,5 @@ Change directory to this repo and run in command:
 ```
 present
 ```
+
+open browser to [http://127.0.0.1:3999](http://127.0.0.1:3999) to browse slides. 
