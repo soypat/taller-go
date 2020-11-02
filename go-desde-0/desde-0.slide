@@ -1,0 +1,43 @@
+# Go desde cero
+Curso para aprender Go
+20 Nov 2020
+Tags: novato,curso,principiante,aprender
+Summary: Desarrollado para un curso de WIE ITBA.
+OldURL: https://a/
+
+
+Patricio Whittingslow
+Agustín Canalis
+pwhittingslow@itba.edu.ar
+acanalis@itba.edu.ar
+
+## Inspiración?
+
+Un video que todo gopher debería ver
+
+.iframe https://www.youtube.com/embed/sX8r6zATHGU 500 800
+
+
+## First slide
+
+Slide
+
+- slide point
+- something else
+- desde
+-  dd
+- ddd
+- ddsd
+- dsd 
+- dsd 
+
+.image ../go-img/hero-gopher.png 160 _
+
+## Go go go 
+
+.image ../go-img/purple-pacman-nerd.png 200 _
+.caption Diseño del _Gopher_ hecho por [[https://instagram.com/reneefrench][Renee French]]. Crédito a Mat Ryer por la WebApp [[https://gopherize.me/][Gopherize me]]
+
+## Por qué Go?
+
+.image ../go-img/green-ubuntu-coffee.png 200 _
