@@ -121,7 +121,7 @@ function HTTPTransport(enableVet) {
 			seq++;
 			var cur = seq;
 			var playing;
-			$.ajax('/compile', {
+      $.ajax({url: 'https:\/\/play.golang.org\/compile',
 				type: 'POST',
 				data: {'version': 2, 'body': body, 'withVet': enableVet},
 				dataType: 'json',
