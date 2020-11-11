@@ -51,7 +51,7 @@ Mientras esperaban 40 minutos para que termine de compilar un programa C++, un e
 
 Lo que en verdad corre:
 
-.play -edit src/1helloworldshort.go /START/,/END/ HLhello
+.play -edit src/1helloworld.go /START/,/END/ HLhello
 
 * Declara **`s`** de tipo **`string`** --> asignada **`Hello, 世界`**
 * Imprimir **`s`** a consola:
@@ -70,13 +70,50 @@ La función **`Println`** de la librería **`fmt`** nos deja imprimir cualquier 
 .code src/1imports.go /import/,/\)/
 .caption Para importar varias librerías se rodean con parentesis
 
-## Estructura de proyecto
+## Ejecución de un programa en Go
 
-package main y la wea. Hablar de main() tambien
+La ejecución de todo programa de Go comienza en una función **`main`**
+
+: Uno llama las funciones de otras liberias y las funciones definidas por el mismo usuario adentro de `main`
+: `main` es una función igual que `Println` con una diferencia importante, no toma argumentos! ademas es una función especial porque es la primer función en ser llamada de un programa
+: En un rato vemos mejor que son las funciones en Go, por ahora quedense tranquilos con la idea que es lo que se ejecuta en un programa
+
+.code src/1helloworld.go /func/,/}/ HLmain
+
+* **`main`** es *única* y define el programa
+
+##  Estructura de proyecto
+
+**TODOS** los archivos `.go` que contienen código escrito en Go comienzan con la declaración del **`package`**
+
+: Un package es una colección de archivos `.go` en un directorio y pueden definir una librería, o, en el caso especial que el nombre del package sea `main` define un programa. Si el package es main es obligatorio tener una función llamada main() donde comienze el programa
+
+.code src/1helloworld.go
+
+* La declaración es el nombre de la librería
+* El paquete **`main`** define un programa
+* Para nuestros usos el **`package`** ***siempre*** va ser **`main`**
 
 
+: como nos vamos a dedicar a escribir programas, no librerías, el package siempre va ser main
+: Si quieren dividir su programa en muchas carpetas van a darle nombres a su package, tiene que ser igual al nombre del directorio
+
+
+## Números y aritmética
+
+.play -edit  src/1numbers.go /MAIN_S/,/MAIN_E/
+
+Go tiene varios tipos aritmeticos, los más comunes son **`int`** y **`float64`**
+
+## Declaración múltiple
+
+Para no gastar mucho tiempo/espacio escribiendo variables podemos declararlas en una linea
+
+.play -edit  src/1numberssimple.go /SIMPLE_S/,/SIMPLE_E/
+
+: empieza a parecerse a python el código de a poco
+: {{Cambia int a float64 para comprobar que funciona igual. no hace falta agregar punto}}
 ## 
-
 
 
 ## TODO. final de clase Inspiración?
