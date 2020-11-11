@@ -13,7 +13,7 @@ acanalis@itba.edu.ar
 ## Qué es Go?
 Lenguaje de programación moderno caracterizado por su simplicidad, manejo de memoria (garbage collection) y buen manejo en equipos grandes.
 // this is for spacing. use transparent pic
-.image ../go-img/transparent.png 160 _ 
+.image ../assets/go-img/transparent.png 160 _ 
 
 Mientras esperaban 40 minutos para que termine de compilar un programa C++, un equipo de 3 personas de Google se pusieron a pensar que forma tendría un lenguaje moderno... 
 
@@ -22,7 +22,7 @@ Mientras esperaban 40 minutos para que termine de compilar un programa C++, un e
 : debido a esto último se suele pensar que Go solo le sirve a las empresas grandes, no es verdad! Es un lenguaje buenísimo para varias otras cosas!
 
 
-.image ../go-img/hero-gopher.png 160 _
+.image ../assets/go-img/hero-gopher.png 160 _
 
 ## Inspiración para Go
 
@@ -103,9 +103,9 @@ Slide
 
 ## Go go go 
 
-.image ../go-img/purple-pacman-nerd.png 200 _
+.image ../assets/go-img/purple-pacman-nerd.png 200 _
 .caption Diseño del _Gopher_ hecho por [[https://instagram.com/reneefrench][Renee French]]. Crédito a Mat Ryer por la WebApp [[https://gopherize.me/][Gopherize me]]
 
 ## Por qué Go?
 
-.image ../go-img/green-ubuntu-coffee.png 200 _
+.image ../assets/go-img/green-ubuntu-coffee.png 200 _
