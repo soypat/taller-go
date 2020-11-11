@@ -54,17 +54,9 @@ go-presentx -base .
 ## Installing Go's official `present`
 
 On windows
+On windows/linux/mac
 ```
-go get golang.org/x/tools/cmd/present
-cd %GOPATH%/src/golang.org/x/tools/cmd/present
-go install
-```
-
-On linux/mac
-```
-go get golang.org/x/tools/cmd/present
-cd ${GOPATH}/src/golang.org/x/tools/cmd/present
-go install
+go install golang.org/x/tools/cmd/present
 ```
 ## How to run presentation
 Change directory to this repo and run in command:
