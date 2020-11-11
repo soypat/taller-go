@@ -1,14 +1,14 @@
-export DEPLOY="./deploy"
+export DEPLOY="./docs"
 # so if a port is blocked, no problem, just use different
 export PORT="3998"
-rm -rf deploy/static
-mkdir -p deploy/static 
-mkdir -p deploy/go-desde-0
-mkdir -p deploy/go-efectivo
-mkdir -p deploy/go-slides-example
-mkdir -p deploy/assets
-rm -rf deploy/assets
-cp -r assets deploy/assets
+rm -rf ${DEPLOY}/static
+mkdir -p ${DEPLOY}/static 
+mkdir -p ${DEPLOY}/go-desde-0
+mkdir -p ${DEPLOY}/go-efectivo
+mkdir -p ${DEPLOY}/go-slides-example
+mkdir -p ${DEPLOY}/assets
+rm -rf ${DEPLOY}/assets
+cp -r assets ${DEPLOY}/assets
 
 go-presentx -base . -http 127.0.0.1:${PORT} -use_playground &
 
@@ -40,4 +40,4 @@ curl -s http://127.0.0.1:${PORT}/go-efectivo/go-efectivo.slide > ${DEPLOY}/go-ef
 curl -s http://127.0.0.1:${PORT}/go-slides-example/sample.slide > ${DEPLOY}/go-slides-example/sample.html
 
 kill $!
-echo "you can now run `sv` or `python3 -m http-server in ./deploy"
+echo "you can now run `sv` or `python3 -m http-server in ${DEPLOY}`"
