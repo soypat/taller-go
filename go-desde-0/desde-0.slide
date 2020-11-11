@@ -12,12 +12,17 @@ acanalis@itba.edu.ar
 
 ## Qué es Go?
 Lenguaje de programación moderno caracterizado por su simplicidad, manejo de memoria (garbage collection) y buen manejo en equipos grandes.
+// this is for spacing. use transparent pic
+.image ../go-img/transparent.png 160 _ 
 
 Mientras esperaban 40 minutos para que termine de compilar un programa C++, un equipo de 3 personas de Google se pusieron a pensar que forma tendría un lenguaje moderno... 
 
 : No es necesario manejar la memoria en Go, se ocupa solo el lenguaje y te simplifica la vida bastante! Es todo un surtido de bugs que ya no molestan
 : Go es usado en Google, Discord, Netflix, Amazon, Twitch. Soluciona problemas para grandes empresas 
-: debido a esto último se suele pensar que Go solo le sirve a las empresas grandes, no es verdad! Es un lenguaje buenisimo para varias otras cosas!
+: debido a esto último se suele pensar que Go solo le sirve a las empresas grandes, no es verdad! Es un lenguaje buenísimo para varias otras cosas!
+
+
+.image ../go-img/hero-gopher.png 160 _
 
 ## Inspiración para Go
 
@@ -30,27 +35,51 @@ Mientras esperaban 40 minutos para que termine de compilar un programa C++, un e
 .image https://upload.wikimedia.org/wikipedia/en/c/c0/Smalltalk80book.jpg 230 _
 : Go toma **simplicidad** de todos los lenguajes vistos arriba y es lo que se dice que lo destaca entre otros lenguajes complejos como C++ y Java. Comparado a Java Go solo tiene 50 páginas de spec sheet comparado a las 750 de Java (x15) o las 1600 páginas del estándar ISO de c++
 
-## 
-### Sistema de tipos
+## Introducción y Sistema de tipos
 
-## Hello world
+## Hello world {#helloworld}
 
 .code src/1helloworld.go
 
 : Hello World en Go. Todos los archivos `.go` son unicode (UTF-8) y permiten escribir con caracteres especiales.
 
-## El programa
+1. El programa
+2. Librerías
+3. Estructura de proyecto
+
+## El programa {#el-programa}
 
 Lo que en verdad corre:
 
-.play -edit src/worl/1helloworldshort.go /START/,/END/ HLhello
+.play -edit src/1helloworldshort.go /START/,/END/ HLhello
+
+* Declara **`s`** de tipo **`string`** --> asignada **`Hello, 世界`**
+* Imprimir **`s`** a consola:
+  * Usando la función **`Println`**
+  * De la libreria **`fmt`**
+
+## Librerías (packages) {#packages}
+Una librería es un conjunto de funciones que uno puede hacer uso en su código.
+
+La función **`Println`** de la librería **`fmt`** nos deja imprimir cualquier tipo de dato a consola.
+
+.code src/1helloworld.go /import/
+
+.caption Importando la librería *`fmt`*
+
+.code src/1imports.go /import/,/\)/
+.caption Para importar varias librerías se rodean con parentesis
+
+## Estructura de proyecto
+
+package main y la wea. Hablar de main() tambien
+
 
 ## 
 
 
-## 
 
-## Inspiración?
+## TODO. final de clase Inspiración?
 
 Un video que todo gopher debería ver
 
@@ -70,7 +99,7 @@ Slide
 - dsd 
 - dsd 
 
-.image ../go-img/hero-gopher.png 160 _
+
 
 ## Go go go 
 

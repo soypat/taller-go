@@ -9,4 +9,3 @@ func main() { // HLmain
 	var s string = "Hello, 世界" // HLhello
 	fmt.Println(s)             // HLhello
 } // HLmain
-// END OMIT
