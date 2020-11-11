@@ -33,9 +33,25 @@ Been working on slides. Here's a bullet point list:
 .image https://golang.org/lib/godoc/images/go-logo-blue.svg 200 _
 ```
 
-## How to install `present`
+## How to install `present` with syntax highlighting
 Requires:
 * [Go](https://golang.org)
+
+Clone [`github.com/soypat/go-presentx`](https://github.com/soypat/go-presentx) to a folder.
+
+On folder run from command line 
+
+```console
+go install .
+```
+
+To run: 
+
+```bash
+go-presentx -base .
+```
+
+## Installing Go's official `present`
 
 On windows
 ```

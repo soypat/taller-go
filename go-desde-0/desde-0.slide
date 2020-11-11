@@ -3,13 +3,52 @@ Curso para aprender Go
 20 Nov 2020
 Tags: novato,curso,principiante,aprender
 Summary: Desarrollado para un curso de WIE ITBA.
-OldURL: https://a/
 
 
 Patricio Whittingslow
 Agustín Canalis
 pwhittingslow@itba.edu.ar
 acanalis@itba.edu.ar
+
+## Qué es Go?
+Lenguaje de programación moderno caracterizado por su simplicidad, manejo de memoria (garbage collection) y buen manejo en equipos grandes.
+
+Mientras esperaban 40 minutos para que termine de compilar un programa C++, un equipo de 3 personas de Google se pusieron a pensar que forma tendría un lenguaje moderno... 
+
+: No es necesario manejar la memoria en Go, se ocupa solo el lenguaje y te simplifica la vida bastante! Es todo un surtido de bugs que ya no molestan
+: Go es usado en Google, Discord, Netflix, Amazon, Twitch. Soluciona problemas para grandes empresas 
+: debido a esto último se suele pensar que Go solo le sirve a las empresas grandes, no es verdad! Es un lenguaje buenisimo para varias otras cosas!
+
+## Inspiración para Go
+
+* OOP de **Smalltalk**
+* Sintaxis de **Algol**
+* _Garbage Collection_ de **Limbo**
+* Concurrencia de **Newsqueak**
+* Legibilidad y facilidad de uso de **Python**
+
+.image https://upload.wikimedia.org/wikipedia/en/c/c0/Smalltalk80book.jpg 230 _
+: Go toma **simplicidad** de todos los lenguajes vistos arriba y es lo que se dice que lo destaca entre otros lenguajes complejos como C++ y Java. Comparado a Java Go solo tiene 50 páginas de spec sheet comparado a las 750 de Java (x15) o las 1600 páginas del estándar ISO de c++
+
+## 
+### Sistema de tipos
+
+## Hello world
+
+.code src/1helloworld.go
+
+: Hello World en Go. Todos los archivos `.go` son unicode (UTF-8) y permiten escribir con caracteres especiales.
+
+## El programa
+
+Lo que en verdad corre:
+
+.play -edit src/worl/1helloworldshort.go /START/,/END/ HLhello
+
+## 
+
+
+## 
 
 ## Inspiración?
 
