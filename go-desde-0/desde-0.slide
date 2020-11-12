@@ -113,7 +113,84 @@ Para no gastar mucho tiempo/espacio escribiendo variables podemos declararlas en
 
 : empieza a parecerse a python el código de a poco
 : {{Cambia int a float64 para comprobar que funciona igual. no hace falta agregar punto}}
-## 
+
+## Aritmética 2
+
+Go tiene los siguientes operadores básicos para números enteros:
+
+**`+ - * / %`**
+
+: cuando dividis un número entero el resultado va ser un número entero, nada de decimales
+
+.play -edit src/1arithmeticnum.go /PROG_S/,/PROG_E/
+
+Se pueden concatenar strings con el operador **`+`**
+
+.play -edit src/1arithmeticstring.go /PROG_S/,/PROG_E/
+
+: Introducir operador += !
+
+## Arreglos
+
+Los arreglos permiten guardar varios elementos en una variable
+
+.play -edit src/1arrays.go /PROG_S/,/PROG_E/
+
+* Existe el tipo **`slice`** para cuando no se conoce el tamaño previamente
+
+: slice es más usado que los arreglos pero conlleva sus cuidados especiales (null pointer dereference)
+
+## Funciones
+
+## Qué es una función?
+
+A un nivel alto, una función toma un input y devuelve output.
+
+Un ejemplo clásico es una función que devuelve la suma de dos números
+
+: en este ejemplo trivial x e y son los inputs y la salida es la suma de los dos
+
+.code -edit src/2func.go /FUNC_S/,/FUNC_E/
+
+## Implementación
+
+.play -edit src/2func.go
+
+: Se dieron cuenta que asigne con los dos puntos? El siguiente slide veremos las varias formas de asignar a una variable
+: Que quede claro donde defino las funciones. son por afuera de main... aunque no hay nada que me impida de definirla adentro
+
+## Declaración corta y sintaxis azucarada
+
+.play -edit src/2shorthand.go /PROG_S/,/PROG_E/
+
+## Multiples valores
+
+.code src/2multireturn.go /FUNC_S/,/FUNC_E/
+
+.play -edit src/2multireturn.go /PROG_S/,/PROG_E/
+
+## Funciones variadicas
+
+.code src/2variadic.go /FUNC_S/,/FUNC_E/
+
+.play -edit src/2variadic.go /PROG_S/,/PROG_E/
+
+
+## Flujo de control
+
+
+
+## if - else
+
+Es la estructura de control más básica. Te permite tener control sobre lo que se ejecuta
+
+En este ejemplo presentamos al tipo **`bool`** de Go
+
+.play -edit src/3ifelse.go /PROG_S/,/PROG_E/
+
+## else if
+
+.play -edit src/3elseif.go /PROG_S/,/PROG_E/
 
 
 ## TODO. final de clase Inspiración?
