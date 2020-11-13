@@ -718,4 +718,4 @@ function initPlayground(transport) {
   }
 }
 
-initPlayground(new HTTPTransport());
+initPlayground(new SocketTransport());

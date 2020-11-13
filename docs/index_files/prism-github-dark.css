@@ -36,9 +36,10 @@ pre[class*="language-"] {
   color: inherit;
   text-shadow: none;
   font-family: "JetBrains Mono", monospace;
-
-  -webkit-font-feature-settings: "liga" on, "calt" on;
+  font-feature-settings: "liga" on, "calt" off; /* calt disables ligatures */
+  -webkit-font-feature-settings: "liga" on, "calt" off;
   -webkit-font-smoothing: antialiased;
+  
   text-rendering: optimizeLegibility;
 
   line-height: 1.3em;
