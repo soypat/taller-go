@@ -192,6 +192,10 @@ En este ejemplo presentamos al tipo **`bool`** de Go
 
 .play -edit src/3elseif.go /PROG_S/,/PROG_E/
 
+Operadores más comunes
+
+.code src/3elseif.go /OPERATORS_S/,/OPERATORS_E/
+: el else no corre a no ser que le saque el igual al ultimo else-if
 
 ## TODO. final de clase Inspiración?
 

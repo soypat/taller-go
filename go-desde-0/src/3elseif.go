@@ -18,3 +18,10 @@ func main() {
 	}
 	// PROG_E OMIT
 }
+
+/* OPERATORS_S OMIT
+Comparación  y Lógicos | Matemáticos       |  Bits               | Pointers
+>   <   ==             |  +   -    *   /   |  &  |   ^  &^       |  *   &
+>=  <=  !=             |  +=  -=   *=  /=  |  &= |=  ^=          |  Canales
+||  &&   !             |  %        %=      |  <<  >>  <<=  >>=   |  <-  ->
+*/ // OPERATORS_E OMIT
