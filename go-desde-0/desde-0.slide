@@ -197,6 +197,24 @@ Operadores más comunes
 .code src/3elseif.go /OPERATORS_S/,/OPERATORS_E/
 : el else no corre a no ser que le saque el igual al ultimo else-if
 
+## Nesting y operadores booleanos
+
+.play -edit src/3logical.go /PROG_S/,/PROG_E/
+
+## Switch
+
+.play -edit src/3switch.go /PROG_S/,/PROG_E/
+
+## Bucle (for)
+
+Un for que inicializa **`i`**, imprime **`i`**, y le suma 1 hasta llegar a diez
+
+.play -edit src/3fori.go /PROG_S/,/PROG_E/
+
+Un for que recorre un arreglo
+
+.play -edit src/3forrange.go /PROG_S/,/PROG_E/
+
 ## TODO. final de clase Inspiración?
 
 Un video que todo gopher debería ver
