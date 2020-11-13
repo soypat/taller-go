@@ -13,17 +13,10 @@ func main() {
 		fmt.Println("Dos")
 	case 3:
 		fmt.Println("Tres")
-	case 4:
-		fmt.Println("Cuatro")
+	case 4, 5:
+		fmt.Println("Cuatro o cinco")
 	default:
 		fmt.Println("No conozco ese número")
 	}
 	// PROG_E OMIT
 }
-
-/* OPERATORS_S OMIT
-Comparación  y Lógicos | Matemáticos       |  Bits               | Pointers
->   <   ==             |  +   -    *   /   |  &  |   ^  &^       |  *   &
->=  <=  !=             |  +=  -=   *=  /=  |  &= |=  ^=          |  Canales
-||  &&   !             |  %        %=      |  <<  >>  <<=  >>=   |  <-  ->
-*/ // OPERATORS_E OMIT

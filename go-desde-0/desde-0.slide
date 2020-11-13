@@ -202,8 +202,13 @@ Operadores más comunes
 .play -edit src/3logical.go /PROG_S/,/PROG_E/
 
 ## Switch
+El **`switch`** es la estructura de control más flexible de Go y se usa para diversos casos. 
 
 .play -edit src/3switch.go /PROG_S/,/PROG_E/
+
+* Sirve de **`else if`** simplificado
+* Verificación de tipo (Type checking)
+* Y [muchos más](https://yourbasic.org/golang/switch-statement/)
 
 ## Bucle (for)
 
@@ -215,6 +220,33 @@ Un for que recorre un arreglo
 
 .play -edit src/3forrange.go /PROG_S/,/PROG_E/
 
+
+## Defer
+
+: Aquí estamos llamando defer de adentro de main, pero podría ser cualquier función!
+
+.play -edit src/3defer.go /MAIN_S/,/MAIN_E/
+
+* _Error wrapping_
+* Seguridad 
+
+Uso más común: asegurar que se termine de cerrar un archivo
+
+.code src/3defer.go /EXAMPLE_S/,/EXAMPLE_E/
+
+## Slices
+: Por último, probablemente la estructura de datos más poderosa: el slice
+: A los programadores *no* les gusta esto, son muy indecisos. Por eso existe el slice
+
+Hemos visto como se crea un arreglo. Es limitante tener que decidirse por un tamaño al comienzo
+
+Les presentamos el slice, si no se indica un valor al arreglo cambia su tipo ***fundamentalmente***.
+
+.play -edit src/4slices.go /PROG_S/,/PROG_E/
+
+## Función append
+
+.play -edit src/4append.go /PROG_S/,/PROG_E/
 ## TODO. final de clase Inspiración?
 
 Un video que todo gopher debería ver
