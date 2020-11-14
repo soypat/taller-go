@@ -18,8 +18,9 @@ Lenguaje de programación moderno caracterizado por su simplicidad, manejo de me
 Mientras esperaban 40 minutos para que termine de compilar un programa C++, un equipo de 3 personas de Google se pusieron a pensar que forma tendría un lenguaje moderno... 
 
 : No es necesario manejar la memoria en Go, se ocupa solo el lenguaje y te simplifica la vida bastante! Es todo un surtido de bugs que ya no molestan
-: Go es usado en Google, Discord, Netflix, Amazon, Twitch. Soluciona problemas para grandes empresas 
+: Go es usado en Google, Discord, Netflix, Amazon, Twitch. Soluciona problemas para grandes empresas y es ideal para grandes equipos
 : debido a esto último se suele pensar que Go solo le sirve a las empresas grandes, no es verdad! Es un lenguaje buenísimo para varias otras cosas!
+: Ken Thompson, co-creador de Go, es el creador de C.
 
 
 .image ../assets/go-img/hero-gopher.png 160 _
@@ -33,7 +34,8 @@ Mientras esperaban 40 minutos para que termine de compilar un programa C++, un e
 * Legibilidad y facilidad de uso de **Python**
 
 .image https://upload.wikimedia.org/wikipedia/en/c/c0/Smalltalk80book.jpg 230 _
-: Go toma **simplicidad** de todos los lenguajes vistos arriba y es lo que se dice que lo destaca entre otros lenguajes complejos como C++ y Java. Comparado a Java Go solo tiene 50 páginas de spec sheet comparado a las 750 de Java (x15) o las 1600 páginas del estándar ISO de c++
+: Go toma simplicidad de todos los lenguajes vistos arriba y es lo que se dice que lo destaca entre otros lenguajes complejos como C++ y Java. Comparado a Java Go solo tiene 50 páginas de spec sheet comparado a las 750 de Java (x15) o las 1600 páginas del estándar ISO de C++
+: El sintaxis de Algol introdujo bloques con start/begin. Evoluciono a $(/$) en BCPL. Tomaron la forma de llaves en C.
 
 ## Introducción y Sistema de tipos
 
