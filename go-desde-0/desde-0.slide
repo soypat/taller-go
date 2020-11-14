@@ -150,7 +150,7 @@ Un ejemplo clásico es una función que devuelve la suma de dos números
 
 : en este ejemplo trivial x e y son los inputs y la salida es la suma de los dos
 
-.code -edit src/2func.go /FUNC_S/,/FUNC_E/
+.code  src/2func.go /FUNC_S/,/FUNC_E/
 
 ## Implementación
 
@@ -169,15 +169,14 @@ Un ejemplo clásico es una función que devuelve la suma de dos números
 
 .play -edit src/2multireturn.go /PROG_S/,/PROG_E/
 
-## Funciones variadicas
+// ## Funciones variadicas
 
-.code src/2variadic.go /FUNC_S/,/FUNC_E/
+// .code src/2variadic.go /FUNC_S/,/FUNC_E/
 
-.play -edit src/2variadic.go /PROG_S/,/PROG_E/
+// .play -edit src/2variadic.go /PROG_S/,/PROG_E/
 
 
 ## Flujo de control
-
 
 
 ## if - else
@@ -197,9 +196,9 @@ Operadores más comunes
 .code src/3elseif.go /OPERATORS_S/,/OPERATORS_E/
 : el else no corre a no ser que le saque el igual al ultimo else-if
 
-## Nesting y operadores booleanos
+// ## Nesting y operadores booleanos
 
-.play -edit src/3logical.go /PROG_S/,/PROG_E/
+// .play -edit src/3logical.go /PROG_S/,/PROG_E/
 
 ## Switch
 El **`switch`** es la estructura de control más flexible de Go y se usa para diversos casos. 
@@ -234,6 +233,7 @@ Uso más común: asegurar que se termine de cerrar un archivo
 
 .code src/3defer.go /EXAMPLE_S/,/EXAMPLE_E/
 
+
 ## Slices
 : Por último, probablemente la estructura de datos más poderosa: el slice
 : A los programadores *no* les gusta esto, son muy indecisos. Por eso existe el slice
@@ -247,6 +247,16 @@ Les presentamos el slice, si no se indica un valor al arreglo cambia su tipo ***
 ## Función append
 
 .play -edit src/4append.go /PROG_S/,/PROG_E/
+
+## Paquete os, manejo de errores y lectura de archivos
+
+.play -edit src/5os.go
+
+
+
+
+
+
 ## TODO. final de clase Inspiración?
 
 Un video que todo gopher debería ver

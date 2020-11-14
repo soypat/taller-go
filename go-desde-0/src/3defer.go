@@ -23,4 +23,5 @@ func open() {
 	archivo, err := os.Open("miArchivo.txt")
 	defer archivo.Close()
 	// EXAMPLE_E OMIT
+	fmt.Println(err.Error())
 }

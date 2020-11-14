@@ -1,0 +1,8 @@
+Contengo datos muy importantes:
+
+creado: 14/11/2020
+modificado: 22/11/2020
+contenido: Saludos de parte del Seminario de Go
+autores: Patricio Whittingslow, Agustín Canalis
+
+fin
