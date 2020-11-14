@@ -105,7 +105,10 @@ La ejecución de todo programa de Go comienza en una función **`main`**
 
 .play -edit  src/1numbers.go /MAIN_S/,/MAIN_E/
 
-Go tiene varios tipos aritmeticos, los más comunes son **`int`** y **`float64`**
+Una lista de todos los tipos básicos en Go:
+
+.code src/0types.go /TYPES_S/,/TYPES_E/
+
 
 ## Declaración múltiple
 
@@ -143,12 +146,11 @@ Los arreglos permiten guardar varios elementos en una variable
 
 .play -edit src/1slicefromarray.go /PROG_S/,/PROG_E/
 
+
 : Se puede admitir que se está poniendo complejo interpretar el código con tanta declaración de variable
 : Existen formas menos verbosas de declarar variablas
 
 ## Declaración corta
-
-La declaración mediante **`:=`** se usa para dejarle el trabajo de inferir el tipo al compilador 
 
 .play -edit src/1shorthandslice.go /PROG_S/,/PROG_E/
 
@@ -163,6 +165,15 @@ Cuidado con esto!
 : Vamos a alternar entre formas de declarar para que se vayan acostumbrando a Go. Puede llevar un tiempo acostumbrarse a las varias formas de declarar variables
 : Esto ocurre para prevenir el copiado inecesario de arreglos. Si uno en verdad quiere copiar un arreglo puede usar la librería reflect. 
 : Esto no solo pasa en Go, las listas de Python funcionan de la misma forma!
+
+## Declaración implicita
+Y como si parecieran pocas las formas de declarar una variable, aquí tienen otra
+
+La declaración mediante **`:=`** se usa para dejarle el trabajo de inferir el tipo al compilador.
+
+.play -edit src/1implicitslice.go /PROG_S/,/PROG_E/
+.caption Cabe destacar que las 4 variables son del mismo tipo (un arreglo de 4 strings)
+
 
 ## Slices
 
@@ -250,6 +261,12 @@ Es la estructura de control más básica. Te permite tener control sobre lo que 
 En este ejemplo presentamos al tipo **`bool`** de Go
 
 .play -edit src/3ifelse.go /PROG_S/,/PROG_E/
+
+Las 25 palabras clave en Go:
+
+.code src/0keywords.go /KW_S/,/KW_E/
+
+: Si buscan encontraran que está escondida la temible goto ahí en el medio
 
 ## else if
 

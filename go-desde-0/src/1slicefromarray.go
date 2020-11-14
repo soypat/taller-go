@@ -6,7 +6,7 @@ import "fmt"
 
 func main() {
 	// PROG_S OMIT
-	beatles := [...]string{"John", "Paul", "George", "Ringo"}
+	var beatles [4]string = [4]string{"John", "Paul", "George", "Ringo"}
 	var beatleSlice []string = beatles[0:3]
 	fmt.Println(beatleSlice)
 	// PROG_E OMIT
