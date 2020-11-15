@@ -1,3 +1,4 @@
 /.vscode
 *.html
-!docs/*
+!docs/**
+# !docs/*.html
