@@ -69,6 +69,11 @@ La única diferencia de cambiar el receptor a que sea referencia es que se puede
 
 .play -edit src/4methodref.go /func/,/MAIN_E/
 .caption Probar el código con y sin el asterisco en el receptor para ver la diferencia.
+
+## Interface
+
+.play -edit src/5interface.go /interface/,/MAIN_E/
+
 ## Funciones 2
 
 ## Funciones variadicas
