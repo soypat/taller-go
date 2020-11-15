@@ -13,7 +13,7 @@ func main() {
 	var beatlesShort = [4]string{"John", "Paul", "George", "Ringo"}
 	// Implicita
 	beatImplicit := [4]string{"John", "Paul", "George", "Ringo"}
-	// Implicit + longitud inferida
+	// Implicita + longitud inferida
 	beatInferred := [...]string{"John", "Paul", "George", "Ringo"}
 
 	fmt.Println(beatlesLongg)

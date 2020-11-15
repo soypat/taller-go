@@ -17,5 +17,45 @@ acanalis@itba.edu.ar
 Slide
 Slide
 
-- slide point
-- something else
+
+
+## Hola mundo
+
+.play -edit src/1helloworld.go /package/,/MAIN_E/
+.caption El %s es un verbo que se le pasa a la función Printf. El siguiente argumento que se le pase a Printf reemplaza el verbo. Una lista completa de verbos [[https://golang.org/pkg/fmt/][aquí]]
+
+.code src/1helloworld.go /FMT_S/,/FMT_E/
+
+## Conceptos de Go
+
+## Zero value
+
+.play -edit src/1zerovalues.go /PROG_S/,/PROG_E/
+.caption Los valores de inicialización para tipos numéricos, bools y strings son 0, falso y "" (string vacío), respectivamente
+
+## Funciones 2
+
+## Funciones variadicas
+
+.code src/2variadic.go /FUNC_S/,/FUNC_E/
+
+.play -edit src/2variadic.go /PROG_S/,/PROG_E/
+.caption Una función puede tomar un número inde90finido de argumentos pero la cantidad a devolver es fija 
+
+## Closures (ejemplo tonto)
+
+.play -edit src/2closure.go /PROG_S/,/PROG_E/
+
+.code src/2closure.go /FPROG_S/,/FPROG_E/
+
+: Las funciones son first class citizens en Go. Se pueden usar como variables. Hay veces que tiene sentido pasar una función pero en general el OOP se encarga mejor de eso.
+: Los dos ejemplos de arriba son casi idénticos. El compilador de Go usa function inlining por defecto, no asigna un bloque de memoria para cada función
+: Este ejemplo es testamento a la inutilidad de closures en un lenguaje común. Se imaginan que concepto de Go las puede hacer útiles?
+: Las function modifiers: `go` y `defer`
+
+## Closure error wrapping
+
+.code src/2closurewrap.go /FUNC_S/,/FUNC_E/ 
+.caption El proposito del defer aquí es poder hacerle un posprocesado a los datos una vez que termina la función. En este caso es para generar un error más util para el usuario de la librería/programa.
+.play -edit src/2closurewrap.go /PROG_S/,/PROG_E/ 
+
