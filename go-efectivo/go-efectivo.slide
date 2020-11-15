@@ -33,6 +33,42 @@ Slide
 .play -edit src/1zerovalues.go /PROG_S/,/PROG_E/
 .caption Los valores de inicialización para tipos numéricos, bools y strings son 0, falso y "" (string vacío), respectivamente
 
+## Terminación de programa
+
+.play -edit src/1termination.go /MAIN_S/,/MAIN_E/
+
+## Structs
+
+## Declaración y asignación
+
+.play -edit src/3structdeclaration.go /package/,/MAIN_E/
+
+## Declaración con new (pointer)
+
+.play -edit src/3structnew.go
+.caption Observen que se imprime la struct con el prefijo "`&`". Este es el operador dereferencia. Indica que `p` es un puntero a un datatype. Si no está seguro de la diferencia, no use `new` .
+
+## Declaración composite literal
+
+.code src/3structdeclaration.go /DECL_S/,/DECL_E/
+
+* Se pueden tener campos que sean structs (struct nesting)
+* Los campos de una struct puede ser la misma struct. Útil para árboles binarios
+* Se puede tener una función en un campo (no es lo mismo que un método)
+* Las structs pueden ser comparadas por igualdad con `==`
+
+## Métodos
+
+## Declaración de método y uso
+
+.play -edit src/4method.go /type/,/MAIN_E/
+
+## Método por referencia
+
+La única diferencia de cambiar el receptor a que sea referencia es que se puede modificar los valores de la misma estructura en el mismo método
+
+.play -edit src/4methodref.go /func/,/MAIN_E/
+.caption Probar el código con y sin el asterisco en el receptor para ver la diferencia.
 ## Funciones 2
 
 ## Funciones variadicas
