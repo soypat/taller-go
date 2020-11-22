@@ -23,6 +23,7 @@ div.code {
   padding: 0rem 2rem !important;
   border: none !important;
   margin: 0.5em 0;
+  tab-size: 4;
 }
 
 code[class*="language-"],
@@ -36,10 +37,10 @@ pre[class*="language-"] {
   color: inherit;
   text-shadow: none;
   font-family: "JetBrains Mono", monospace;
-  font-feature-settings: "liga" on, "calt" off; /* calt disables ligatures */
+  /* set calt to on to enable ligatures */
+  font-feature-settings: "liga" on, "calt" off;
   -webkit-font-feature-settings: "liga" on, "calt" off;
   -webkit-font-smoothing: antialiased;
-  
   text-rendering: optimizeLegibility;
 
   line-height: 1.3em;
