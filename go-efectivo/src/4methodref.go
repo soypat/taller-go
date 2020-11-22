@@ -19,7 +19,7 @@ func (j *Juego) NuevoPuntaje(p float32) {
 // MAIN_S OMIT
 func main() {
 	// PROG_S OMIT
-	p := Juego{"Counter Strike", 7.5, 2001}
+	p := Juego{"Counter Strike", 7.5, 1999}
 	fmt.Println(p.Resumen())
 	p.NuevoPuntaje(9)
 	fmt.Println(p.Resumen())

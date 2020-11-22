@@ -70,9 +70,14 @@ La única diferencia de cambiar el receptor a que sea referencia es que se puede
 .play -edit src/4methodref.go /func/,/MAIN_E/
 .caption Probar el código con y sin el asterisco en el receptor para ver la diferencia.
 
-## Interface
+## Implementación de un LIFO stack interface
 
-.play -edit src/5interface.go /interface/,/MAIN_E/
+.play -edit src/5interface.go /type/,/MAIN_E/
+
+: No nos vamos a quedar mucho tiempo aca porque esto no es algo que programarian en Go
+: es comodo trabajar directo sobre los slices para la mayoria de los casos que implementar metodos para cada caso
+
+
 
 ## Funciones 2
 
@@ -100,3 +105,42 @@ La única diferencia de cambiar el receptor a que sea referencia es que se puede
 .caption El proposito del defer aquí es poder hacerle un posprocesado a los datos una vez que termina la función. En este caso es para generar un error más util para el usuario de la librería/programa.
 .play -edit src/2closurewrap.go /PROG_S/,/PROG_E/ 
 
+## Concurrencia
+
+## Qué es la concurrencia
+
+* No es paralelismo
+* 
+
+Rob Pike, uno de los creadores de Go, dice 
+
+,,_Concurrency is about dealing with lots of things at once. Parallelism is about doing lots of things at once._"
+
+
+## La palabra clave go
+
+**`go`** hace que la función devuelva ejecución a la función circundante inmediatamente
+
+* Funciona para cualquier función
+
+.code  src/6gofirst.go /FUNC_S/,/FUNC_E/
+
+: A diferencia de otros lenguajes como Javascript y Python, cualquier función se puede correr asincrónicamente sin necesidad de modificarla. 
+## Mi primer programa concurrente
+
+.play -edit src/6gopitfall.go
+
+.caption  El programa termina inmediatamente después del segundo `Println` durante la ejecución de la primer llamada concurrente
+
+: Este es el error típico que cometen todos cuando escriben su primer programa concurrente. El programa no espera a que termine de correr la primer función llamada
+
+## Mi primer programa concurrente
+
+.play -edit src/6gofirst.go /package/,/MAIN_E/
+
+
+## Concurrencia
+
+.play -edit src/6goroutine.go 
+
+: `go` es un function modifier, es decir, modifica el comportamiento de la llamada a una función. El único otro function modifier en el lenguaje es `defer` 

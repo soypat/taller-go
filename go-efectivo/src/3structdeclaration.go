@@ -26,13 +26,13 @@ func main() {
 func DeclarationExample() {
 	// DECL_S OMIT
 	// Forma común
-	a := Película{Name: "Annihilation", Puntaje: 8.1}
+	a := Película{Nombre: "Annihilation", Puntaje: 8.1}
 	// Campos en el orden que es definido el tipo
 	// Recomendable solo para structs con pocos campos
 	r := Película{"The Room", 10.0}
 	// Para más legibilidad separado en lineas
 	s := Película{
-		Name:    "El Secreto de sus Ojos",
+		Nombre:  "El Secreto de sus Ojos",
 		Puntaje: 9.0,
 	}
 	// DECL_E OMIT
