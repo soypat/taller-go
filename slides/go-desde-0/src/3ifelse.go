@@ -6,7 +6,7 @@ import "fmt"
 
 func main() {
 	// PROG_S OMIT
-	b := true
+	var b bool = true
 	if b {
 		fmt.Println("b es verdadero!")
 	} else {

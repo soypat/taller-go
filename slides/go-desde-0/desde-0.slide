@@ -13,9 +13,9 @@ acanalis@itba.edu.ar
 ## Qué es Go?
 Lenguaje de programación moderno caracterizado por su simplicidad, manejo de memoria (garbage collection) y buen manejo en equipos grandes.
 // this is for spacing. use transparent pic
-.image /assets/go-img/transparent.png 160 _ 
+.image /assets/go-img/transparent.png 280 _ 
 
-Mientras esperaban 40 minutos para que termine de compilar un programa C++, un equipo de 3 personas de Google se pusieron a pensar que forma tendría un lenguaje moderno... 
+: Mientras esperaban 40 minutos para que termine de compilar un programa C++, un equipo de 3 personas de Google se pusieron a pensar que forma tendría un lenguaje moderno... 
 
 : No es necesario manejar la memoria en Go, se ocupa solo el lenguaje y te simplifica la vida bastante! Es todo un surtido de bugs que ya no molestan
 : Go es usado en Google, Discord, Netflix, Amazon, Twitch. Soluciona problemas para grandes empresas y es ideal para grandes equipos
@@ -33,21 +33,26 @@ Mientras esperaban 40 minutos para que termine de compilar un programa C++, un e
 * Concurrencia de **Newsqueak**
 * Legibilidad y facilidad de uso de **Python**
 
-.image https://upload.wikimedia.org/wikipedia/en/c/c0/Smalltalk80book.jpg 230 _
-: Go toma simplicidad de todos los lenguajes vistos arriba y es lo que se dice que lo destaca entre otros lenguajes complejos como C++ y Java. Comparado a Java Go solo tiene 50 páginas de spec sheet comparado a las 750 de Java (x15) o las 1600 páginas del estándar ISO de C++
-: El sintaxis de Algol introdujo bloques con start/begin. Evoluciono a $(/$) en BCPL. Tomaron la forma de llaves en C.
+.image /assets/go-img/transparent.png 60 _ 
 
-## Introducción y Sistema de tipos
+.image /assets/go-img/green-ubuntu-coffee.png 250 _
+// .image https://upload.wikimedia.org/wikipedia/en/c/c0/Smalltalk80book.jpg 230 _
+: Go toma simplicidad de todos los lenguajes vistos arriba y es lo que se dice que lo destaca entre otros lenguajes complejos como C++ y Java. Comparado a Java Go solo tiene 50 páginas de spec sheet comparado a las 750 de Java (x15) o las 1600 páginas del estándar ISO de C++
+
+
+## Hello World
 
 ## Hello world {#helloworld}
 
-.code src/1helloworld.go
+.play -edit src/1helloworld.go
 
 : Hello World en Go. Todos los archivos `.go` son unicode (UTF-8) y permiten escribir con caracteres especiales.
 
-1. El programa
-2. Librerías
-3. Estructura de proyecto
+1. Declaración de librería actual: `package x` 
+
+2. Librerías usadas: `import "x"`
+
+3. El programa: cuerpo de `main()`
 
 ## El programa {#el-programa}
 
@@ -61,16 +66,18 @@ Lo que en verdad corre:
   * De la libreria **`fmt`**
 
 ## Librerías (packages) {#packages}
-Una librería es un conjunto de funciones que uno puede hacer uso en su código.
+Al importar una librería esta trae código de otro para usarlo nosotros
 
 La función **`Println`** de la librería **`fmt`** nos deja imprimir cualquier tipo de dato a consola.
 
 .code src/1helloworld.go /import/
 
 .caption Importando la librería *`fmt`*
+<details><summary></summary>
 
 .code src/1imports.go /import/,/\)/
 .caption Para importar varias librerías se rodean con parentesis
+</details>
 
 ## Ejecución de un programa en Go
 
@@ -80,7 +87,7 @@ La ejecución de todo programa de Go comienza en una función **`main`**
 : `main` es una función igual que `Println` con una diferencia importante, no toma argumentos! ademas es una función especial porque es la primer función en ser llamada de un programa
 : En un rato vemos mejor que son las funciones en Go, por ahora quedense tranquilos con la idea que es lo que se ejecuta en un programa
 
-.code src/1helloworld.go /func/,/}/ HLmain
+.play -edit src/1helloworld.go /func/,/}/ HLmain
 
 * **`main`** es *única* y define el programa
 
@@ -90,7 +97,7 @@ La ejecución de todo programa de Go comienza en una función **`main`**
 
 : Un package es una colección de archivos `.go` en un directorio y pueden definir una librería, o, en el caso especial que el nombre del package sea `main` define un programa. Si el package es main es obligatorio tener una función llamada main() donde comienze el programa
 
-.code src/1helloworld.go
+.play -edit src/1helloworld.go
 
 * La declaración es el nombre de la librería
 * El paquete **`main`** define un programa
@@ -100,119 +107,89 @@ La ejecución de todo programa de Go comienza en una función **`main`**
 : como nos vamos a dedicar a escribir programas, no librerías, el package siempre va ser main
 : Si quieren dividir su programa en muchas carpetas van a darle nombres a su package, tiene que ser igual al nombre del directorio
 
+## Sistema de Tipos
+
+## Tipos básicos
+
+Toda variable en Go es un tipo básico o se compone de varios tipos básicos
+
+.code src/0types.go /TYPES_S/,/TYPES_E/
+.caption Una lista completa de todos los tipos básicos en Go
+
+: En estas filminas solo trabajaremos con int, string y un poco de floats
 
 ## Números y aritmética
 
+Go tiene los siguientes operadores básicos para números enteros: **`+ - * / %`**
+
 .play -edit  src/1numbers.go /MAIN_S/,/MAIN_E/
-
-Una lista de todos los tipos básicos en Go:
-
-.code src/0types.go /TYPES_S/,/TYPES_E/
-
-
-## Declaración múltiple
 
 Para no gastar mucho tiempo/espacio escribiendo variables podemos declararlas en una linea
 
-.play -edit  src/1numberssimple.go /SIMPLE_S/,/SIMPLE_E/
+.play -edit src/1arithmeticnum.go /PROG_S/,/PROG_E/
+
+: Acuerdense que todo programa corre adentro de la función main(). De ahora en adelante obviaremos esta parte del código para algunos ejemplos
 
 : empieza a parecerse a python el código de a poco
 : {{Cambia int a float64 para comprobar que funciona igual. no hace falta agregar punto}}
 
-## Aritmética 2
+: La division entera redondea para abajo! prueben reeplazar el + con un - (menos)
 
-Go tiene los siguientes operadores básicos para números enteros:
+## Aritmética de strings
 
-**`+ - * / %`**
-
-: cuando dividis un número entero el resultado va ser un número entero, nada de decimales
-
-.play -edit src/1arithmeticnum.go /PROG_S/,/PROG_E/
-
-Se pueden concatenar strings con el operador **`+`**
+Se pueden concatenar strings con los operadores **`+`** y **`+=`**
 
 .play -edit src/1arithmeticstring.go /PROG_S/,/PROG_E/
 
 : Introducir operador += !
 
-## Arreglos y slices
+## Declaraciónes acortadas y sintaxis azucarada
 
-Los arreglos permiten guardar varios elementos en una variable
+.play -edit src/2shorthand.go /PROG_S/,/PROG_E/
+.caption *Declaración* *sin* *tipo:* Declaramos un `string`, entero (`int`) y un `float64` sin especificar el tipo.
 
-.play -edit src/1arrays.go /PROG_S/,/PROG_E/
+.play -edit src/2implicit.go /PROG_S/,/PROG_E/
+.caption *Declaración* *corta:*  acorta mucho la cantidad de caracteres a escribir
 
-* Son usados en muy pocos casos
-* Existe el tipo **`slice`** para cuando no se conoce el tamaño previamente
-
-.play -edit src/1slicefromarray.go /PROG_S/,/PROG_E/
-
-
-: Se puede admitir que se está poniendo complejo interpretar el código con tanta declaración de variable
-: Existen formas menos verbosas de declarar variablas
-
-## Declaración corta
-
-.play -edit src/1shorthandslice.go /PROG_S/,/PROG_E/
-
-Aquí tenemos un arreglo llamado **`beatles`** del cual tomamos referencia del primer al tercer elemento
-
-Cuando asignamos a la referencia **`beatleSlice`** en verdad ***estamos modificando el arreglo original***
-
-Cuidado con esto!
+: Declaración corta no puede usarse fuera de una función y a diferencia de declaración con var, pueden redeclarar variables dado que es una declaración multivariable.
 
 
-: La declaración corta ahorra mucho espacio y hace que el código sea más legible pero puede resultar confuso!
-: Vamos a alternar entre formas de declarar para que se vayan acostumbrando a Go. Puede llevar un tiempo acostumbrarse a las varias formas de declarar variables
-: Esto ocurre para prevenir el copiado inecesario de arreglos. Si uno en verdad quiere copiar un arreglo puede usar la librería reflect. 
-: Esto no solo pasa en Go, las listas de Python funcionan de la misma forma!
+## Flujo de control
 
-## Declaración implicita
-Y como si parecieran pocas las formas de declarar una variable, aquí tienen otra
+## Palabras clave
 
-La declaración mediante **`:=`** se usa para dejarle el trabajo de inferir el tipo al compilador.
+Las 25 palabras clave en Go:
 
-.play -edit src/1implicitslice.go /PROG_S/,/PROG_E/
-.caption Cabe destacar que las 4 variables son del mismo tipo (un arreglo de 4 strings)
+.code src/0keywords.go /KW_S/,/KW_E/
+.caption Una lista completa de todos los _keywords_ de Go
 
+: Si buscan encontraran que está escondida la temible goto ahí en el medio
 
-## Slices
+## if - else
 
-Aquí se comienza declarando un *slice*. Por detrás se crea el arreglo y se toma la referencia.
+Es la estructura de control más básica. Te permite tener control sobre lo que se ejecuta
 
-.play -edit src/1slice.go /PROG_S/,/PROG_E/
+En este ejemplo presentamos al tipo **`bool`** de Go
 
-: Cuando se usa append no se crea un nuevo arreglo, se crea un nuevo slice. Por eso no es un método la función append
+.play -edit src/3ifelse.go /PROG_S/,/PROG_E/
 
-Se pueden obviar los límites superiores o inferiores tomando indices de arreglos o slices. Los siguientes son equivalentes para un arreglo de longitud 5:
+<details><summary>else-if</summary>
 
-.code src/1slice.go /IDX_S/,/IDX_E/
-.caption El resultado de un rango de índices siempre es un *slice*
-
-: slice es más usado que los arreglos pero conlleva sus cuidados especiales (null pointer dereference)
+.play -edit src/3elseif.go /PROG_S/,/PROG_E/
+</details>
 
 
 
-## Mapas (diccionarios)
+## Bucle (for)
 
-.play -edit src/1maps.go /PROG_S/,/PROG_E/
+Un for que inicializa **`i`**, imprime **`i`**, y le suma 1 hasta llegar a diez
 
-Se puede eliminar un conjunto clave-valor con **`delete`**
+.play -edit src/3fori.go /PROG_S/,/PROG_E/
 
-.code src/1maps.go /DEL_S/,/DEL_E/
+: Problema: aparece mucho syntax sugar de una aca y todavia no lo vimos anteriormente
 
-Se puede revisar si existe un valor pidiendo un segundo argumento
-
-.code src/1maps.go /OK_S/,/OK_E/
-
-* **`ok==true`** si existe la clave en el map
-* **`ok==false`** si no está presente la clave
-
-## Pitfalls con mapas
-
-El siguiente programa compila sin problemas
-
-.play -edit src/1mapnilderef.go /PROG_S/,/PROG_E/
-.caption Nos olvidamos de inicializar el mapa
+// Un for que recorre un arreglo
+//.play -edit src/3forrange.go /PROG_S/,/PROG_E/
 
 
 ## Funciones
@@ -234,9 +211,6 @@ Un ejemplo clásico es una función que devuelve la suma de dos números
 : Se dieron cuenta que asigne con los dos puntos? El siguiente slide veremos las varias formas de asignar a una variable
 : Que quede claro donde defino las funciones. son por afuera de main... aunque no hay nada que me impida de definirla adentro
 
-## Declaración corta y sintaxis azucarada
-
-.play -edit src/2shorthand.go /PROG_S/,/PROG_E/
 
 ## Multiples valores
 
@@ -248,60 +222,15 @@ Un ejemplo clásico es una función que devuelve la suma de dos números
 
 // .code src/2variadic.go /FUNC_S/,/FUNC_E/
 
-// .play -edit src/2variadic.go /PROG_S/,/PROG_E/
+// .play -edit src/2variadic.go /PROG_S/,/PROG_E
 
 
-## Flujo de control
-
-
-## if - else
-
-Es la estructura de control más básica. Te permite tener control sobre lo que se ejecuta
-
-En este ejemplo presentamos al tipo **`bool`** de Go
-
-.play -edit src/3ifelse.go /PROG_S/,/PROG_E/
-
-Las 25 palabras clave en Go:
-
-.code src/0keywords.go /KW_S/,/KW_E/
-
-: Si buscan encontraran que está escondida la temible goto ahí en el medio
-
-## else if
-
-.play -edit src/3elseif.go /PROG_S/,/PROG_E/
-
-Operadores más comunes
-
-.code src/3elseif.go /OPERATORS_S/,/OPERATORS_E/
-: el else no corre a no ser que le saque el igual al ultimo else-if
-
-// ## Nesting y operadores booleanos
-
-// .play -edit src/3logical.go /PROG_S/,/PROG_E/
-
-## Switch
-El **`switch`** es la estructura de control más flexible de Go y se usa para diversos casos. 
-
-.play -edit src/3switch.go /PROG_S/,/PROG_E/
-
-* Sirve de **`else if`** simplificado
-* Verificación de tipo (Type checking)
-* Y [muchos más](https://yourbasic.org/golang/switch-statement/)
-
-## Bucle (for)
-
-Un for que inicializa **`i`**, imprime **`i`**, y le suma 1 hasta llegar a diez
-
-.play -edit src/3fori.go /PROG_S/,/PROG_E/
-
-Un for que recorre un arreglo
-
-.play -edit src/3forrange.go /PROG_S/,/PROG_E/
-
+## Últimos comentarios
 
 ## Defer
+Defer es un **modificador de función**. Agrega la función con la cual se llama al *call stack*.
+
+El *call stack* se ejecuta cuando la función llega a un **`return`** o si el programa termina.
 
 : Aquí estamos llamando defer de adentro de main, pero podría ser cualquier función!
 
@@ -315,56 +244,28 @@ Uso más común: asegurar que se termine de cerrar un archivo
 .code src/3defer.go /EXAMPLE_S/,/EXAMPLE_E/
 
 
-## Slices
-: Por último, probablemente la estructura de datos más poderosa: el slice
-: A los programadores *no* les gusta esto, son muy indecisos. Por eso existe el slice
 
-Hemos visto como se crea un arreglo. Es limitante tener que decidirse por un tamaño al comienzo
+## Switch
+El **`switch`** es la estructura de control más flexible de Go y se usa para diversos casos. 
 
-Les presentamos el slice, si no se indica un valor al arreglo cambia su tipo ***fundamentalmente***.
+.play -edit src/3switch.go /PROG_S/,/PROG_E/
 
-.play -edit src/4slices.go /PROG_S/,/PROG_E/
-
-## Función append
-
-.play -edit src/4append.go /PROG_S/,/PROG_E/
-
-## Paquete os, manejo de errores y lectura de archivos
-
-.play -edit src/5os.go
-
-## 
+* Sirve de **`else if`** simplificado
+* Verificación de tipo (Type checking)
+* Y [muchos más](https://yourbasic.org/golang/switch-statement/)
 
 
 
 
-## TODO. final de clase Inspiración?
+## Charla dada por el product manager de Go (2015)
 
-Un video que todo gopher debería ver
+Un video que todo gopher debería ver. Se trata sobre el origen de Go.
 
 .iframe https://www.youtube.com/embed/sX8r6zATHGU 500 800
 
 
-## First slide
+## Preguntas? 
 
-Slide
-
-- slide point
-- something else
-- desde
--  dd
-- ddd
-- ddsd
-- dsd 
-- dsd 
-
-
-
-## Go go go 
-
-.image /assets/go-img/purple-pacman-nerd.png 200 _
+.image /assets/go-img/purple-pacman-nerd.png 480 _
 .caption Diseño del _Gopher_ hecho por [[https://instagram.com/reneefrench][Renee French]]. Crédito a Mat Ryer por la WebApp [[https://gopherize.me/][Gopherize me]]
 
-## Por qué Go?
-
-.image /assets/go-img/green-ubuntu-coffee.png 200 _

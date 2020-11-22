@@ -57,6 +57,105 @@ Slide
 * Se puede tener una función en un campo (no es lo mismo que un método)
 * Las structs pueden ser comparadas por igualdad con `==`
 
+
+## Arreglos y slices
+
+Los arreglos permiten guardar varios elementos en una variable
+
+.play -edit src/1arrays.go /PROG_S/,/PROG_E/
+
+* Son usados en muy pocos casos
+* Existe el tipo **`slice`** para cuando no se conoce el tamaño previamente
+
+.play -edit src/1slicefromarray.go /PROG_S/,/PROG_E/
+
+
+: Se puede admitir que se está poniendo complejo interpretar el código con tanta declaración de variable
+: Existen formas menos verbosas de declarar variablas
+
+## Declaración corta
+
+.play -edit src/1shorthandslice.go /PROG_S/,/PROG_E/
+
+Aquí tenemos un arreglo llamado **`beatles`** del cual tomamos referencia del primer al tercer elemento
+
+Cuando asignamos a la referencia **`beatleSlice`** en verdad ***estamos modificando el arreglo original***
+
+Cuidado con esto!
+
+
+: La declaración corta ahorra mucho espacio y hace que el código sea más legible pero puede resultar confuso!
+: Vamos a alternar entre formas de declarar para que se vayan acostumbrando a Go. Puede llevar un tiempo acostumbrarse a las varias formas de declarar variables
+: Esto ocurre para prevenir el copiado inecesario de arreglos. Si uno en verdad quiere copiar un arreglo puede usar la librería reflect. 
+: Esto no solo pasa en Go, las listas de Python funcionan de la misma forma!
+
+## Declaración implicita
+Y como si parecieran pocas las formas de declarar una variable, aquí tienen otra
+
+La declaración mediante **`:=`** se usa para dejarle el trabajo de inferir el tipo al compilador.
+
+.play -edit src/1implicitslice.go /PROG_S/,/PROG_E/
+.caption Cabe destacar que las 4 variables son del mismo tipo (un arreglo de 4 strings)
+
+
+## Slices
+
+Aquí se comienza declarando un *slice*. Por detrás se crea el arreglo y se toma la referencia.
+
+.play -edit src/1slice.go /PROG_S/,/PROG_E/
+
+: Cuando se usa append no se crea un nuevo arreglo, se crea un nuevo slice. Por eso no es un método la función append
+
+Se pueden obviar los límites superiores o inferiores tomando indices de arreglos o slices. Los siguientes son equivalentes para un arreglo de longitud 5:
+
+.code src/1slice.go /IDX_S/,/IDX_E/
+.caption El resultado de un rango de índices siempre es un *slice*
+
+: slice es más usado que los arreglos pero conlleva sus cuidados especiales (null pointer dereference)
+
+
+
+## Mapas (diccionarios)
+
+.play -edit src/1maps.go /PROG_S/,/PROG_E/
+
+Se puede eliminar un conjunto clave-valor con **`delete`**
+
+.code src/1maps.go /DEL_S/,/DEL_E/
+
+Se puede revisar si existe un valor pidiendo un segundo argumento
+
+.code src/1maps.go /OK_S/,/OK_E/
+
+* **`ok==true`** si existe la clave en el map
+* **`ok==false`** si no está presente la clave
+
+## Pitfalls con mapas
+
+El siguiente programa compila sin problemas
+
+.play -edit src/1mapnilderef.go /PROG_S/,/PROG_E/
+.caption Nos olvidamos de inicializar el mapa
+
+## Slices
+: Por último, probablemente la estructura de datos más poderosa: el slice
+: A los programadores *no* les gusta esto, son muy indecisos. Por eso existe el slice
+
+Hemos visto como se crea un arreglo. Es limitante tener que decidirse por un tamaño al comienzo
+
+Les presentamos el slice, si no se indica un valor al arreglo cambia su tipo ***fundamentalmente***.
+
+.play -edit src/4slices.go /PROG_S/,/PROG_E/
+
+## Función append
+
+.play -edit src/4append.go /PROG_S/,/PROG_E/
+
+## Paquete os, manejo de errores y lectura de archivos
+
+.play -edit src/5os.go
+
+
 ## Métodos
 
 ## Declaración de método y uso
@@ -77,9 +176,6 @@ La única diferencia de cambiar el receptor a que sea referencia es que se puede
 : No nos vamos a quedar mucho tiempo aca porque esto no es algo que programarian en Go
 : es comodo trabajar directo sobre los slices para la mayoria de los casos que implementar metodos para cada caso
 
-
-
-## Funciones 2
 
 ## Funciones variadicas
 

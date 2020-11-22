@@ -2,17 +2,16 @@
 
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	// PROG_S OMIT
-	var s = "Hola, world"
-	s += "!!!!!!"
-	var i = 20
-	var f = 30.2
-	fmt.Println(i, f, s)
+	suma := 2 + 2
+	suma++
+	nombre := "Annie"
+	nombre += " are you ok?"
+	fmt.Println(suma)
+	fmt.Println(nombre)
 	// PROG_E OMIT
 }
 

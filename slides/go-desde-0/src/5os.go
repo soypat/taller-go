@@ -10,7 +10,7 @@ import (
 
 func main() {
 	// PROG_S OMIT
-	f, err := os.Open("archivo.txt")
+	f, err := os.Open("data/archivo.txt")
 	if err != nil {
 		fmt.Println("No pude abrir el archivo:", err)
 		// termina el programa indicandole al sistema operativo que hubo un error
