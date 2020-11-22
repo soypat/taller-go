@@ -7,6 +7,8 @@ import "fmt"
 func main() {
 	// PROG_S OMIT
 	var beatles = []string{"John", "Paul", "George", "Ringo"}
+	fmt.Println(beatles)
+
 	beatles = append(beatles, "Walrus")
 	fmt.Println(beatles)
 	// PROG_E OMIT
@@ -18,4 +20,4 @@ beatles[0:]
 beatles[:5]
 beatles[:]
 beatles[:len(beatles)]
-/* IDX_E OMIT
+*/ // IDX_E OMIT

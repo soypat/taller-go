@@ -1,35 +1,26 @@
+//+build os OMIT
+
 package main
 
-import "fmt"
+// INTERFACE_S OMIT
+type Reader interface {
+	Read(p []byte) (n int, err error)
+}
 
-// INTEFACE_S OMIT
-type (
-	Stacker interface {
-		Push(string)
-		Pop() string
-	}
-	Stack []string
-)
+type Writer interface {
+	Write(p []byte) (n int, err error)
+}
 
 // INTERFACE_E OMIT
-func (a *Stack) Push(s string) { *a = append(*a, s) }
-func (a *Stack) Pop() (x string) {
-	if len(*a) >= 1 {
-		x, *a = (*a)[len(*a)-1], (*a)[:len(*a)-1]
-	}
-	return
-}
 
-// STRUCT_E OMIT
-// MAIN_S OMIT
 func main() {
-	// PROG_S OMIT
-	var s Stacker = &Stack{"QWERTY"}
-	s.Push("DVORAK")
-	fmt.Println(s)
-	fmt.Println(s.Pop(), s.Pop())
-	fmt.Println(s)
-	// PROG_E OMIT
+
 }
 
-// MAIN_E OMIT
+/* USG_S OMIT
+// File implementa Reader y Writer
+File, err := os.Open("archivito.txt")
+
+contents, err := ioutil.ReadAll(File)
+bytesWritten, err := File.Write([]byte("Hola Mundo!"))
+*/ // USG_E OMIT

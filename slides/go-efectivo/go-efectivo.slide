@@ -11,11 +11,6 @@ Agustín Canalis
 pwhittingslow@itba.edu.ar
 acanalis@itba.edu.ar
 
-## First slide
-.image /assets/go-img/gopher.png 200 _
-.caption Diseño del _Gopher_ hecho por [[https://instagram.com/reneefrench][Renee French]]
-Slide
-Slide
 
 
 
@@ -37,6 +32,24 @@ Slide
 
 .play -edit src/1termination.go /MAIN_S/,/MAIN_E/
 
+## Tipos agregados
+
+## Tipos agregados/tipos compuestos
+Un tipo agregado es un tipo de dato que puede ser construido con los tipos primitivos de un lenguaje.
+
+* Structs
+* Listas
+* Arreglos
+* Mapas/Diccionarios
+
+: Las listas de Go se llaman slices y son fácil de manejar una vez que tenés un entendimiento básico del lenguaje
+
+: Por esto nos vamos a enfocar más en structs, métodos e interfazes que es donde Go atrae mucho interés por ser un lenguaje orientado a objetos restringido.
+: Go no tiene Inheritance ni clases, pero se arregla con el concepto de interfaz y method set, respectivamente.
+
+.image /assets/go-img/gopher.png 200 _
+.caption Diseño del _Gopher_ hecho por [[https://instagram.com/reneefrench][Renee French]]
+
 ## Structs
 
 ## Declaración y asignación
@@ -48,6 +61,8 @@ Slide
 .play -edit src/3structnew.go
 .caption Observen que se imprime la struct con el prefijo "`&`". Este es el operador dereferencia. Indica que `p` es un puntero a un datatype. Si no está seguro de la diferencia, no use `new` .
 
+: Si no están afamiliarizado con pointers, descuiden. No haremos hincapié en este curso en punteros porque no es algo crítico para programar en Go.
+
 ## Declaración composite literal
 
 .code src/3structdeclaration.go /DECL_S/,/DECL_E/
@@ -57,50 +72,11 @@ Slide
 * Se puede tener una función en un campo (no es lo mismo que un método)
 * Las structs pueden ser comparadas por igualdad con `==`
 
-
-## Arreglos y slices
-
-Los arreglos permiten guardar varios elementos en una variable
-
-.play -edit src/1arrays.go /PROG_S/,/PROG_E/
-
-* Son usados en muy pocos casos
-* Existe el tipo **`slice`** para cuando no se conoce el tamaño previamente
-
-.play -edit src/1slicefromarray.go /PROG_S/,/PROG_E/
-
-
-: Se puede admitir que se está poniendo complejo interpretar el código con tanta declaración de variable
-: Existen formas menos verbosas de declarar variablas
-
-## Declaración corta
-
-.play -edit src/1shorthandslice.go /PROG_S/,/PROG_E/
-
-Aquí tenemos un arreglo llamado **`beatles`** del cual tomamos referencia del primer al tercer elemento
-
-Cuando asignamos a la referencia **`beatleSlice`** en verdad ***estamos modificando el arreglo original***
-
-Cuidado con esto!
-
-
-: La declaración corta ahorra mucho espacio y hace que el código sea más legible pero puede resultar confuso!
-: Vamos a alternar entre formas de declarar para que se vayan acostumbrando a Go. Puede llevar un tiempo acostumbrarse a las varias formas de declarar variables
-: Esto ocurre para prevenir el copiado inecesario de arreglos. Si uno en verdad quiere copiar un arreglo puede usar la librería reflect. 
-: Esto no solo pasa en Go, las listas de Python funcionan de la misma forma!
-
-## Declaración implicita
-Y como si parecieran pocas las formas de declarar una variable, aquí tienen otra
-
-La declaración mediante **`:=`** se usa para dejarle el trabajo de inferir el tipo al compilador.
-
-.play -edit src/1implicitslice.go /PROG_S/,/PROG_E/
-.caption Cabe destacar que las 4 variables son del mismo tipo (un arreglo de 4 strings)
-
+## Slices
 
 ## Slices
 
-Aquí se comienza declarando un *slice*. Por detrás se crea el arreglo y se toma la referencia.
+Aquí se comienza declarando un *slice*. Por detrás se crea un arreglo y se toma la referencia.
 
 .play -edit src/1slice.go /PROG_S/,/PROG_E/
 
@@ -114,6 +90,24 @@ Se pueden obviar los límites superiores o inferiores tomando indices de arreglo
 : slice es más usado que los arreglos pero conlleva sus cuidados especiales (null pointer dereference)
 
 
+
+## Referencias
+.play -edit src/1shorthandslice.go /PROG_S/,/PROG_E/
+
+Aquí tenemos un slice llamado **`beatles`** del cual tomamos referencia del primer al tercer elemento
+
+Cuando asignamos a la referencia **`beatleSlice`** en verdad ***estamos modificando el arreglo original***
+
+Cuidado con esto!
+
+
+: La declaración corta ahorra mucho espacio y hace que el código sea más legible pero puede resultar confuso!
+: Vamos a alternar entre formas de declarar para que se vayan acostumbrando a Go. Puede llevar un tiempo acostumbrarse a las varias formas de declarar variables
+: Esto ocurre para prevenir el copiado inecesario de arreglos. Si uno en verdad quiere copiar un arreglo puede usar la librería reflect. 
+: Esto no solo pasa en Go, las listas de Python funcionan de la misma forma!
+
+
+## Maps
 
 ## Mapas (diccionarios)
 
@@ -137,23 +131,9 @@ El siguiente programa compila sin problemas
 .play -edit src/1mapnilderef.go /PROG_S/,/PROG_E/
 .caption Nos olvidamos de inicializar el mapa
 
-## Slices
-: Por último, probablemente la estructura de datos más poderosa: el slice
-: A los programadores *no* les gusta esto, son muy indecisos. Por eso existe el slice
+### Fin de tipos agregados
 
-Hemos visto como se crea un arreglo. Es limitante tener que decidirse por un tamaño al comienzo
 
-Les presentamos el slice, si no se indica un valor al arreglo cambia su tipo ***fundamentalmente***.
-
-.play -edit src/4slices.go /PROG_S/,/PROG_E/
-
-## Función append
-
-.play -edit src/4append.go /PROG_S/,/PROG_E/
-
-## Paquete os, manejo de errores y lectura de archivos
-
-.play -edit src/5os.go
 
 
 ## Métodos
@@ -169,13 +149,41 @@ La única diferencia de cambiar el receptor a que sea referencia es que se puede
 .play -edit src/4methodref.go /func/,/MAIN_E/
 .caption Probar el código con y sin el asterisco en el receptor para ver la diferencia.
 
+## Interface
+
+## Interfaces
+Abajo los dos interfaces más usados en Go como son declarados en el paquete **`io`**
+
+.code src/5interface.go /INTERFACE_S/,/INTERFACE_E/
+
+.code src/5interface.go /USG_S/,/USG_E/
+.caption Se dice que `os.File` implementa el Writer y Reader interface.
+
+## Por qué interfaces?
+
+Es una abstracción que toma en cuenta la ***funcionalidad*** común entre tipos de datos.
+
+No tienen mucho uso cuando uno programa en soledad. Se convierten en un abstracción fundamental al programar cuando muchas librerías implementan la interface. 
+
+Supongamos que quiero crear mi propia interface para que el resto del mundo la use. En el ejemplo siguiente se declara una interface llamada **`Stacker`** que tiene dos métodos propios de un LIFO Stack.
+
+.code src/4stacker.go /INTERFACE_S/,/INTERFACE_E/
+
+El éxito del interface depende de cuantos lo adopten y lo incluyan como argumentos en sus funciones.
+
+
 ## Implementación de un LIFO stack interface
 
-.play -edit src/5interface.go /type/,/MAIN_E/
+.play -edit src/4stacker.go /type Stack /,/MAIN_E/
 
 : No nos vamos a quedar mucho tiempo aca porque esto no es algo que programarian en Go
 : es comodo trabajar directo sobre los slices para la mayoria de los casos que implementar metodos para cada caso
 
+## Paquete os, manejo de errores y lectura de archivos
+
+.play -edit src/5os.go
+
+## Conceptos de funciones
 
 ## Funciones variadicas
 
@@ -186,9 +194,14 @@ La única diferencia de cambiar el receptor a que sea referencia es que se puede
 
 ## Closures (ejemplo tonto)
 
+Escribir:
+
 .play -edit src/2closure.go /PROG_S/,/PROG_E/
 
+Es lo mismo que escribir:
+
 .code src/2closure.go /FPROG_S/,/FPROG_E/
+El concepto de un _closure_ solo es útil cuando entran en juego los modificadores de funciones.
 
 : Las funciones son first class citizens en Go. Se pueden usar como variables. Hay veces que tiene sentido pasar una función pero en general el OOP se encarga mejor de eso.
 : Los dos ejemplos de arriba son casi idénticos. El compilador de Go usa function inlining por defecto, no asigna un bloque de memoria para cada función
@@ -222,7 +235,7 @@ Rob Pike, uno de los creadores de Go, dice
 .code  src/6gofirst.go /FUNC_S/,/FUNC_E/
 
 : A diferencia de otros lenguajes como Javascript y Python, cualquier función se puede correr asincrónicamente sin necesidad de modificarla. 
-## Mi primer programa concurrente
+## Mi primer programa concurrente fallido
 
 .play -edit src/6gopitfall.go
 
