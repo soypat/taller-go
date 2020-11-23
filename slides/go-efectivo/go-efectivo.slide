@@ -309,3 +309,72 @@ Los canales se usan para mandar mensajes entre gorutinas. Se pueden asignar a va
 
 .code src/6channels.go  /CHAN_S/,/CHAN_E/
 
+* Los canales ***no*** son memoria compartida
+
+: Se parecen más a file descriptors
+
+
+## Contador con canales
+
+.play -edit src/6chancounter.go
+.caption Los canales comunican *y* sincronizan. Dos conceptos muy importantes en Go.
+
+: A diferencia del otro código, este si corre la gorutina. La diferencia es que ahora estamos trabajando con canales. Un canal que recibe es Bloqueante hasta que recibe un mensaje, luego pasa control de vuelta a la función
+
+## Deadlock
+
+.play -edit src/6chandeadlock.go
+
+## Deadlock - explicación
+
+La función **`contar`** termina luego de 5 mensajes. Mientras tanto **`main`** se queda esperando un sexto mensaje que nunca llegará! El programa se da cuenta cuando hay un canal bloqueado infinitamente y termina con el error ***deadlock!***.
+
+## Cerrando un canal
+
+.play -edit src/6chanclose.go /MAIN_S/,/FUNC_E/
+.caption Una vez cerrado el canal el valor de abierto será falso y sabremos que se ha dejado de enviar mensajes por el canal. OJO! Si se manda un mensaje por un canal cerrado el programa termina con error!
+
+## Range canal
+El siguiente código hace lo mismo que el anterior pero con menos verbosidad.
+
+.play -edit src/6chanrange.go /MAIN_S/,/FUNC_E/
+.caption La palabra clave `range` se puede usar para iterar sobre canales, slices y mapas
+
+## Comunicación entre canales
+
+Mandar por un canal no se compara a un tiro de baloncesto. Es más parecido a una entrega de amazon. El mensajero se queda esperando a que el receptor lo atienda.
+
+.play -edit src/6chanbuffpitfall.go /MAIN_S/,/MAIN_E/
+
+En este caso el mensajero bloquea el programa y el receptor nunca llega a atenderlo, causando un ***deadlock***.
+
+Esto se puede resolver usando gorutinas o con *buffered channels*.
+
+## Buffered channels
+
+## Siguiendo la analogía de Amazon Delivery
+
+Si el channel (canal) es la puerta de la casa del receptor, entonces el buffer es una caja donde el mensajero puede dejar los mensajes.
+
+.play -edit src/6chanbuff.go /MAIN_S/,/MAIN_E/
+
+Ahora puede seguir la ejecución después de mandar un mensaje. El tamaño del buffer puede ser cualquiera.
+
+¡El mensajero aún bloqueará cuando esté lleno el buffer!
+
+## Select
+
+## Bloqueo de canales lentosS
+
+El siguiente programa es limitado por la gorutina más lenta.
+
+.play -edit src/6beforeselect.go /MAIN_S/,/FUNC_E/
+.caption El programa es limitado por la velocidad a la que el canal 2 puede recibir mensajes (`<-c2`)
+
+## Select
+
+La palabra clave select le permite al programa esperar hasta que haya un canal con un mensaje entre varios canales.
+
+.play -edit src/6afterselect.go /MAIN_S/,/MAIN_E/
+
+## Preguntas?
