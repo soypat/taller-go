@@ -17,3 +17,10 @@ func Sumar(x int, y int) int {
 }
 
 // FUNC_E OMIT
+
+// FCFUNC_S OMIT
+var función = func(a int) int {
+	return a*20 + 5
+}
+
+// FCFUNC_E OMIT

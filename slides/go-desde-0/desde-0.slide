@@ -204,6 +204,12 @@ Un ejemplo clásico es una función que devuelve la suma de dos números
 
 .code  src/2func.go /FUNC_S/,/FUNC_E/
 
+<details><summary></summary>
+
+.code  src/2func.go /FCFUNC_S/,/FCFUNC_E/
+.caption Las funciones en Go son _first_ _class_ _citizens_, es decir, se pueden asignar a variables y ser argumentos de otras funciones
+</details>
+
 ## Implementación
 
 .play -edit src/2func.go

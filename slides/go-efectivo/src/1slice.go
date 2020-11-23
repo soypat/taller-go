@@ -7,7 +7,7 @@ import "fmt"
 func main() {
 	// PROG_S OMIT
 	var beatles = []string{"John", "Paul", "George", "Ringo"}
-	fmt.Println(beatles)
+	fmt.Println(beatles[0], beatles[1:4])
 
 	beatles = append(beatles, "Walrus")
 	fmt.Println(beatles)
