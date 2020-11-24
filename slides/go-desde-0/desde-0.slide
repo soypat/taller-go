@@ -12,20 +12,15 @@ acanalis@itba.edu.ar
 
 ## Qué es Go?
 Lenguaje de programación moderno caracterizado por su simplicidad, manejo de memoria (garbage collection) y buen manejo en equipos grandes.
-// this is for spacing. use transparent pic
-.image /assets/go-img/transparent.png 280 _ 
-
+Re: .image /assets/go-img/green-ubuntu-coffee.png 250 _
 : Mientras esperaban 40 minutos para que termine de compilar un programa C++, un equipo de 3 personas de Google se pusieron a pensar que forma tendría un lenguaje moderno... 
-
 : No es necesario manejar la memoria en Go, se ocupa solo el lenguaje y te simplifica la vida bastante! Es todo un surtido de bugs que ya no molestan
 : Go es usado en Google, Discord, Netflix, Amazon, Twitch. Soluciona problemas para grandes empresas y es ideal para grandes equipos
 : debido a esto último se suele pensar que Go solo le sirve a las empresas grandes, no es verdad! Es un lenguaje buenísimo para varias otras cosas!
 : Ken Thompson, co-creador de Go, es el creador de C.
+: Go toma simplicidad de todos los lenguajes vistos arriba y es lo que se dice que lo destaca entre otros lenguajes complejos como C++ y Java. Comparado a Java Go solo tiene 50 páginas de spec sheet comparado a las 750 de Java (x15) o las 1600 páginas del estándar ISO de C++
 
-
-.image /assets/go-img/hero-gopher.png 160 _
-
-## Inspiración para Go
+Inspiración para Go
 
 * OOP de **Smalltalk**
 * Sintaxis de **Algol**
@@ -33,128 +28,8 @@ Lenguaje de programación moderno caracterizado por su simplicidad, manejo de me
 * Concurrencia de **Newsqueak**
 * Legibilidad y facilidad de uso de **Python**
 
-.image /assets/go-img/transparent.png 60 _ 
+<img src="/assets/go-img/hero-gopher.png" style="position:fixed; right:0; bottom:0; height:35%; width:35%"> 
 
-.image /assets/go-img/green-ubuntu-coffee.png 250 _
-// .image https://upload.wikimedia.org/wikipedia/en/c/c0/Smalltalk80book.jpg 230 _
-: Go toma simplicidad de todos los lenguajes vistos arriba y es lo que se dice que lo destaca entre otros lenguajes complejos como C++ y Java. Comparado a Java Go solo tiene 50 páginas de spec sheet comparado a las 750 de Java (x15) o las 1600 páginas del estándar ISO de C++
-
-
-## Hello World
-
-## Hello world {#helloworld}
-
-.play -edit src/1helloworld.go
-
-: Hello World en Go. Todos los archivos `.go` son unicode (UTF-8) y permiten escribir con caracteres especiales.
-
-1. Declaración de librería actual: `package x` 
-
-2. Librerías usadas: `import "x"`
-
-3. El programa: cuerpo de `main()`
-
-## El programa {#el-programa}
-
-Lo que en verdad corre:
-
-.play -edit src/1helloworld.go /START/,/END/ HLhello
-
-* Declara **`s`** de tipo **`string`** --> asignada **`Hello, 世界`**
-* Imprimir **`s`** a consola:
-  * Usando la función **`Println`**
-  * De la libreria **`fmt`**
-
-## Librerías (packages) {#packages}
-Al importar una librería esta trae código de otro para usarlo nosotros
-
-La función **`Println`** de la librería **`fmt`** nos deja imprimir cualquier tipo de dato a consola.
-
-.code src/1helloworld.go /import/
-
-.caption Importando la librería *`fmt`*
-<details><summary></summary>
-
-.code src/1imports.go /import/,/\)/
-.caption Para importar varias librerías se rodean con parentesis
-</details>
-
-## Ejecución de un programa en Go
-
-La ejecución de todo programa de Go comienza en una función **`main`**
-
-: Uno llama las funciones de otras liberias y las funciones definidas por el mismo usuario adentro de `main`
-: `main` es una función igual que `Println` con una diferencia importante, no toma argumentos! ademas es una función especial porque es la primer función en ser llamada de un programa
-: En un rato vemos mejor que son las funciones en Go, por ahora quedense tranquilos con la idea que es lo que se ejecuta en un programa
-
-.play -edit src/1helloworld.go /func/,/}/ HLmain
-
-* **`main`** es *única* y define el programa
-
-##  Estructura de proyecto
-
-**TODOS** los archivos `.go` que contienen código escrito en Go comienzan con la declaración del **`package`**
-
-: Un package es una colección de archivos `.go` en un directorio y pueden definir una librería, o, en el caso especial que el nombre del package sea `main` define un programa. Si el package es main es obligatorio tener una función llamada main() donde comienze el programa
-
-.play -edit src/1helloworld.go
-
-* La declaración es el nombre de la librería
-* El paquete **`main`** define un programa
-* Para nuestros usos el **`package`** ***siempre*** va ser **`main`**
-
-
-: como nos vamos a dedicar a escribir programas, no librerías, el package siempre va ser main
-: Si quieren dividir su programa en muchas carpetas van a darle nombres a su package, tiene que ser igual al nombre del directorio
-
-## Sistema de Tipos
-
-## Tipos básicos
-
-Toda variable en Go es un tipo básico o se compone de varios tipos básicos
-
-.code src/0types.go /TYPES_S/,/TYPES_E/
-.caption Una lista completa de todos los tipos básicos en Go
-
-: En estas filminas solo trabajaremos con int, string y un poco de floats
-
-## Números y aritmética
-
-Go tiene los siguientes operadores básicos para números enteros: **`+ - * / %`**
-
-.play -edit  src/1numbers.go /MAIN_S/,/MAIN_E/
-
-Para no gastar mucho tiempo/espacio escribiendo variables podemos declararlas en una linea
-
-.play -edit src/1arithmeticnum.go /PROG_S/,/PROG_E/
-
-: Acuerdense que todo programa corre adentro de la función main(). De ahora en adelante obviaremos esta parte del código para algunos ejemplos
-
-: empieza a parecerse a python el código de a poco
-: {{Cambia int a float64 para comprobar que funciona igual. no hace falta agregar punto}}
-
-: La division entera redondea para abajo! prueben reeplazar el + con un - (menos)
-
-## Aritmética de strings
-
-Se pueden concatenar strings con los operadores **`+`** y **`+=`**
-
-.play -edit src/1arithmeticstring.go /PROG_S/,/PROG_E/
-
-: Introducir operador += !
-
-## Declaraciónes acortadas y sintaxis azucarada
-
-.play -edit src/2shorthand.go /PROG_S/,/PROG_E/
-.caption *Declaración* *sin* *tipo:* Declaramos un `string`, entero (`int`) y un `float64` sin especificar el tipo.
-
-.play -edit src/2implicit.go /PROG_S/,/PROG_E/
-.caption *Declaración* *corta:*  acorta mucho la cantidad de caracteres a escribir
-
-: Declaración corta no puede usarse fuera de una función y a diferencia de declaración con var, pueden redeclarar variables dado que es una declaración multivariable.
-
-
-## Flujo de control
 
 ## Palabras clave
 
@@ -165,110 +40,181 @@ Las 25 palabras clave en Go:
 
 : Si buscan encontraran que está escondida la temible goto ahí en el medio
 
-## if - else
+## Hello World
 
-Es la estructura de control más básica. Te permite tener control sobre lo que se ejecuta
+## Hello world {#helloworld}
 
-En este ejemplo presentamos al tipo **`bool`** de Go
+.play -edit src/1helloworld.go
+
+La línea:
+
+.code src/1helloworld.go /package/
+
+establece que estamos escribiendo un paquete que en este caso se llama main. Luego, la línea: 
+
+.code src/1helloworld.go /import/
+
+indica que vamos a usar cosas de la librería `fmt`. 
+
+##
+
+Lo que en verdad corre de todo esto es:
+
+.code src/1helloworld.go /START/,/END/ HLhello
+
+* Se declara **`s`** de tipo **`string`** y se le asigna el valor **`Hello, 世界`**
+* A través de la sintaxis `fmt.Println` seleccionamos la función **`Println`**, que nos deja imprimir cualquier valor a consola.
+
+<details><summary>aclaracion nombre de paquetes</summary>
+Los programas ejecutables siempre tienen "package main" y tienen una función llamada "main()" que no tiene argumentos
+como en el ejemplo. 
+Los paquetes diseñados para ser importados por otros no tienen esa restricción. Pueden llamarse `package dinosaurio` si se quiere.
+</details>
+
+<details><summary>cómo importar varias librerías</summary>
+ Para importar varias librerías se rodean con parentesis
+.code src/1imports.go /import/,/\)/
+</details>
+
+## Tipo de Datos
+
+## Tipos básicos
+
+Toda variable en Go es un tipo básico o se compone de varios tipos básicos
+
+.code src/0types.go /TYPES_S/,/TYPES_E/
+.caption Una lista completa de todos los tipos básicos en Go
+
+: En estas filminas solo trabajaremos con int y string y un poco de floats
+
+## Tipo "int"
+
+Go tiene los siguientes operadores básicos para números enteros: **`+ - * / %`**
+
+.play -edit  src/1numbers.go /MAIN_S/,/MAIN_E/
+
+Se pueden ahorrar algo de tiempo de esta manera:
+
+.play -edit  src/1numberssimple.go /MAIN_S/,/MAIN_E/
+
+Para esta presentación vamos a usar el estilo que normalmente se usa para declarar variables según la situación. 
+Más información en la última placa.
+
+
+: En la práctica, se usa más la versión corta.
+
+: PATO :Acuerdense que todo programa corre adentro de la función main(). De ahora en adelante obviaremos esta parte del código para algunos ejemplos
+// CANA: Lo de obviar la función main me parece demasiado implícito, y son dos líneas. Si tenemos sufience espacio, diría de mantener func main(){}
+: empieza a parecerse a python el código de a poco
+
+: Cambiar + por -,*,/,% y cambiar int a float64 
+// CANA: Consider mentioning if and when we use it: Como es usual, la division entera redondea para abajo
+
+## Tipo "strings"
+
+Se pueden concatenar strings con los operadores **`+`** y **`+=`**
+
+.play -edit src/1arithmeticstring.go /PROG_S/,/PROG_E/
+
+: Introducir operador += !
+
+## Expresiones: if, for, y func
+
+## if
+
+Mostraremos la sintaxis con un ejemplo: 
 
 .play -edit src/3ifelse.go /PROG_S/,/PROG_E/
 
-<details><summary>else-if</summary>
+El bloque delimitado por **{}** se ejecuta sólamente si `a` es igual a `"ooh wee"`. 
+
+<details><summary>Tipo `bool`</summary>
+La expresión `a=="ooh wee"` es de tipo `bool`, y puede tener el valor de `true` o `false`. 
+
+Como tal, puede ser asignado a una variable de ese tipo, de esta manera: 
+
+`var b bool
+
+ b = a=="ooh wee"`
+ </details>
+
+<details><summary>Operadores binarios</summary>
+==
+!=
+>
+<
+>=
+<=
+</details>
+
+<details><summary> Operadores Unarios </summary>
+&& 
+||
+</details>
+
+<details><summary>sintaxis de else y else-if</summary>
 
 .play -edit src/3elseif.go /PROG_S/,/PROG_E/
 </details>
 
+## for
 
-
-## Bucle (for)
-
-Un for que inicializa **`i`**, imprime **`i`**, y le suma 1 hasta llegar a diez
+Lo más fácil es explicarlo mediante un ejemplo.
 
 .play -edit src/3fori.go /PROG_S/,/PROG_E/
+
+Aquí se inicializa **`i`**, imprime **`i`**, y le suma 1 hasta llegar a diez. 
 
 : Problema: aparece mucho syntax sugar de una aca y todavia no lo vimos anteriormente
 
 // Un for que recorre un arreglo
 //.play -edit src/3forrange.go /PROG_S/,/PROG_E/
 
+## func
 
-## Funciones
+Una función es una parte de código que queremos reutilizar. Un ejemplo clásico es una función que devuelve la suma de dos números
 
-## Qué es una función?
-
-A un nivel alto, una función toma un input y devuelve output.
-
-Un ejemplo clásico es una función que devuelve la suma de dos números
+.code  src/2func.go /PROG_S/,/PROG_E/
 
 : en este ejemplo trivial x e y son los inputs y la salida es la suma de los dos
 
-.code  src/2func.go /FUNC_S/,/FUNC_E/
+Ahora en cualquier lugar de nuestro código que queramos sumar dos números, podemos hacerlo de esta manera: 
 
-<details><summary></summary>
+.play -edit src/2func.go /FUNC_S/,/FUNC_E/
 
-.code  src/2func.go /FCFUNC_S/,/FCFUNC_E/
-.caption Las funciones en Go son _first_ _class_ _citizens_, es decir, se pueden asignar a variables y ser argumentos de otras funciones
-</details>
+.caption Las funciones se pueden asignar a variables y ser argumentos de otras funciones.
 
-## Implementación
-
-.play -edit src/2func.go
-
-: Se dieron cuenta que asigne con los dos puntos? El siguiente slide veremos las varias formas de asignar a una variable
+: Se dieron cuenta que asigne con los dos puntos? El siguiente slide veremos las varias formas 
 : Que quede claro donde defino las funciones. son por afuera de main... aunque no hay nada que me impida de definirla adentro
+// CANA: Consider skipping, unless we use it in the future
 
+## Retorno de múltiples valores
 
-## Multiples valores
+.play -edit src/2multireturn.go 
 
-.code src/2multireturn.go /FUNC_S/,/FUNC_E/
-
-.play -edit src/2multireturn.go /PROG_S/,/PROG_E/
-
-// ## Funciones variadicas
-
-// .code src/2variadic.go /FUNC_S/,/FUNC_E/
-
-// .play -edit src/2variadic.go /PROG_S/,/PROG_E
-
+// Conside skipping, unless used
 
 ## Últimos comentarios
 
-## Defer
-Defer es un **modificador de función**. Agrega la función con la cual se llama al *call stack*.
+## Declaraciónes acortadas y sintaxis azucarada
+El uso de "var", "=", ":=", y la aclaración del tipo de dato puede resultar confuso.
+// CANA: Consider mentioning the reasons why you would use one way or the other, to complement the examples.  
 
-El *call stack* se ejecuta cuando la función llega a un **`return`** o si el programa termina.
+.play -edit src/2shorthand.go /PROG_S/,/PROG_E/
+.caption *Declaración* *sin* *tipo:* Declaramos un `string`, entero (`int`) y un `float64` sin especificar el tipo.
 
-: Aquí estamos llamando defer de adentro de main, pero podría ser cualquier función!
+.play -edit src/2implicit.go /PROG_S/,/PROG_E/
+.caption *Declaración* *corta:*  acorta mucho la cantidad de caracteres a escribir
 
-.play -edit src/3defer.go /MAIN_S/,/MAIN_E/
-
-* _Error wrapping_
-* Seguridad 
-
-Uso más común: asegurar que se termine de cerrar un archivo
-
-.code src/3defer.go /EXAMPLE_S/,/EXAMPLE_E/
-
-
-
-## Switch
-El **`switch`** es la estructura de control más flexible de Go y se usa para diversos casos. 
-
-.play -edit src/3switch.go /PROG_S/,/PROG_E/
-
-* Sirve de **`else if`** simplificado
-* Verificación de tipo (Type checking)
-* Y [muchos más](https://yourbasic.org/golang/switch-statement/)
-
-
-
+: Declaración corta no puede usarse fuera de una función y a diferencia de declaración con var, pueden redeclarar variables dado que es una declaración multivariable.
+// CANA: This is edge-casy, consider skipping
 
 ## Charla dada por el product manager de Go (2015)
+: CANA: Add other resources.
 
 Un video que todo gopher debería ver. Se trata sobre el origen de Go.
 
 .iframe https://www.youtube.com/embed/sX8r6zATHGU 500 800
-
 
 ## Preguntas? 
 

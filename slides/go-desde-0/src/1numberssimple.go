@@ -3,12 +3,12 @@ package main
 
 import "fmt"
 
+// MAIN_S OMIT
 func main() {
-	// SIMPLE_S OMIT
-	var a, m, c int
-	a = 2
-	m = 4
-	c = a + m
+	// PROG_S OMIT
+	a, m := 2, 4
+	c := a + m
 	fmt.Println(c)
-	// SIMPLE_E OMIT
+	// PROG_E OMIT
 }
+// MAIN_E OMIT

@@ -6,11 +6,9 @@ import "fmt"
 
 func main() {
 	// PROG_S OMIT
-	var b bool = true
-	if b {
-		fmt.Println("b es verdadero!")
-	} else {
-		fmt.Println("b es falso!")
+	var a = "ooh wee" 
+	if a=="ooh wee" {
+		fmt.Println("I'm a pickle 🥒")
 	}
 	// PROG_E OMIT
 }
