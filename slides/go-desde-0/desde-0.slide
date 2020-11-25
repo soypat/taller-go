@@ -60,19 +60,21 @@ indica que vamos a usar cosas de la librería `fmt`.
 
 Lo que en verdad corre de todo esto es:
 
-.code src/1helloworld.go /START/,/END/ HLhello
+.play -edit src/1helloworld.go /START/,/END/ HLhello
 
 * Se declara **`s`** de tipo **`string`** y se le asigna el valor **`Hello, 世界`**
 * A través de la sintaxis `fmt.Println` seleccionamos la función **`Println`**, que nos deja imprimir cualquier valor a consola.
 
-<details><summary>aclaracion nombre de paquetes</summary>
+<details><summary><b>aclaracion nombre de paquetes</b></summary>
+
 Los programas ejecutables siempre tienen "package main" y tienen una función llamada "main()" que no tiene argumentos
 como en el ejemplo. 
 Los paquetes diseñados para ser importados por otros no tienen esa restricción. Pueden llamarse `package dinosaurio` si se quiere.
 </details>
 
-<details><summary>cómo importar varias librerías</summary>
+<details><summary><b>cómo importar varias librerías</b></summary>
  Para importar varias librerías se rodean con parentesis
+
 .code src/1imports.go /import/,/\)/
 </details>
 
@@ -87,7 +89,8 @@ Toda variable en Go es un tipo básico o se compone de varios tipos básicos
 
 : En estas filminas solo trabajaremos con int y string y un poco de floats
 
-## Tipo "int"
+## 
+<h3>Tipo <code> int</code></h3>
 
 Go tiene los siguientes operadores básicos para números enteros: **`+ - * / %`**
 
@@ -110,7 +113,8 @@ Más información en la última placa.
 : Cambiar + por -,*,/,% y cambiar int a float64 
 // CANA: Consider mentioning if and when we use it: Como es usual, la division entera redondea para abajo
 
-## Tipo "strings"
+## 
+<h3>Tipo <code>string</code></h3>
 
 Se pueden concatenar strings con los operadores **`+`** y **`+=`**
 
@@ -120,7 +124,8 @@ Se pueden concatenar strings con los operadores **`+`** y **`+=`**
 
 ## Expresiones: if, for, y func
 
-## if
+## 
+<h3><code>if</code></h3>
 
 Mostraremos la sintaxis con un ejemplo: 
 
@@ -129,27 +134,30 @@ Mostraremos la sintaxis con un ejemplo:
 El bloque delimitado por **{}** se ejecuta sólamente si `a` es igual a `"ooh wee"`. 
 
 <details><summary>Tipo `bool`</summary>
-La expresión `a=="ooh wee"` es de tipo `bool`, y puede tener el valor de `true` o `false`. 
+La expresión <code>a=="ooh wee"</code> es de tipo <code>bool</code>, y puede tener el valor de <code>true</code> o <code>false</code>. 
 
 Como tal, puede ser asignado a una variable de ese tipo, de esta manera: 
 
-`var b bool
+<code>var b bool
 
- b = a=="ooh wee"`
+ b = a=="ooh wee"</code>
  </details>
 
 <details><summary>Operadores binarios</summary>
+<code class="code language-go"><pre>
 ==
 !=
 >
 <
 >=
-<=
+<=<pre></code>
 </details>
 
 <details><summary> Operadores Unarios </summary>
+<code><pre>
 && 
 ||
+</pre></code>
 </details>
 
 <details><summary>sintaxis de else y else-if</summary>
@@ -157,7 +165,8 @@ Como tal, puede ser asignado a una variable de ese tipo, de esta manera:
 .play -edit src/3elseif.go /PROG_S/,/PROG_E/
 </details>
 
-## for
+## 
+<h3><code>for</code></h3>
 
 Lo más fácil es explicarlo mediante un ejemplo.
 
@@ -170,7 +179,8 @@ Aquí se inicializa **`i`**, imprime **`i`**, y le suma 1 hasta llegar a diez.
 // Un for que recorre un arreglo
 //.play -edit src/3forrange.go /PROG_S/,/PROG_E/
 
-## func
+## 
+<h3><code>func</code></h3>
 
 Una función es una parte de código que queremos reutilizar. Un ejemplo clásico es una función que devuelve la suma de dos números
 
