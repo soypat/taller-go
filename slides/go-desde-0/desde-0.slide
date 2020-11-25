@@ -1,8 +1,8 @@
 # Go desde cero
-Curso para aprender Go
+Curso para aprender Go 
 20 Nov 2020
 Tags: novato,curso,principiante,aprender
-Summary: Desarrollado para un curso de WIE ITBA.
+Summary: Desarrollado para un curso de WIE ITBA. 
 
 
 Patricio Whittingslow
@@ -10,9 +10,17 @@ Agustín Canalis
 pwhittingslow@itba.edu.ar
 acanalis@itba.edu.ar
 
+
 ## Qué es Go?
+
+## 
+<script>//this script adds image to first slide! Nasty little hack, eh?
+let firstArticle = document.querySelector("section > article");
+firstArticle.innerHTML = firstArticle.innerHTML + '<img src="/assets/go-img/gopher_pencil_megaphone.jpg" style="position:fixed; right:0; bottom:0;  width:50%"/>';
+</script>
+
 Lenguaje de programación moderno caracterizado por su simplicidad, manejo de memoria (garbage collection) y buen manejo en equipos grandes.
-Re: .image /assets/go-img/green-ubuntu-coffee.png 250 _
+
 : Mientras esperaban 40 minutos para que termine de compilar un programa C++, un equipo de 3 personas de Google se pusieron a pensar que forma tendría un lenguaje moderno... 
 : No es necesario manejar la memoria en Go, se ocupa solo el lenguaje y te simplifica la vida bastante! Es todo un surtido de bugs que ya no molestan
 : Go es usado en Google, Discord, Netflix, Amazon, Twitch. Soluciona problemas para grandes empresas y es ideal para grandes equipos
@@ -28,7 +36,7 @@ Inspiración para Go
 * Concurrencia de **Newsqueak**
 * Legibilidad y facilidad de uso de **Python**
 
-<img src="/assets/go-img/hero-gopher.png" style="position:fixed; right:0; bottom:0; height:35%; width:35%"> 
+<img src="/assets/go-img/green-ubuntu-coffee.png" style="position:fixed; right:0; bottom:0;  width:35%"/> 
 
 
 ## Palabras clave
