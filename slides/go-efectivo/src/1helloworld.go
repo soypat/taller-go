@@ -8,7 +8,7 @@ import "fmt"
 func main() { // HLmain
 	// PROG_S OMIT
 	s := "世界"                  // HLhello
-	fmt.Printf("Hello, %s", s) // HLhello
+	fmt.Printf("Hello, %v", s) // HLhello
 	// PROG_E OMIT
 } // HLmain
 // MAIN_E OMIT

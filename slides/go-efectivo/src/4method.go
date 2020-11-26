@@ -12,7 +12,7 @@ type Juego struct {
 
 // Primero va el receptor de método (j Juego)
 func (j Juego) Resumen() string {
-	return fmt.Sprintf("%s [%d] %0.1f/10",
+	return fmt.Sprintf("%v [%v] %0.1f/10",
 		j.Nombre, j.Año, j.Puntaje)
 }
 

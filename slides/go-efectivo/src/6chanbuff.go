@@ -13,7 +13,7 @@ func main() {
 	// PROG_S OMIT
 	// Declaro un canal con un buffer de 1 mensaje
 	ch := make(chan string, 1)
-	ch <- "Hola"
+	ch <- "📦"
 
 	s := <-ch
 	fmt.Println(s)

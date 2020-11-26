@@ -29,7 +29,7 @@ func main() {
 // FUNC_S OMIT
 func Mensajero(t int, c chan string) {
 	for {
-		c <- fmt.Sprintf("cada %dms", t)
+		c <- fmt.Sprintf("cada %vms", t)
 		time.Sleep(time.Millisecond * time.Duration(t))
 	}
 }

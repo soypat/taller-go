@@ -16,7 +16,7 @@ func main() {
 
 // FUNC_S OMIT
 func contar(cosa string) {
-	for i := 0; i <= 7; i++ {
+	for i := 0; i <= 5; i++ {
 		fmt.Println(i, cosa)
 		time.Sleep(time.Millisecond * 500)
 	}

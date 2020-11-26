@@ -23,7 +23,7 @@ func main() {
 // MAIN_E OMIT
 // FUNC_S OMIT
 func contar(cosa string, c chan string) {
-	for i := 0; i <= 7; i++ {
+	for i := 0; i <= 5; i++ {
 		c <- cosa
 		time.Sleep(time.Millisecond * 500)
 	}

@@ -19,7 +19,7 @@ func AlgunaFuncion() (mainError error) {
 	// FPROG_S OMIT
 	defer func() {
 		if mainError != nil {
-			mainError = fmt.Errorf("in AlgunaFuncion: %s", mainError)
+			mainError = fmt.Errorf("in AlgunaFuncion: %v", mainError)
 		}
 	}()
 	mainError = ImGonnaError("too bad")

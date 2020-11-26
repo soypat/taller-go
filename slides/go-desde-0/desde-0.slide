@@ -15,7 +15,7 @@ acanalis@itba.edu.ar
 
 ## 
 <script>//this script adds image to first slide! Nasty little hack, eh?
-let firstArticle = document.querySelector("section > article");
+let firstArticle = document.getElementsByTagName("article")[0];
 firstArticle.innerHTML = firstArticle.innerHTML + '<img src="/assets/go-img/gopher_pencil_megaphone.jpg" style="position:fixed; right:0; bottom:0;  width:50%"/>';
 </script>
 
@@ -26,7 +26,7 @@ Lenguaje de programación moderno caracterizado por su simplicidad, manejo de me
 : Go es usado en Google, Discord, Netflix, Amazon, Twitch. Soluciona problemas para grandes empresas y es ideal para grandes equipos
 : debido a esto último se suele pensar que Go solo le sirve a las empresas grandes, no es verdad! Es un lenguaje buenísimo para varias otras cosas!
 : Ken Thompson, co-creador de Go, es el creador de C.
-: Go toma simplicidad de todos los lenguajes vistos arriba y es lo que se dice que lo destaca entre otros lenguajes complejos como C++ y Java. Comparado a Java Go solo tiene 50 páginas de spec sheet comparado a las 750 de Java (x15) o las 1600 páginas del estándar ISO de C++
+: Go toma simplicidad de todos los lenguajes vistos arriba y es lo que se dice que lo destaca entre otros lenguajes complejos como C++ y Java. Comparando lenguajes: Go solo tiene 82 páginas de spec sheet comparado a las 806 de Java (x10) o las 1600+ páginas del estándar ISO de C++
 
 Inspiración para Go
 
@@ -75,9 +75,9 @@ Lo que en verdad corre de todo esto es:
 
 <details><summary><b>aclaracion nombre de paquetes</b></summary>
 
-Los programas ejecutables siempre tienen "package main" y tienen una función llamada "main()" que no tiene argumentos
+Los programas ejecutables siempre tienen <code>"package main"</code> y tienen una función llamada <code>"main()"</code> que no tiene argumentos
 como en el ejemplo. 
-Los paquetes diseñados para ser importados por otros no tienen esa restricción. Pueden llamarse `package dinosaurio` si se quiere.
+Los paquetes diseñados para ser importados por otros no tienen esa restricción. Pueden llamarse <code>package dinosaurio</code> si se quiere.
 </details>
 
 <details><summary><b>cómo importar varias librerías</b></summary>

@@ -54,7 +54,7 @@ Tomado de un [StackOverflow blogpost](https://stackoverflow.blog/2020/11/02/go-g
 .caption El %s es un verbo que se le pasa a la función Printf. El siguiente argumento que se le pase a Printf reemplaza el verbo. Una lista completa de verbos [[https://golang.org/pkg/fmt/][aquí]]
 
 .code src/1helloworld.go /FMT_S/,/FMT_E/
-
+.caption Una lista de verbos comprensiva [[https://golang.org/pkg/fmt/#hdr-Printing][aquí]]
 ## Conceptos de Go
 
 ## Zero value
@@ -62,9 +62,26 @@ Tomado de un [StackOverflow blogpost](https://stackoverflow.blog/2020/11/02/go-g
 .play -edit src/1zerovalues.go /PROG_S/,/PROG_E/
 .caption Los valores de inicialización para tipos numéricos, bools y strings son 0, falso y "" (string vacío), respectivamente
 
+## Bloques  { }
+
+Los bloques en Go son una idea ***central*** y definen el alcance de una variable.
+
+.play -edit src/1blocks.go /MAIN_S/,/MAIN_E/
+
+Reglas de alcance de variables:
+
+1. El alcance de una variable declarada adentro de una función empieza en la declaración (`yo := ...`) y termina al final del bloque que la contiene (en el caracter `}`)
+
+2. Una variable declarada afuera del cuerpo de una función es alcanzable siempre
+
+## Comentarios
+
+.code src/1comments.go
+
 ## Terminación de programa
 
 .play -edit src/1termination.go /MAIN_S/,/MAIN_E/
+.caption Una lista de formas de terminar un programa.
 
 ## Tipos agregados
 
@@ -281,25 +298,12 @@ Rob Pike, uno de los creadores de Go, dice
 
 : Este es el error típico que cometen todos cuando escriben su primer programa concurrente. Go no espera a que terminen de correr las funciones concurrentes!
 
-## Mi primer programa concurrente fallido
-
-.play -edit src/6gopitfall.go
-
-.caption  El programa termina inmediatamente después del segundo `Println` durante la ejecución de la primer llamada concurrente
-
-: Este es el error típico que cometen todos cuando escriben su primer programa concurrente. El programa no espera a que termine de correr la primer función llamada
-
 ## Un programa concurrente
 
 .play -edit src/6concurrentcounter.go /package/,/MAIN_E/
-.caption 
+.caption Si bien el `WaitGroup` sirve para sincronizar gorutinas ahora veremos formas más flexibles y poderosas de comunicar *y* sincronizar
 
 
-## Gorutinas
-
-.play -edit src/6goroutine.go 
-
-: `go` es un function modifier, es decir, modifica el comportamiento de la llamada a una función. El único otro function modifier en el lenguaje es `defer` 
 
 ## Canales
 
@@ -310,6 +314,8 @@ Los canales se usan para mandar mensajes entre gorutinas. Se pueden asignar a va
 .code src/6channels.go  /CHAN_S/,/CHAN_E/
 
 * Los canales ***no*** son memoria compartida
+
+* La acción de mandar/recibir de un canal es **bloqueante**. El programa espera hasta que haya una gorutina del otro lado lista para recibir/mandar (respectivamente).
 
 : Se parecen más a file descriptors
 
@@ -345,6 +351,7 @@ El siguiente código hace lo mismo que el anterior pero con menos verbosidad.
 Mandar por un canal no se compara a un tiro de baloncesto. Es más parecido a una entrega de amazon. El mensajero se queda esperando a que el receptor lo atienda.
 
 .play -edit src/6chanbuffpitfall.go /MAIN_S/,/MAIN_E/
+.caption Tanto el mensajero como el receptor pueden causar deadlock. Si no hay gorutinas mensajeras un receptor puede quedarse esperando infinitamente!
 
 En este caso el mensajero bloquea el programa y el receptor nunca llega a atenderlo, causando un ***deadlock***.
 
@@ -360,13 +367,13 @@ Si el channel (canal) es la puerta de la casa del receptor, entonces el buffer e
 
 Ahora puede seguir la ejecución después de mandar un mensaje. El tamaño del buffer puede ser cualquiera.
 
-¡El mensajero aún bloqueará cuando esté lleno el buffer!
+¡El mensajero/receptor aún bloqueará si se llena el buffer!
 
 ## Select
 
-## Bloqueo de canales lentosS
+## Bloqueo de canales lentos
 
-El siguiente programa es limitado por la gorutina más lenta.
+El siguiente programa es limitado por la gorutina más lenta. 0.5 vs. 2 segundos
 
 .play -edit src/6beforeselect.go /MAIN_S/,/FUNC_E/
 .caption El programa es limitado por la velocidad a la que el canal 2 puede recibir mensajes (`<-c2`)

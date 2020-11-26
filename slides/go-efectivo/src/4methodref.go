@@ -10,7 +10,7 @@ type Juego struct {
 	Año     uint16
 }
 
-func (j Juego) Resumen() string { return fmt.Sprintf("%s [%d] %0.1f/10", j.Nombre, j.Año, j.Puntaje) }
+func (j Juego) Resumen() string { return fmt.Sprintf("%v [%v] %0.1f/10", j.Nombre, j.Año, j.Puntaje) }
 
 func (j *Juego) NuevoPuntaje(p float32) {
 	j.Puntaje = p

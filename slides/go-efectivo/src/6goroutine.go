@@ -18,9 +18,9 @@ func main() {
 // FUNC_S OMIT
 // Esta función tardará `jobsize` segundos en correr
 func slowFunction(job string, jobsize int) {
-	fmt.Printf("job %s [size:%d] started\n", job, jobsize)
+	fmt.Printf("job %v [size:%v] started\n", job, jobsize)
 	time.Sleep(time.Duration(jobsize) * time.Second)
-	fmt.Printf("job %s finished\n", job)
+	fmt.Printf("job %v finished\n", job)
 }
 
 // FUNC_E OMIT
