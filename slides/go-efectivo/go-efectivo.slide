@@ -57,12 +57,21 @@ Tomado de un [StackOverflow blogpost](https://stackoverflow.blog/2020/11/02/go-g
 .caption Una lista de verbos comprensiva [[https://golang.org/pkg/fmt/#hdr-Printing][aquí]]
 ## Conceptos de Go
 
-## Zero value
+##
+<h3><code>gofmt</code></h3>
 
-.play -edit src/1zerovalues.go /PROG_S/,/PROG_E/
-.caption Los valores de inicialización para tipos numéricos, bools y strings son 0, falso y "" (string vacío), respectivamente
+Todo código de Go
 
-## Bloques  { }
+.code src/1gofmt.txt
+
+.code src/1gofmt.go
+
+// ## Zero value
+// .play -edit src/1zerovalues.go /PROG_S/,/PROG_E/
+// .caption Los valores de inicialización para tipos numéricos, bools y strings son 0, falso y "" (string vacío), respectivamente
+
+## 
+<h3>Bloques <code>{ }</code></h3>
 
 Los bloques en Go son una idea ***central*** y definen el alcance de una variable.
 
@@ -78,10 +87,9 @@ Reglas de alcance de variables:
 
 .code src/1comments.go
 
-## Terminación de programa
-
-.play -edit src/1termination.go /MAIN_S/,/MAIN_E/
-.caption Una lista de formas de terminar un programa.
+// ## Terminación de programa
+// .play -edit src/1termination.go /MAIN_S/,/MAIN_E/
+// .caption Una lista de formas de terminar un programa.
 
 ## Tipos agregados
 
