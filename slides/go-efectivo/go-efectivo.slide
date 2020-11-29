@@ -51,10 +51,18 @@ Tomado de un [StackOverflow blogpost](https://stackoverflow.blog/2020/11/02/go-g
 ## Hello World
 
 .play -edit src/1helloworld.go /package/,/MAIN_E/
-.caption El %v es un verbo que se le pasa a la función Printf. El siguiente argumento que se le pase a Printf reemplaza el verbo. Una lista completa de verbos [[https://golang.org/pkg/fmt/][aquí]]
+
+El primer argumento de Printf es un string con el formato que queremos que imprima el resto de los argumentos. 
+
+El %v indica que queremos que se inserte el siguiente argumento con formato de string, y en ese lugar. 
+
+<details><summary> Lista completa de verbos </summary>
 
 .code src/1helloworld.go /FMT_S/,/FMT_E/
-.caption Una lista de verbos comprensiva [[https://golang.org/pkg/fmt/#hdr-Printing][aquí]]
+
+[[https://golang.org/pkg/fmt/][Más información]]
+</details>
+
 ## Conceptos de Go
 
 ##
@@ -108,7 +116,7 @@ Un tipo compuesto es un tipo de dato que puede ser construido con los tipos prim
 ## Structs
 
 
-.play -edit src/3structdeclaration.go /package/,/MAIN_E/
+.play -edit src/3structdeclaration.go /type Pel/,/MAIN_E/
 
 // ## Declaración con new (pointer)
 
@@ -201,6 +209,9 @@ La libería <code>sort</code> define esta interface, la cual se usa para la func
 
 .code src/5interface.go  /SORTSIGNATURE_S/,/SORTSIGNATURE_E/
 
+<figcaption style="position:absolute;bottom:1.6em;padding-right:4rem; ">"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck" -<b>James Whitcomb Riley, 1888</b></figcaption> 
+
+
 ## Ejemplo de uso de sort
 
 .play -edit src/5interface.go /USG_S/,/USG_E/
@@ -209,7 +220,8 @@ La libería <code>sort</code> define esta interface, la cual se usa para la func
 
 : Vamos a declarar un tipo Writer que va ser un interface... Y eso se declara pasando los metodos que implementa
 : Es raro al comienzo. Venimos declarando tipos en base a la informacion que tienen y ahora estamos considerando el comportamiento
-: Sigue la logica del poeta ingles James Whitcomb Riley: "When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck" 
+: Sigue la logica del poeta ingles James Whitcomb Riley: 
+
 
 ## Por qué interfaces?
 

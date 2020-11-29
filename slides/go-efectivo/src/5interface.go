@@ -21,9 +21,15 @@ type Writer interface {
 // USG_S OMIT
 type Names []string
 
-func (a Names) Len() int           { return len(a) }
-func (a Names) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a Names) Less(i, j int) bool { return a[i] < a[j] }
+func (a Names) Len() int {
+	return len(a)
+}
+func (a Names) Swap(i, j int) {
+	a[i], a[j] = a[j], a[i]
+}
+func (a Names) Less(i, j int) bool {
+	return a[i] < a[j]
+}
 
 func main() {
 	var nombres sort.Interface = Names{"Paco", "Yorsch", "Quique", "Cana", "Pato"}
