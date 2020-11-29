@@ -7,23 +7,12 @@ import (
 	"time"
 )
 
-// MAIN_S OMIT
 func main() {
 	// PROG_S OMIT
-	wait := true
-
-	go func() {
-		contar("ovejas")
-		wait = false
-	}()
-
+	go contar("ovejas")
 	go contar("calamares")
-	for wait { // solo espera
-	}
 	// PROG_E OMIT
 }
-
-// MAIN_E OMIT
 
 // FUNC_S OMIT
 func contar(cosa string) {

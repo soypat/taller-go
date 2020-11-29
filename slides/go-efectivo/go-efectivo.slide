@@ -190,14 +190,22 @@ Si eso es lo que buscamos, hay que pasar **referencias** como argumentos, es dec
 
 ## Interfaces
 
-Una interface es una colección de métodos. Si un tipo tiene esos métodos, se dice que "implementa" la interface. 
+Un tipo interface es una colección de métodos. Se puede pasar a una función para indicar que ese argumento puede ser cualquier tipo que tenga esos métodos.
 
-Abajo los dos interfaces más usados en Go como son declarados en el paquete **`io`**
 
-.code src/5interface.go /INTERFACE_S/,/INTERFACE_E/
 
-.code src/5interface.go /USG_S/,/USG_E/
-.caption Se dice que `os.File` implementa el Writer y Reader interface. `ioutil.ReadAll` toma un `Reader`
+.code src/5interface.go /SORTER_S/,/SORTER_E/
+
+
+La libería <code>sort</code> define esta interface, la cual se usa para la función <code>Sort()</code>.
+
+.code src/5interface.go  /SORTSIGNATURE_S/,/SORTSIGNATURE_E/
+
+## Ejemplo de uso de sort
+
+.play -edit src/5interface.go /USG_S/,/USG_E/
+.caption Como `Names` implementa los métodos necesarios, se dice que "Implementa" `sort.Interface`.
+
 
 : Vamos a declarar un tipo Writer que va ser un interface... Y eso se declara pasando los metodos que implementa
 : Es raro al comienzo. Venimos declarando tipos en base a la informacion que tienen y ahora estamos considerando el comportamiento
@@ -209,23 +217,21 @@ Es una abstracción que toma en cuenta la ***funcionalidad*** común entre tipos
 
 No tienen mucho uso cuando uno programa en soledad. Se convierten en un abstracción fundamental al programar cuando muchas librerías implementan la interface. 
 
-Supongamos que quiero crear mi propia interface para que el resto del mundo la use. En el ejemplo siguiente se declara una interface llamada **`Stacker`** que tiene dos métodos propios de un LIFO Stack.
+Muchas librerías en Go usan el `Reader` y `Writer` interface. Esto permite abstraer de qué se está leyendo, sin tener en cuenta si es una respuesta http, un buffer o un archivo.
 
-.code src/4stacker.go /INTERFACE_S/,/INTERFACE_E/
-
-El éxito del interface depende de cuantos lo adopten y lo incluyan como argumentos en sus funciones.
+.code src/5interface.go /INTERFACE_S/,/INTERFACE_E/
 
 
-## Implementación de un LIFO stack interface
-
-.play -edit src/4stacker.go /type Stack /,/MAIN_E/
-
+// Supongamos que quiero crear mi propia interface para que el resto del mundo la use. En el ejemplo siguiente se declara una interface llamada **`Stacker`** que tiene dos métodos propios de un LIFO Stack.
+// .code src/4stacker.go /INTERFACE_S/,/INTERFACE_E/
+//El éxito del interface depende de cuantos lo adopten y lo incluyan como argumentos en sus funciones.
+//## Implementación de un LIFO stack interface
+//.play -edit src/4stacker.go /type Stack /,/MAIN_E/
 : No nos vamos a quedar mucho tiempo aca porque esto no es algo que programarian en Go
 : es comodo trabajar directo sobre los slices para la mayoria de los casos que implementar metodos para cada caso
 
-## Paquete os, manejo de errores y lectura de archivos
 
-.play -edit src/5os.go
+
 
 ## Conceptos de funciones
 
@@ -260,6 +266,12 @@ El concepto de un _closure_ solo es útil cuando entran en juego los modificador
 
 ## Concurrencia
 
+## Un programa no concurrente
+
+.play src/6nonconcurrentcounter.go
+
+: Este es el error típico que cometen todos cuando escriben su primer programa concurrente. Go no espera a que terminen de correr las funciones concurrentes!
+
 ## Qué es la concurrencia
 
 * No es paralelismo
@@ -268,6 +280,7 @@ El concepto de un _closure_ solo es útil cuando entran en juego los modificador
 Rob Pike, uno de los creadores de Go, dice 
 
 ,,_Concurrency is about dealing with lots of things at once. Parallelism is about doing lots of things at once._"
+
 
 
 ## La palabra clave go
@@ -280,17 +293,15 @@ Rob Pike, uno de los creadores de Go, dice
 
 : A diferencia de otros lenguajes como Javascript y Python, cualquier función se puede correr asincrónicamente sin necesidad de modificarla.
 
-## Un programa no concurrente
+## 
 
-.play -edit src/6nonconcurrentcounter.go
-.caption Intente de cambiar el programa para que sea concurrente agregando la palabra clave `go` en frente de las llamadas a las funciones `contar`.
-
-: Este es el error típico que cometen todos cuando escriben su primer programa concurrente. Go no espera a que terminen de correr las funciones concurrentes!
+.play -edit src/6concurrentcounterpitfall.go
+.caption Un programa 100% concurrente no es una buena idea
 
 ## Un programa concurrente
 
 .play -edit src/6concurrentcounter.go /package/,/MAIN_E/
-.caption Si bien el `WaitGroup` sirve para sincronizar gorutinas ahora veremos formas más flexibles y poderosas de comunicar *y* sincronizar
+.caption Si bien el `bool` sirve para sincronizar gorutinas ahora veremos formas más flexibles y poderosas de comunicar *y* sincronizar
 
 
 
@@ -304,7 +315,7 @@ Los canales se usan para mandar mensajes entre gorutinas. Se pueden asignar a va
 
 * Los canales ***no*** son memoria compartida
 
-* La acción de mandar/recibir de un canal es **bloqueante**. El programa espera hasta que haya una gorutina del otro lado lista para recibir/mandar (respectivamente).
+* La acción de mandar/recibir de un canal es **bloqueante**. El programa espera hasta que alguna gorutina reciba o mande el mensaje (respectivamente).
 
 : Se parecen más a file descriptors
 
@@ -372,5 +383,9 @@ El siguiente programa es limitado por la gorutina más lenta. 0.5 vs. 2 segundos
 La palabra clave select le permite al programa esperar hasta que haya un canal con un mensaje entre varios canales.
 
 .play -edit src/6afterselect.go /MAIN_S/,/MAIN_E/
+
+## Paquete os, manejo de errores y lectura de archivos
+
+.play -edit src/5os.go
 
 ## Preguntas?
