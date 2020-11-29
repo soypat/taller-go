@@ -30,7 +30,7 @@ Tomado de un [StackOverflow blogpost](https://stackoverflow.blog/2020/11/02/go-g
 * Web development
     * Con librerías como [`http`](https://golang.org/pkg/net/http/), [`pion`](https://github.com/pion/webrtc#readme) (webrtc) y [`gorilla`](https://github.com/gorilla/)
     * Con frameworks. [`gin`](https://github.com/gin-gonic) y [`buffalo`](https://gobuffalo.io/en/)
-    * Generación de sitios estáticos. [`HUGO`](https://gohugo.io/) y otros quichicentos mil programas
+    * Generación de sitios estáticos. [`HUGO`](https://gohugo.io/)
 
 * Programas CLI
     * Librerías [`pflags`](https://github.com/spf13/pflag#readme), [`termbox`](https://github.com/nsf/termbox-go#readme)
@@ -48,10 +48,10 @@ Tomado de un [StackOverflow blogpost](https://stackoverflow.blog/2020/11/02/go-g
 
 ## Hello World
 
-## Hola World
+## Hello World
 
 .play -edit src/1helloworld.go /package/,/MAIN_E/
-.caption El %s es un verbo que se le pasa a la función Printf. El siguiente argumento que se le pase a Printf reemplaza el verbo. Una lista completa de verbos [[https://golang.org/pkg/fmt/][aquí]]
+.caption El %v es un verbo que se le pasa a la función Printf. El siguiente argumento que se le pase a Printf reemplaza el verbo. Una lista completa de verbos [[https://golang.org/pkg/fmt/][aquí]]
 
 .code src/1helloworld.go /FMT_S/,/FMT_E/
 .caption Una lista de verbos comprensiva [[https://golang.org/pkg/fmt/#hdr-Printing][aquí]]
@@ -71,67 +71,58 @@ Todo código de Go
 // .caption Los valores de inicialización para tipos numéricos, bools y strings son 0, falso y "" (string vacío), respectivamente
 
 ## 
-<h3>Bloques <code>{ }</code></h3>
-
-Los bloques en Go son una idea ***central*** y definen el alcance de una variable.
+<h3> Bloques <code>{ }</code> y Scope (alcance) </h3>
 
 .play -edit src/1blocks.go /MAIN_S/,/MAIN_E/
 
-Reglas de alcance de variables:
+Hay una dos reglas muy simples que indican si se puede acceder a una variable en un cierto lugar o no:
 
-1. El alcance de una variable declarada adentro de una función empieza en la declaración (`yo := ...`) y termina al final del bloque que la contiene (en el caracter `}`)
+1. En una función, una variable se puede utilizar desde que se declara, hasta el siguiente caracter `}`
 
-2. Una variable declarada afuera del cuerpo de una función es alcanzable siempre
+2. Siempre se pueden acceder a las variable declarada afuera del cuerpo de una función.
 
-## Comentarios
+// ## Comentarios
 
-.code src/1comments.go
+// .code src/1comments.go
 
 // ## Terminación de programa
 // .play -edit src/1termination.go /MAIN_S/,/MAIN_E/
 // .caption Una lista de formas de terminar un programa.
 
-## Tipos agregados
+## Tipos compuestos
 
-## Tipos agregados/tipos compuestos
-Un tipo agregado es un tipo de dato que puede ser construido con los tipos primitivos de un lenguaje.
+## Tipos compuestos
 
-* Structs
-* Listas
-* Arreglos
-* Mapas/Diccionarios
+Un tipo compuesto es un tipo de dato que puede ser construido con los tipos primitivos de un lenguaje.
 
-: Las listas de Go se llaman slices y son fácil de manejar una vez que tenés un entendimiento básico del lenguaje
+* Structs 
+* Slices (listas/vector)
+* Maps (dicts)
+* Interfaces
 
-: Por esto nos vamos a enfocar más en structs, métodos e interfazes que es donde Go atrae mucho interés por ser un lenguaje orientado a objetos restringido.
-: Go no tiene Inheritance ni clases, pero se arregla con el concepto de interfaz y method set, respectivamente.
+: Nos vamos a enfocar más en structs, métodos e interfaces que es donde Go brilla. Go no tiene Inheritance ni clases, pero se arregla con el concepto de interfaz y method set, respectivamente. Los slices son parecidos a los otros lenguajes no valen la pena hablar ahora. Se necesita entendimiento básico del lenguaje. 
 
 .image /assets/go-img/gopher.png 200 _
 .caption Diseño del _Gopher_ hecho por [[https://instagram.com/reneefrench][Renee French]]
 
 ## Structs
 
-## Declaración y asignación
 
 .play -edit src/3structdeclaration.go /package/,/MAIN_E/
 
-## Declaración con new (pointer)
+// ## Declaración con new (pointer)
 
-.play -edit src/3structnew.go
-.caption Observen que se imprime la struct con el prefijo "`&`". Este es el operador dereferencia. Indica que `p` es un puntero a un datatype. Si no está seguro de la diferencia, no use `new` .
+// .play -edit src/3structnew.go
+// .caption Observen que se imprime la struct con el prefijo "`&`". Este es el operador dereferencia. Indica que `p` es un puntero a un datatype. Si no está seguro de la diferencia, no use `new` .
 
-: Si no están afamiliarizado con pointers, descuiden. No haremos hincapié en este curso en punteros porque no es algo crítico para programar en Go.
+// : Si no están afamiliarizado con pointers, descuiden. No haremos hincapié en este curso en punteros porque no es algo crítico para programar en Go.
 
-## Declaración composite literal
+// ## Structs:Declaración composite literal
 
-.code src/3structdeclaration.go /DECL_S/,/DECL_E/
+// .code src/3structdeclaration.go /DECL_S/,/DECL_E/
 
-* Se pueden tener campos que sean structs (struct nesting)
-* Los campos de una struct puede ser la misma struct. Útil para árboles binarios
-* Se puede tener una función en un campo (no es lo mismo que un método)
-* Las structs pueden ser comparadas por igualdad con `==`
-
-## Slices
+// * Se pueden tener campos de cualquier tipo ( funciones, canales, otros struct types) 
+// * Las structs pueden ser comparadas por igualdad con `==`
 
 ## Slices
 
@@ -141,23 +132,18 @@ Aquí se comienza declarando un *slice*. Por detrás se crea un arreglo y se tom
 
 : Cuando se usa append no se crea un nuevo arreglo, se crea un nuevo slice. Por eso no es un método la función append
 
-Se pueden obviar los límites superiores o inferiores tomando indices de arreglos o slices. Los siguientes son equivalentes para un arreglo de longitud 5:
+// Se pueden obviar los límites superiores o inferiores tomando indices de arreglos o slices. Los siguientes son equivalentes para un arreglo de longitud 5:
 
-.code src/1slice.go /IDX_S/,/IDX_E/
-.caption El resultado de un rango de índices siempre es un *slice*
+// .code src/1slice.go /IDX_S/,/IDX_E/
+// .caption El resultado de un rango de índices siempre es un *slice*
 
 : slice es más usado que los arreglos pero conlleva sus cuidados especiales (null pointer dereference)
 
-
-
-## Referencias
-.play -edit src/1shorthandslice.go /PROG_S/,/PROG_E/
-
-Aquí tenemos un slice llamado **`beatles`** del cual tomamos referencia del primer al tercer elemento
-
-Cuando asignamos a la referencia **`beatleSlice`** en verdad ***estamos modificando el arreglo original***
-
-Cuidado con esto!
+// ## Slice: Referencias
+// .play -edit src/1shorthandslice.go /PROG_S/,/PROG_E/
+// Aquí tenemos un slice llamado **`beatles`** del cual tomamos referencia del primer al tercer elemento
+// Cuando asignamos a la referencia **`beatleSlice`** en verdad ***estamos modificando el arreglo original***
+// Cuidado con esto!
 
 
 : La declaración corta ahorra mucho espacio y hace que el código sea más legible pero puede resultar confuso!
@@ -166,51 +152,46 @@ Cuidado con esto!
 : Esto no solo pasa en Go, las listas de Python funcionan de la misma forma!
 
 
-## Maps
-
-## Mapas (diccionarios)
+## Maps (diccionarios)
 
 .play -edit src/1maps.go /PROG_S/,/PROG_E/
 
-Se puede eliminar un conjunto clave-valor con **`delete`**
-
-.code src/1maps.go /DEL_S/,/DEL_E/
-
-Se puede revisar si existe un valor pidiendo un segundo argumento
-
-.code src/1maps.go /OK_S/,/OK_E/
-
-* **`ok==true`** si existe la clave en el map
-* **`ok==false`** si no está presente la clave
-
-## Pitfalls con mapas
-
-El siguiente programa compila sin problemas
-
-.play -edit src/1mapnilderef.go /PROG_S/,/PROG_E/
-.caption Nos olvidamos de inicializar el mapa
-
-### Fin de tipos agregados
+// Se puede eliminar un conjunto clave-valor con **`delete`**
+// .code src/1maps.go /DEL_S/,/DEL_E/
 
 
+// ## Pitfalls con mapas
 
+// El siguiente programa compila sin problemas
 
-## Métodos
+// .play -edit src/1mapnilderef.go /PROG_S/,/PROG_E/
+// .caption Nos olvidamos de inicializar el mapa
 
-## Declaración de método y uso
+// ### Fin de tipos agregados
+
+## Métodos 
+
+## Metodos: Declaración y uso
+
+Un método es una función que está ligada a un cierto tipo. 
 
 .play -edit src/4method.go /type/,/MAIN_E/
 
-## Método por referencia
+## Pasando referencias
 
-La única diferencia de cambiar el receptor a que sea referencia es que se puede modificar los valores de la misma estructura en el mismo método
+Las funciones (y métodos) reciben copias de los argumentos, no los argumentos en sí. Por eso, modificarlos adentro de una función no tiene ningún efecto. (Ver ejemplo sin asterisco)
+
+Si eso es lo que buscamos, hay que pasar **referencias** como argumentos, es decir, punteros. 
 
 .play -edit src/4methodref.go /func/,/MAIN_E/
 .caption Probar el código con y sin el asterisco en el receptor para ver la diferencia.
 
-## Interface
+## Interfaces
 
 ## Interfaces
+
+Una interface es una colección de métodos. Si un tipo tiene esos métodos, se dice que "implementa" la interface. 
+
 Abajo los dos interfaces más usados en Go como son declarados en el paquete **`io`**
 
 .code src/5interface.go /INTERFACE_S/,/INTERFACE_E/
