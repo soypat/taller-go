@@ -78,19 +78,6 @@ Todo código de Go
 // .play -edit src/1zerovalues.go /PROG_S/,/PROG_E/
 // .caption Los valores de inicialización para tipos numéricos, bools y strings son 0, falso y "" (string vacío), respectivamente
 
-## Zero value
-Los tipos primitivos de Go son persistentes, no existe un string/valor 'nulo'.
-
-.play -edit src/1zerovalues.go /PROG_S/,/PROG_E/
-.caption Los valores de inicialización para tipos numéricos, bools y strings son 0, falso y "" (string vacío), respectivamente
-
-## Comentarios
-
-Hay dos tipos de comentarios en Go. Toda documentación de funciones/variables va antes de la declaración y se suele usar solo "//" a estos efectos.
-
-.code src/1comments.go
-
-
 ## 
 <h3> Bloques <code>{ }</code> y Scope (alcance) </h3>
 
@@ -102,12 +89,13 @@ Hay una dos reglas muy simples que indican si se puede acceder a una variable en
 
 2. Siempre se pueden acceder a las variable declarada afuera del cuerpo de una función.
 
+// ## Comentarios
 
-## Terminación de programa
+// .code src/1comments.go
 
-.play -edit src/1termination.go /MAIN_S/,/MAIN_E/
-.caption Una lista de formas de terminar un programa.
-
+// ## Terminación de programa
+// .play -edit src/1termination.go /MAIN_S/,/MAIN_E/
+// .caption Una lista de formas de terminar un programa.
 
 ## Tipos compuestos
 
@@ -130,13 +118,19 @@ Un tipo compuesto es un tipo de dato que puede ser construido con los tipos prim
 
 .play -edit src/3structdeclaration.go /type Pel/,/MAIN_E/
 
-## Declaración con new (pointer)
+// ## Declaración con new (pointer)
 
-.play -edit src/3structnew.go
-.caption Observen que se imprime la struct con el prefijo "`&`". Este es el operador dereferencia. Indica que `p` es un puntero a un datatype. Si no está seguro de la diferencia, no use `new` .
+// .play -edit src/3structnew.go
+// .caption Observen que se imprime la struct con el prefijo "`&`". Este es el operador dereferencia. Indica que `p` es un puntero a un datatype. Si no está seguro de la diferencia, no use `new` .
 
-: Si no están afamiliarizado con pointers, descuiden. No haremos hincapié en este curso en punteros porque no es algo crítico para programar en Go.
+// : Si no están afamiliarizado con pointers, descuiden. No haremos hincapié en este curso en punteros porque no es algo crítico para programar en Go.
 
+// ## Structs:Declaración composite literal
+
+// .code src/3structdeclaration.go /DECL_S/,/DECL_E/
+
+// * Se pueden tener campos de cualquier tipo ( funciones, canales, otros struct types) 
+// * Las structs pueden ser comparadas por igualdad con `==`
 
 ## Slices
 
@@ -153,14 +147,11 @@ Aquí se comienza declarando un *slice*. Por detrás se crea un arreglo y se tom
 
 : slice es más usado que los arreglos pero conlleva sus cuidados especiales (null pointer dereference)
 
-## Slice: Referencias
-.play -edit src/1shorthandslice.go /PROG_S/,/PROG_E/
-
-Aquí tenemos un slice llamado **`beatles`** del cual tomamos referencia del primer al tercer elemento
-
-Cuando asignamos a la referencia **`beatleSlice`** en verdad ***estamos modificando el arreglo original***
-
-Cuidado con esto!
+// ## Slice: Referencias
+// .play -edit src/1shorthandslice.go /PROG_S/,/PROG_E/
+// Aquí tenemos un slice llamado **`beatles`** del cual tomamos referencia del primer al tercer elemento
+// Cuando asignamos a la referencia **`beatleSlice`** en verdad ***estamos modificando el arreglo original***
+// Cuidado con esto!
 
 
 : La declaración corta ahorra mucho espacio y hace que el código sea más legible pero puede resultar confuso!
@@ -177,19 +168,14 @@ Cuidado con esto!
 // .code src/1maps.go /DEL_S/,/DEL_E/
 
 
-## Pitfalls con mapas
+// ## Pitfalls con mapas
 
-El siguiente programa compila sin problemas pero falla al ser corrido. Es necesario inicializar un mapa antes de usarlo. Esto se puede hacer con la declaración tipo compuesto.
+// El siguiente programa compila sin problemas
 
-.play -edit src/1mapnilderef.go /PROG_S/,/PROG_E/
-.caption Nos olvidamos de inicializar el mapa
+// .play -edit src/1mapnilderef.go /PROG_S/,/PROG_E/
+// .caption Nos olvidamos de inicializar el mapa
 
-<details><summary>Respuesta</summary>
-
-Declarar el mapa con: <code>beatles := map[string]string{} </code>
-</details>
-
-### Fin de tipos agregados
+// ### Fin de tipos agregados
 
 ## Métodos 
 
