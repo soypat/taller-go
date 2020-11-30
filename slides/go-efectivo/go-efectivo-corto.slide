@@ -309,7 +309,7 @@ Rob Pike, uno de los creadores de Go, dice
 ## 
 
 .play -edit src/6concurrentcounterpitfall.go
-.caption Un programa 100% concurrente no es una buena idea
+.caption Un programa 100% concurrente no siempre es una buena idea
 
 ## Un programa concurrente
 
