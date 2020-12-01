@@ -1,6 +1,4 @@
 # Go efectivo
-// Go para entendidos.
-// Cana: Subtitle sounds slightly arrogant
 20 Nov 2020
 Tags: curso,avanzado,efectivo
 Summary: Desarrollado para un curso de WIE ITBA.
@@ -63,37 +61,18 @@ El %v indica que queremos que se inserte el siguiente argumento con formato de s
 
 ## Conceptos de Go
 
-##
-<h3><code>gofmt</code></h3>
-
-Todo código de Go
-
-.code src/1gofmt.txt
-
-.code src/1gofmt.go
-
-// ## Zero value
-// .play -edit src/1zerovalues.go /PROG_S/,/PROG_E/
-// .caption Los valores de inicialización para tipos numéricos, bools y strings son 0, falso y "" (string vacío), respectivamente
-
 ## 
 <h3> Bloques <code>{ }</code> y Scope (alcance) </h3>
 
 .play -edit src/1blocks.go /MAIN_S/,/MAIN_E/
 
-Hay una dos reglas muy simples que indican si se puede acceder a una variable en un cierto lugar o no:
+Hay una tres reglas muy simples que indican si se puede acceder a una variable en un cierto lugar o no:
 
-1. En una función, una variable se puede utilizar desde que se declara, hasta el siguiente caracter `}`
+1. El caracter <code>{</code> abre un bloque y <code>}</code> lo cierra. 
 
-2. Siempre se pueden acceder a las variables declarada afuera del cuerpo de una función.
+2. En una función, una variable se puede utilizar desde que se declara, hasta que cierra el bloque que la contiene.
 
-// ## Comentarios
-
-// .code src/1comments.go
-
-// ## Terminación de programa
-// .play -edit src/1termination.go /MAIN_S/,/MAIN_E/
-// .caption Una lista de formas de terminar un programa.
+3. Una variable declara fuera de la función (en el top level) siempre es accesible, independientemente del orden.
 
 ## Tipos compuestos
 
@@ -101,79 +80,36 @@ Hay una dos reglas muy simples que indican si se puede acceder a una variable en
 
 Un tipo compuesto es un tipo de dato que puede ser construido con los tipos primitivos de un lenguaje.
 
-* Structs 
 * Slices (listas/vector)
+* Structs 
 * Maps (dicts)
 * Interfaces
-
-: Nos vamos a enfocar más en structs, métodos e interfaces que es donde Go brilla. Go no tiene Inheritance ni clases, pero se arregla con el concepto de interfaz y method set, respectivamente. Los slices son parecidos a los otros lenguajes no valen la pena hablar ahora. Se necesita entendimiento básico del lenguaje. 
 
 .image /assets/go-img/gopher.png 200 _
 .caption Diseño del _Gopher_ hecho por [[https://instagram.com/reneefrench][Renee French]]
 
-## Structs
-
-
-.play -edit src/3structdeclaration.go /type Pel/,/MAIN_E/
-
-// ## Declaración con new (pointer)
-
-// .play -edit src/3structnew.go
-// .caption Observen que se imprime la struct con el prefijo "`&`". Este es el operador dereferencia. Indica que `p` es un puntero a un datatype. Si no está seguro de la diferencia, no use `new` .
-
-// : Si no están afamiliarizado con pointers, descuiden. No haremos hincapié en este curso en punteros porque no es algo crítico para programar en Go.
-
-// ## Structs:Declaración composite literal
-
-// .code src/3structdeclaration.go /DECL_S/,/DECL_E/
-
-// * Se pueden tener campos de cualquier tipo ( funciones, canales, otros struct types) 
-// * Las structs pueden ser comparadas por igualdad con `==`
-
 ## Slices
 
-Aquí se comienza declarando un *slice*. Por detrás se crea un arreglo y se toma la referencia.
+Un slice es un conjunto de datos del mismo tipo, ordenados secuencialmente. 
 
 .play -edit src/1slice.go /PROG_S/,/PROG_E/
 
-: Cuando se usa append no se crea un nuevo arreglo, se crea un nuevo slice. Por eso no es un método la función append
+// Cana: consider skipping: 
+: Existe una representación de más bajo nivel que rara vez se usa, llamada arreglo. Tiene longitud fija, y las copias son independientes entre sí.
 
-// Se pueden obviar los límites superiores o inferiores tomando indices de arreglos o slices. Los siguientes son equivalentes para un arreglo de longitud 5:
+: La declaración corta ahorra mucho espacio y hace que el código sea más legible pero puede resultar confuso! Ver esta guía para entender las diferencias. Vamos a alternar entre formas de declarar para que se vayan acostumbrando a Go. Puede llevar un tiempo acostumbrarse a las varias formas de declarar variables
 
-// .code src/1slice.go /IDX_S/,/IDX_E/
-// .caption El resultado de un rango de índices siempre es un *slice*
+## Structs
 
-: slice es más usado que los arreglos pero conlleva sus cuidados especiales (null pointer dereference)
+Un struct es una colección de campos. Un campo es una variable que tiene un determinado nombre y un determinado tipo.
 
-// ## Slice: Referencias
-// .play -edit src/1shorthandslice.go /PROG_S/,/PROG_E/
-// Aquí tenemos un slice llamado **`beatles`** del cual tomamos referencia del primer al tercer elemento
-// Cuando asignamos a la referencia **`beatleSlice`** en verdad ***estamos modificando el arreglo original***
-// Cuidado con esto!
-
-
-: La declaración corta ahorra mucho espacio y hace que el código sea más legible pero puede resultar confuso!
-: Vamos a alternar entre formas de declarar para que se vayan acostumbrando a Go. Puede llevar un tiempo acostumbrarse a las varias formas de declarar variables
-: Esto ocurre para prevenir el copiado inecesario de arreglos. Si uno en verdad quiere copiar un arreglo puede usar la librería reflect. 
-: Esto no solo pasa en Go, las listas de Python funcionan de la misma forma!
-
+.play -edit src/3structdeclaration.go /type Pel/,/MAIN_E/
 
 ## Maps (diccionarios)
 
+Un mapa es una relación entre valores de un tipo y valores de otro. 
+
 .play -edit src/1maps.go /PROG_S/,/PROG_E/
-
-// Se puede eliminar un conjunto clave-valor con **`delete`**
-// .code src/1maps.go /DEL_S/,/DEL_E/
-
-
-// ## Pitfalls con mapas
-
-// El siguiente programa compila sin problemas
-
-// .play -edit src/1mapnilderef.go /PROG_S/,/PROG_E/
-// .caption Nos olvidamos de inicializar el mapa
-
-// ### Fin de tipos agregados
 
 ## Métodos 
 
@@ -196,12 +132,9 @@ Si eso es lo que buscamos, hay que pasar **referencias** como argumentos, es dec
 
 ## Interfaces
 
-Un tipo interface es una colección de métodos. Se puede pasar a una función para indicar que ese argumento puede ser cualquier tipo que tenga esos métodos.
-
-
+Una interface es una colección de métodos. Se puede pasar a una función para indicar que ese argumento puede ser cualquier tipo que tenga esos métodos.
 
 .code src/5interface.go /SORTER_S/,/SORTER_E/
-
 
 La libería <code>sort</code> define esta interface, la cual se usa para la función <code>Sort()</code>.
 
@@ -231,17 +164,8 @@ Muchas librerías en Go usan el `Reader` y `Writer` interface. Esto permite abst
 
 .code src/5interface.go /INTERFACE_S/,/INTERFACE_E/
 
-
-// Supongamos que quiero crear mi propia interface para que el resto del mundo la use. En el ejemplo siguiente se declara una interface llamada **`Stacker`** que tiene dos métodos propios de un LIFO Stack.
-// .code src/4stacker.go /INTERFACE_S/,/INTERFACE_E/
-//El éxito del interface depende de cuantos lo adopten y lo incluyan como argumentos en sus funciones.
-//## Implementación de un LIFO stack interface
-//.play -edit src/4stacker.go /type Stack /,/MAIN_E/
 : No nos vamos a quedar mucho tiempo aca porque esto no es algo que programarian en Go
 : es comodo trabajar directo sobre los slices para la mayoria de los casos que implementar metodos para cada caso
-
-
-
 
 ## Conceptos de funciones
 
@@ -290,17 +214,17 @@ Rob Pike, uno de los creadores de Go, dice
 
 ## La palabra clave go
 
-Normalmente, cuando se llama una función el programa se frena hasta que esta termina. Podemos modificar este comportamiento agregando **`go`** o la palabra **`defer`** antes de la función.
+Normalmente, cuando se llama una función el programa se frena hasta que esta termina. Podemos modificar este comportamiento agregando <code>go</code> o la palabra <code>defer</code> antes de la función.
 
-**`go`** empieza una "gorutina" ejecutando la función llamada y continua con el programa inmediatamente, sin esperar.
+<code>go</code> empieza una "gorutina" ejecutando la función llamada y continua con el programa inmediatamente, sin esperar.
 
 : las gorutinas son super livianas y no es raro tener miles o ciento de miles corriendo a la vez. Las gorutinas no necesariamente son paralelas, en general comparten un procesador esta nota no se si va aca o en un ejemplo mas adelante. despues veremo
 
-**`defer`** pospone la llamada hasta el próximo **`return`** 
+<code>defer</code> pospone la llamada hasta el próximo <code>return</code> 
 
 .code  src/6gofirst.go /FUNC_S/,/FUNC_E/
 
-*   Cualquier función puede ser llamada con **`go`** o **`defer`**
+*   Cualquier función puede ser llamada con <code>go</code> o <code>defer</code>
 
 : A diferencia de otros lenguajes como Javascript y Python, cualquier función se puede correr asincrónicamente sin necesidad de modificarla.
 
@@ -361,7 +285,7 @@ La palabra clave select le permite al programa esperar hasta que haya un canal c
 
 ## Deadlock - explicación
 
-La función **`Contar`** termina luego de 5 mensajes. Mientras tanto **`main`** se queda esperando un sexto mensaje que nunca llegará! El programa se da cuenta cuando hay un canal bloqueado infinitamente y termina con el error ***deadlock!***.
+La función <code>Contar`</code> termina luego de 5 mensajes. Mientras tanto <code>main</code> se queda esperando un sexto mensaje que nunca llegará! El programa se da cuenta cuando hay un canal bloqueado infinitamente y termina con el error ***deadlock!***.
 
 Para prevenir este error, se puede **cerrar** un canal.
 
