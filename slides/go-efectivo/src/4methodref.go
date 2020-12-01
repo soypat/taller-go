@@ -12,10 +12,12 @@ type Juego struct {
 
 func (j Juego) Resumen() string { return fmt.Sprintf("%v [%v] %0.1f/10", j.Nombre, j.Año, j.Puntaje) }
 
+// REFMETHOD_S OMIT
 func (j *Juego) NuevoPuntaje(p float32) {
 	j.Puntaje = p
 }
 
+//REFMETHOD_E OMIT
 // MAIN_S OMIT
 func main() {
 	// PROG_S OMIT
