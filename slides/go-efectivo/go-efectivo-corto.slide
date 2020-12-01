@@ -72,9 +72,9 @@ Todo código de Go
 
 .code src/1gofmt.go
 
-// ## Zero value
-// .play -edit src/1zerovalues.go /PROG_S/,/PROG_E/
-// .caption Los valores de inicialización para tipos numéricos, bools y strings son 0, falso y "" (string vacío), respectivamente
+
+
+
 
 ## 
 <h3> Bloques <code>{ }</code> y Scope (alcance) </h3>
@@ -86,14 +86,6 @@ Hay una dos reglas muy simples que indican si se puede acceder a una variable en
 1. En una función, una variable se puede utilizar desde que se declara, hasta el siguiente caracter `}`
 
 2. Siempre se pueden acceder a las variables declarada afuera del cuerpo de una función.
-
-// ## Comentarios
-
-// .code src/1comments.go
-
-// ## Terminación de programa
-// .play -edit src/1termination.go /MAIN_S/,/MAIN_E/
-// .caption Una lista de formas de terminar un programa.
 
 ## Tipos compuestos
 
@@ -116,20 +108,6 @@ Un tipo compuesto es un tipo de dato que puede ser construido con los tipos prim
 
 .play -edit src/3structdeclaration.go /type Pel/,/MAIN_E/
 
-// ## Declaración con new (pointer)
-
-// .play -edit src/3structnew.go
-// .caption Observen que se imprime la struct con el prefijo "`&`". Este es el operador dereferencia. Indica que `p` es un puntero a un datatype. Si no está seguro de la diferencia, no use `new` .
-
-// : Si no están afamiliarizado con pointers, descuiden. No haremos hincapié en este curso en punteros porque no es algo crítico para programar en Go.
-
-// ## Structs:Declaración composite literal
-
-// .code src/3structdeclaration.go /DECL_S/,/DECL_E/
-
-// * Se pueden tener campos de cualquier tipo ( funciones, canales, otros struct types) 
-// * Las structs pueden ser comparadas por igualdad con `==`
-
 ## Slices
 
 Aquí se comienza declarando un *slice*. Por detrás se crea un arreglo y se toma la referencia.
@@ -137,20 +115,6 @@ Aquí se comienza declarando un *slice*. Por detrás se crea un arreglo y se tom
 .play -edit src/1slice.go /PROG_S/,/PROG_E/
 
 : Cuando se usa append no se crea un nuevo arreglo, se crea un nuevo slice. Por eso no es un método la función append
-
-// Se pueden obviar los límites superiores o inferiores tomando indices de arreglos o slices. Los siguientes son equivalentes para un arreglo de longitud 5:
-
-// .code src/1slice.go /IDX_S/,/IDX_E/
-// .caption El resultado de un rango de índices siempre es un *slice*
-
-: slice es más usado que los arreglos pero conlleva sus cuidados especiales (null pointer dereference)
-
-// ## Slice: Referencias
-// .play -edit src/1shorthandslice.go /PROG_S/,/PROG_E/
-// Aquí tenemos un slice llamado **`beatles`** del cual tomamos referencia del primer al tercer elemento
-// Cuando asignamos a la referencia **`beatleSlice`** en verdad ***estamos modificando el arreglo original***
-// Cuidado con esto!
-
 
 : La declaración corta ahorra mucho espacio y hace que el código sea más legible pero puede resultar confuso!
 : Vamos a alternar entre formas de declarar para que se vayan acostumbrando a Go. Puede llevar un tiempo acostumbrarse a las varias formas de declarar variables
@@ -162,18 +126,6 @@ Aquí se comienza declarando un *slice*. Por detrás se crea un arreglo y se tom
 
 .play -edit src/1maps.go /PROG_S/,/PROG_E/
 
-// Se puede eliminar un conjunto clave-valor con **`delete`**
-// .code src/1maps.go /DEL_S/,/DEL_E/
-
-
-// ## Pitfalls con mapas
-
-// El siguiente programa compila sin problemas
-
-// .play -edit src/1mapnilderef.go /PROG_S/,/PROG_E/
-// .caption Nos olvidamos de inicializar el mapa
-
-// ### Fin de tipos agregados
 
 ## Métodos 
 
@@ -233,10 +185,8 @@ Muchas librerías en Go usan el `Reader` y `Writer` interface. Esto permite abst
 
 
 // Supongamos que quiero crear mi propia interface para que el resto del mundo la use. En el ejemplo siguiente se declara una interface llamada **`Stacker`** que tiene dos métodos propios de un LIFO Stack.
-// .code src/4stacker.go /INTERFACE_S/,/INTERFACE_E/
 //El éxito del interface depende de cuantos lo adopten y lo incluyan como argumentos en sus funciones.
-//## Implementación de un LIFO stack interface
-//.play -edit src/4stacker.go /type Stack /,/MAIN_E/
+
 : No nos vamos a quedar mucho tiempo aca porque esto no es algo que programarian en Go
 : es comodo trabajar directo sobre los slices para la mayoria de los casos que implementar metodos para cada caso
 
