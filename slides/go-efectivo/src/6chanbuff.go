@@ -9,14 +9,15 @@ import (
 
 // IMPORT_E OMIT
 // MAIN_S OMIT
+// MAIN_S OMIT
 func main() {
 	// PROG_S OMIT
 	// Declaro un canal con un buffer de 1 mensaje
-	ch := make(chan string, 1)
-	ch <- "📦"
+	caja := make(chan string, 1)
+	caja <- "🍕"
 
-	s := <-ch
-	fmt.Println(s)
+	yo := <-caja
+	fmt.Println("mmmm, ", yo)
 	// PROG_E OMIT
 }
 

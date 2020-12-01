@@ -19,4 +19,5 @@ func main() {
 // MAIN_E OMIT
 /* FUNC_S OMIT
 go funcion(arg1, arg2)
+defer funcion(arg4, arg3)
 */ // FUNC_E OMIT

@@ -9,14 +9,16 @@ import (
 )
 
 // IMPORT_E OMIT
-// MAIN_S OMIT
+/* MAIN_S */ // OMIT
+/* MAIN_S */ // OMIT
 func main() {
 	// PROG_S OMIT
 	// Declaro un canal con un buffer de 1 mensaje
-	c1, c2 := make(chan string), make(chan string)
+	c1 := make(chan string)
+	c2 := make(chan string)
 
-	go Mensajero(500, c1)
-	go Mensajero(2000, c2)
+	go PizzeroRapido(c1) // tarda 500ms
+	go PizzeroLento(c2)  // tarda 2000ms
 
 	for {
 		fmt.Println(<-c1)
@@ -27,9 +29,18 @@ func main() {
 
 // MAIN_E OMIT
 // FUNC_S OMIT
-func Mensajero(t int, c chan string) {
+
+func PizzeroRapido(c chan string) {
+	t := 500
 	for {
-		c <- fmt.Sprintf("cada %vms", t)
+		c <- fmt.Sprintf("🍕 cada %vms", t)
+		time.Sleep(time.Millisecond * time.Duration(t))
+	}
+}
+func PizzeroLento(c chan string) {
+	t := 2000
+	for {
+		c <- fmt.Sprintf("🍕 cada %vms", t)
 		time.Sleep(time.Millisecond * time.Duration(t))
 	}
 }

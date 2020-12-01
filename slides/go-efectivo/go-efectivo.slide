@@ -359,7 +359,7 @@ Los canales se usan para mandar mensajes entre gorutinas. Se pueden asignar a va
 
 ## Deadlock - explicación
 
-La función **`contar`** termina luego de 5 mensajes. Mientras tanto **`main`** se queda esperando un sexto mensaje que nunca llegará! El programa se da cuenta cuando hay un canal bloqueado infinitamente y termina con el error ***deadlock!***.
+La función **`Contar`** termina luego de 5 mensajes. Mientras tanto **`main`** se queda esperando un sexto mensaje que nunca llegará! El programa se da cuenta cuando hay un canal bloqueado infinitamente y termina con el error ***deadlock!***.
 
 ## Cerrando un canal
 

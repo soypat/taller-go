@@ -9,13 +9,13 @@ import (
 
 func main() {
 	// PROG_S OMIT
-	contar("ovejas")
-	contar("calamares")
+	Contar("ovejas")
+	Contar("calamares")
 	// PROG_E OMIT
 }
 
 // FUNC_S OMIT
-func contar(cosa string) {
+func Contar(cosa string) {
 	for i := 0; i <= 5; i++ {
 		fmt.Println(i, cosa)
 		time.Sleep(time.Millisecond * 500)

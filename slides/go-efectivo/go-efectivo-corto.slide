@@ -29,16 +29,13 @@ Tomado de un [StackOverflow blogpost](https://stackoverflow.blog/2020/11/02/go-g
 ## Casos de uso
 
 * Web development
-    * Con librerías como [`http`](https://golang.org/pkg/net/http/), [`pion`](https://github.com/pion/webrtc#readme) (webrtc) y [`gorilla`](https://github.com/gorilla/)
-    * Con frameworks. [`gin`](https://github.com/gin-gonic) y [`buffalo`](https://gobuffalo.io/en/)
-    * Generación de sitios estáticos. [`HUGO`](https://gohugo.io/)
+    * Librerías: [`http`](https://golang.org/pkg/net/http/), [`pion`](https://github.com/pion/webrtc#readme) (webrtc) y [`gorilla`](https://github.com/gorilla/)
+    * Framework. [`gin`](https://github.com/gin-gonic) y [`buffalo`](https://gobuffalo.io/en/)
 
 * Programas CLI
-    * Librerías [`pflags`](https://github.com/spf13/pflag#readme), [`termbox`](https://github.com/nsf/termbox-go#readme)
-    * Con frameworks. [`cobra`](https://github.com/spf13/cobra#readme)
+    * Librerías: [`pflags`](https://github.com/spf13/pflag#readme), [`termbox`](https://github.com/nsf/termbox-go#readme)
+    * Frameworks: [`cobra`](https://github.com/spf13/cobra#readme)
 
-* Servicios de cloud y red
-    * [Docker](https://www.docker.com/) y [Kubernetes](https://kubernetes.io/)
 
 * [Cientos de otras cosas](https://github.com/avelino/awesome-go#awesome-go)
 
@@ -298,40 +295,63 @@ Rob Pike, uno de los creadores de Go, dice
 
 ## La palabra clave go
 
-**`go`** hace que la función devuelva ejecución a la función circundante inmediatamente
+Normalmente, cuando se llama una función el programa se frena hasta que esta termina. Podemos modificar este comportamiento agregando **`go`** o la palabra **`defer`** antes de la función.
 
-* Funciona para cualquier función
+**`go`** empieza una "gorutina" ejecutando la función llamada y continua con el programa inmediatamente, sin esperar.
+
+: las gorutinas son super livianas y no es raro tener miles o ciento de miles corriendo a la vez. Las gorutinas no necesariamente son paralelas, en general comparten un procesador esta nota no se si va aca o en un ejemplo mas adelante. despues veremo
+
+**`defer`** pospone la llamada hasta el próximo **`return`** 
 
 .code  src/6gofirst.go /FUNC_S/,/FUNC_E/
+
+*   Cualquier función puede ser llamada con **`go`** o **`defer`**
 
 : A diferencia de otros lenguajes como Javascript y Python, cualquier función se puede correr asincrónicamente sin necesidad de modificarla.
 
 ## 
 
 .play -edit src/6concurrentcounterpitfall.go
-.caption Un programa 100% concurrente no siempre es una buena idea
+<figcaption>Modificar la segunda llamada a  <code>go Contar("calamares")</code></figcaption>
+
 
 ## Un programa concurrente
 
-.play -edit src/6concurrentcounter.go /package/,/MAIN_E/
+.play -edit src/6concurrentcounter.go /MAIN_S/,/MAIN_E/
 .caption Si bien el `bool` sirve para sincronizar gorutinas ahora veremos formas más flexibles y poderosas de comunicar *y* sincronizar
 
 
 
-## Canales
+## Canales (channels)
 
 ## ¿Qué es un canal?
 
-Los canales se usan para mandar mensajes entre gorutinas. Se pueden asignar a variables y pasarse como argumentos a funciones y tienen un tipo asignado.
+Los canales se usan para mandar mensajes entre gorutinas. 
 
 .code src/6channels.go  /CHAN_S/,/CHAN_E/
 
-* Los canales ***no*** son memoria compartida
+.play src/6gopizza.go /MAIN_S/,/FUNC_E/
 
-* La acción de mandar/recibir de un canal es **bloqueante**. El programa espera hasta que alguna gorutina reciba o mande el mensaje (respectivamente).
+: Se pueden asignar a variables y pasarse como argumentos a funciones y tienen un tipo asignado.
 
 : Se parecen más a file descriptors
 
+## Select
+
+## Bloqueo de canales lentos
+
+El siguiente programa es limitado por la gorutina más lenta. 0.5 vs. 2 segundos
+
+.play -edit src/6beforeselect.go /MAIN_S/,/MAIN_E/
+.caption El programa es limitado por la velocidad a la que el canal 2 puede recibir mensajes (`<-c2`)
+
+## Select
+
+La palabra clave select le permite al programa esperar hasta que haya un canal con un mensaje entre varios canales.
+
+.play -edit src/6afterselect.go /MAIN_S/,/MAIN_E/
+
+## Deadlock
 
 ## Contador con canales
 
@@ -346,7 +366,9 @@ Los canales se usan para mandar mensajes entre gorutinas. Se pueden asignar a va
 
 ## Deadlock - explicación
 
-La función **`contar`** termina luego de 5 mensajes. Mientras tanto **`main`** se queda esperando un sexto mensaje que nunca llegará! El programa se da cuenta cuando hay un canal bloqueado infinitamente y termina con el error ***deadlock!***.
+La función **`Contar`** termina luego de 5 mensajes. Mientras tanto **`main`** se queda esperando un sexto mensaje que nunca llegará! El programa se da cuenta cuando hay un canal bloqueado infinitamente y termina con el error ***deadlock!***.
+
+Para prevenir este error, se puede **cerrar** un canal.
 
 ## Cerrando un canal
 
@@ -361,20 +383,20 @@ El siguiente código hace lo mismo que el anterior pero con menos verbosidad.
 
 ## Comunicación entre canales
 
-Mandar por un canal no se compara a un tiro de baloncesto. Es más parecido a una entrega de amazon. El mensajero se queda esperando a que el receptor lo atienda.
+Mandar por un canal no se compara a un tiro de baloncesto. Es más parecido a una entrega de pizza. La mensajera se queda esperando en la puerta a ser atendida.
 
 .play -edit src/6chanbuffpitfall.go /MAIN_S/,/MAIN_E/
-.caption Tanto el mensajero como el receptor pueden causar deadlock. Si no hay gorutinas mensajeras un receptor puede quedarse esperando infinitamente!
+.caption Tanto la mensajera como el receptor pueden causar deadlock. Si no hay gorutinas mensajeras un receptor puede quedarse esperando infinitamente!
 
-En este caso el mensajero bloquea el programa y el receptor nunca llega a atenderlo, causando un ***deadlock***.
+En este caso la mensajera bloquea el programa y el receptor nunca llega a atenderlo, causando un ***deadlock***.
 
 Esto se puede resolver usando gorutinas o con *buffered channels*.
 
 ## Buffered channels
 
-## Siguiendo la analogía de Amazon Delivery
+## Siguiendo la analogía "Delivery de Pizzas"
 
-Si el channel (canal) es la puerta de la casa del receptor, entonces el buffer es una caja donde el mensajero puede dejar los mensajes.
+Si el channel (canal) es la puerta de la casa del receptor, entonces el buffer es una caja donde la mensajera puede dejar la pizza.
 
 .play -edit src/6chanbuff.go /MAIN_S/,/MAIN_E/
 
@@ -382,20 +404,6 @@ Ahora puede seguir la ejecución después de mandar un mensaje. El tamaño del b
 
 ¡El mensajero/receptor aún bloqueará si se llena el buffer!
 
-## Select
-
-## Bloqueo de canales lentos
-
-El siguiente programa es limitado por la gorutina más lenta. 0.5 vs. 2 segundos
-
-.play -edit src/6beforeselect.go /MAIN_S/,/FUNC_E/
-.caption El programa es limitado por la velocidad a la que el canal 2 puede recibir mensajes (`<-c2`)
-
-## Select
-
-La palabra clave select le permite al programa esperar hasta que haya un canal con un mensaje entre varios canales.
-
-.play -edit src/6afterselect.go /MAIN_S/,/MAIN_E/
 
 ## Paquete os, manejo de errores y lectura de archivos
 
