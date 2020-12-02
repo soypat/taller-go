@@ -107,23 +107,23 @@ Intentar asignarle un valor numérico es un error.
 
 : El compilador **exige** saber siempre de qué tipo es cada variable. Esto permite optimizar espacio de memoria. En python esto no es así
 
-## Diferentes maneras de asignar variables. 
+## Diferentes maneras de declarar variables. 
 
-Para declarar una variable **sin** darle un valor, se hace lo siguiente: 
+* Para **declarar** solamente (sin darle un valor):
 
 .play -edit src/2shorthand.go /DECL_S/,/DECL_E/
 
-Si uno quiere declarar **y** asignar, las siguientes son equivalentes:  
+* Para **declarar y asignar**:
 
 .play -edit src/2shorthand.go /ASSIGN_S/,/ASSIGN_E/
 
-Estos ahorros son porque no hace falta aclarar que es <code>string</code> si se puede saber por contexto. El <code>:=</code> es una sintaxis más corta para <code>var</code>, pero equivalente.
+Las tres son equivalentes. El compilador puede inferir que "Hello World" es un string, por eso no hace falta aclarar. <code>s:=</code> es sólo una sintaxis más corta para <code>var s =</code>.
 
-Luego de que se declara una variable, se puede cambiarle el valor con el <code>=</code>
+* Para **asignar** solamente (cambiar el valor que ya tiene):
 
 .play -edit src/2shorthand.go /USE_S/,/USE_E/
 
-.caption Para cualquier variable típica primero se usa <code>:=</code> y a partir de ahí se usa el <code>=</code>.
+<figcaption> Para cualquier variable típica primero se usa <code>:=</code> y a partir de ahí se usa el <code>=</code>. </figcaption>
 
 ## 
 <h3>Tipo <code> int</code></h3>
