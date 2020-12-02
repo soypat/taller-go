@@ -50,32 +50,29 @@ Inspiración para Go
 
 .play -edit src/1helloworld.go
 
-La línea:
+La primera línea establece el nombre del paquete que estamos ecribiendo:
 
 .code src/1helloworld.go /package/
 
-establece que estamos escribiendo un paquete que en este caso se llama main. Luego, la línea: 
+La segunda línea indica que vamos a usar cosas de la librería `fmt`. 
 
 .code src/1helloworld.go /import/
 
-indica que vamos a usar cosas de la librería `fmt`. 
-
 ##
 
-Lo que en verdad corre de todo esto es:
+Al ejecutarse, el programa llama a la función <code>main</code>:
 
-.play -edit src/1helloworld.go /START/,/END/ HLhello
+.code src/1helloworld.go /MAIN_S/,/MAIN_E/
 
-* Se declara **`s`** de tipo **`string`** y se le asigna el valor **`Hello, 世界`**
-* A través de la sintaxis `fmt.Println` seleccionamos la función **`Println`**, que nos deja imprimir cualquier valor a consola.
+* Se declara <code>s</code> de tipo <code>string</code> y se le asigna el valor <code>"Hello, 世界"</code>
+* A través de la sintaxis <code>fmt.Println</code> seleccionamos la función <code>Println</code> del paquete que importamos antes. Esa función imprime uno o más valores a consola.
 
-<details><summary><b>aclaracion nombre de paquetes</b></summary>
+<br>
 
 Los programas ejecutables siempre tienen <code>"package main"</code> y tienen una función llamada <code>"main()"</code> que no tiene argumentos
 como en el ejemplo. 
 
 Los paquetes diseñados para ser importados por otros no tienen esa restricción. Pueden llamarse <code>package pizza</code> si se quiere.
-</details>
 
 // Cana: Overflows, and it could be introduced in an example
 // <details><summary><b>cómo importar varias librerías</b></summary>
@@ -90,13 +87,13 @@ Los paquetes diseñados para ser importados por otros no tienen esa restricción
 
 Una variable es un identificador que representa un valor. 
 
-En Go, toda variable tiene un tipo, es decir, información adicional acerca de cuales valores pueden ser guardados y cuales no.
+Toda variable tiene un tipo, en otras palabras información acerca de qué valores pueden ser guardados y cuales no.
 
 .play -edit src/1helloworldfail.go /MAIN_S/,/MAIN_E/
 
 Aquí <code>s</code> es de tipo <code>string</code> y guarda el valor "Hello World".
 
-Intentar asignarle un valor numérico es un error.
+Intentar asignarle un valor de 1 (un <code>int</code>) es un error.
 
 : El compilador **exige** saber siempre de qué tipo es cada variable. Esto permite optimizar espacio de memoria. En python esto no es así
 
@@ -196,7 +193,7 @@ Aquí se inicializa <code>i</code>, se verifica que <code>i<10</code>, y se corr
 ## 
 <h3><code>func</code></h3>
 
-Una función es una parte de código que queremos reutilizar. Un ejemplo clásico es una función que devuelve la suma de dos números
+Una función es un bloque de código que queremos reutilizar. Un ejemplo clásico es una función que devuelve la suma de dos números
 
 .code  src/2func.go /PROG_S/,/PROG_E/
 
