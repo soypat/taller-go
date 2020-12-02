@@ -92,13 +92,6 @@ Una variable es un identificador que representa un valor.
 
 En Go, toda variable tiene un tipo, es decir, información adicional acerca de cuales valores pueden ser guardados y cuales no.
 
-Los tipos más usuales son <code>string</code> e <code>int</code>.
-
-<details><summary> lista completa de tipos básicos</summary>
-
-.code src/0types.go /TYPES_S/,/TYPES_E/
-</details>
-
 .play -edit src/1helloworldfail.go /MAIN_S/,/MAIN_E/
 
 Aquí <code>s</code> es de tipo <code>string</code> y guarda el valor "Hello World".
@@ -109,11 +102,11 @@ Intentar asignarle un valor numérico es un error.
 
 ## Diferentes maneras de declarar variables. 
 
-* Para **declarar** solamente (sin darle un valor):
+* Para **declarar** solamente:
 
 .play -edit src/2shorthand.go /DECL_S/,/DECL_E/
 
-* Para **declarar y asignar**:
+* Para **declarar Y asignar**:
 
 .play -edit src/2shorthand.go /ASSIGN_S/,/ASSIGN_E/
 
@@ -123,7 +116,7 @@ Las tres son equivalentes. El compilador puede inferir que "Hello World" es un s
 
 .play -edit src/2shorthand.go /USE_S/,/USE_E/
 
-<figcaption> Para cualquier variable típica primero se usa <code>:=</code> y a partir de ahí se usa el <code>=</code>. </figcaption>
+<figcaption> Para una variable típica primero se usa <code>:=</code> y a partir de ahí se usa el <code>=</code>. </figcaption>
 
 ## 
 <h3>Tipo <code> int</code></h3>
@@ -132,18 +125,11 @@ Go tiene los siguientes operadores básicos para números enteros: **`+ - * / %`
 
 .play -edit  src/1numbers.go /MAIN_S/,/MAIN_E/
 
-Se pueden ahorrar algo de tiempo de esta manera:
+Más corto, usando lo anterior:
 
 .play -edit  src/1numberssimple.go /MAIN_S/,/MAIN_E/
 
-Para esta presentación vamos a usar el estilo que normalmente se usa para declarar variables según la situación. 
-Más información en la última placa.
-
-
-: En la práctica, se usa más la versión corta.
-
 : PATO :Acuerdense que todo programa corre adentro de la función main(). De ahora en adelante obviaremos esta parte del código para algunos ejemplos
-// CANA: Lo de obviar la función main me parece demasiado implícito, y son dos líneas. Si tenemos sufience espacio, diría de mantener func main(){}
 : empieza a parecerse a python el código de a poco
 
 : Cambiar + por -,*,/,% y cambiar int a float64 
@@ -158,9 +144,14 @@ Se pueden concatenar strings con los operadores **`+`** y **`+=`**
 
 : Introducir operador += !
 
-## Expresiones: if, for, y func
+Hay otros tipos básicos además del <code>string</code> e <code>int</code>. Lista completa: 
+
+.code src/0types.txt
+
+## if, for, y func
 
 ## 
+
 <h3><code>if</code></h3>
 
 Ejecuta un bloque de código si se cumple una condición.  

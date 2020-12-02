@@ -1,0 +1,6 @@
+int     uint    float32   complex64   bool
+int8    uint8   float64   complex128  string
+int16   uint16                        byte // alias para uint8
+int32   uint32                        rune // alias para int32 (unicode)
+int64   uint64
+        uintptr
