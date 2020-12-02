@@ -173,7 +173,7 @@ Un tipo interface representa a **cualquier** tipo que tenga implementado ese mé
 
 Una función que tome a un tipo interface como argumento es, en efecto, una función que acepta a cualquiera de esos tipos.
 
-## Ejemplo
+## Ejemplo 1
 
 En el paquete <code>ioutil</code> hay una función llamada <code>ReadAll</code>, que lee todos los contenidos de un <code>io.Reader</code>.
 
@@ -184,6 +184,10 @@ En la librería estándar hay 31 tipos que cumplen las condiciones del <code>io.
 .code src/5interface.txt
 
 Uno puede llamar a <code>ReadAll</code> con cualquiera de ellos, y la función hace su trabajo sin tener en cuenta si lo que le enviaron un buffer, una respuesta http, un archivo, o lo que sea. 
+
+## Ejemplo 2
+
+.play src/5interface.go /ALL_S/,/ALL_E/
 
 ## Por qué interfaces?
 
