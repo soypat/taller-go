@@ -101,17 +101,17 @@ Intentar asignarle un valor de 1 (un <code>int</code>) es un error.
 
 * Para **declarar** solamente:
 
-.play -edit src/2shorthand.go /DECL_S/,/DECL_E/
+.code src/2shorthand.go /DECL_S/,/DECL_E/
 
 * Para **declarar Y asignar**:
 
-.play -edit src/2shorthand.go /ASSIGN_S/,/ASSIGN_E/
+.code src/2shorthand.go /ASSIGN_S/,/ASSIGN_E/
 
 Las tres son equivalentes. El compilador puede inferir que "Hello World" es un string, por eso no hace falta aclarar. <code>s:=</code> es sólo una sintaxis más corta para <code>var s =</code>.
 
 * Para **asignar** solamente (cambiar el valor que ya tiene):
 
-.play -edit src/2shorthand.go /USE_S/,/USE_E/
+.code src/2shorthand.go /USE_S/,/USE_E/
 
 <figcaption> Para una variable típica primero se usa <code>:=</code> y a partir de ahí se usa el <code>=</code>. </figcaption>
 
