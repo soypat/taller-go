@@ -1,0 +1,6 @@
+A  == B   // true si A es igual B
+A  != B   // true si A es distinto B
+A   > B   // true si A es mayor a B
+A  >= B   // true si A es mayor o igual a B
+B1 && B2  // true si B1 y B2 son ambas true
+B1 || B2  // true si alguna de B1 o B2 es true

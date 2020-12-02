@@ -14,7 +14,7 @@ acanalis@itba.edu.ar
 ## Qué es Go?
 
 ## 
-<script>//this script adds image to first slide! Nasty little hack, eh?
+<script>
 let firstArticle = document.getElementsByTagName("article")[0];
 firstArticle.innerHTML = firstArticle.innerHTML + '<img src="/assets/go-img/gopher_pencil_megaphone.jpg" style="position:fixed; right:0; bottom:0;  width:50%"/>';
 </script>
@@ -38,19 +38,15 @@ Inspiración para Go
 
 <img src="/assets/go-img/green-ubuntu-coffee.png" style="position:fixed; right:0; bottom:0;  width:35%"/> 
 
-
-## Palabras clave
-
-Las 25 palabras clave en Go:
-
-.code src/0keywords.go /KW_S/,/KW_E/
-.caption Una lista completa de todos los _keywords_ de Go
-
-: Si buscan encontraran que está escondida la temible goto ahí en el medio
+// Cana: Esto está algo colgado.
+// ## Palabras clave
+// Hay sólo 25 palabras clave en Go:
+// .code src/0keywords.go /KW_S/,/KW_E/
+// .caption Una lista completa de todos los _keywords_ de Go
 
 ## Hello World
 
-## Hello world {#helloworld}
+## Hello World {#helloworld}
 
 .play -edit src/1helloworld.go
 
@@ -77,25 +73,57 @@ Lo que en verdad corre de todo esto es:
 
 Los programas ejecutables siempre tienen <code>"package main"</code> y tienen una función llamada <code>"main()"</code> que no tiene argumentos
 como en el ejemplo. 
-Los paquetes diseñados para ser importados por otros no tienen esa restricción. Pueden llamarse <code>package dinosaurio</code> si se quiere.
+
+Los paquetes diseñados para ser importados por otros no tienen esa restricción. Pueden llamarse <code>package pizza</code> si se quiere.
 </details>
 
-<details><summary><b>cómo importar varias librerías</b></summary>
- Para importar varias librerías se rodean con parentesis
+// Cana: Overflows, and it could be introduced in an example
+// <details><summary><b>cómo importar varias librerías</b></summary>
+//  Para importar varias librerías se rodean con parentesis
+// 
+// .code src/1imports.go /import/,/\)/
+// </details>
 
-.code src/1imports.go /import/,/\)/
-</details>
+## Variables y Tipos 
 
-## Tipo de Datos
+## Variables y tipos básicos
 
-## Tipos básicos
+Una variable es un identificador que representa un valor. 
 
-Toda variable en Go es un tipo básico o se compone de varios tipos básicos
+En Go, toda variable tiene un tipo, es decir, información adicional acerca de cuales valores pueden ser guardados y cuales no.
+
+Los tipos más usuales son <code>string</code> e <code>int</code>.
+
+<details><summary> lista completa de tipos básicos</summary>
 
 .code src/0types.go /TYPES_S/,/TYPES_E/
-.caption Una lista completa de todos los tipos básicos en Go
+</details>
 
-: En estas filminas solo trabajaremos con int y string y un poco de floats
+.play -edit src/1helloworldfail.go /MAIN_S/,/MAIN_E/
+
+Aquí <code>s</code> es de tipo <code>string</code> y guarda el valor "Hello World".
+
+Intentar asignarle un valor numérico es un error.
+
+: El compilador **exige** saber siempre de qué tipo es cada variable. Esto permite optimizar espacio de memoria. En python esto no es así
+
+## Diferentes maneras de asignar variables. 
+
+Para declarar una variable **sin** darle un valor, se hace lo siguiente: 
+
+.play -edit src/2shorthand.go /DECL_S/,/DECL_E/
+
+Si uno quiere declarar **y** asignar, las siguientes son equivalentes:  
+
+.play -edit src/2shorthand.go /ASSIGN_S/,/ASSIGN_E/
+
+Estos ahorros son porque no hace falta aclarar que es <code>string</code> si se puede saber por contexto. El <code>:=</code> es una sintaxis más corta para <code>var</code>, pero equivalente.
+
+Luego de que se declara una variable, se puede cambiarle el valor con el <code>=</code>
+
+.play -edit src/2shorthand.go /USE_S/,/USE_E/
+
+.caption Para cualquier variable típica primero se usa <code>:=</code> y a partir de ahí se usa el <code>=</code>.
 
 ## 
 <h3>Tipo <code> int</code></h3>
@@ -135,37 +163,23 @@ Se pueden concatenar strings con los operadores **`+`** y **`+=`**
 ## 
 <h3><code>if</code></h3>
 
-Mostraremos la sintaxis con un ejemplo: 
+Ejecuta un bloque de código si se cumple una condición.  
 
 .play -edit src/3ifelse.go /PROG_S/,/PROG_E/
 
-El bloque delimitado por **{}** se ejecuta sólamente si `a` es igual a `"ooh wee"`. 
+El bloque delimitado por <code>{}</code> se ejecuta sólamente si <code>a</code> es igual a <code>pizza</code>. 
 
-<details><summary>Tipo `bool`</summary>
-La expresión <code>a=="ooh wee"</code> es de tipo <code>bool</code>, y puede tener el valor de <code>true</code> o <code>false</code>. 
+<details><summary>Valores de tipo <code>bool</code></summary>
+La expresión <code>a=="pizza"</code> es un valor de tipo <code>bool</code>, y puede tener el valor de <code>true</code> o <code>false</code>. 
 
-Como tal, puede ser asignado a una variable de ese tipo, de esta manera: 
+Como tal, se puede guardar en una variable, de esta manera: 
 
-<code>var b bool
-
- b = a=="ooh wee"</code>
+<code>var b bool = a=="pizza"</code>
  </details>
 
-<details><summary>Operadores binarios</summary>
-<code class="code language-go"><pre>
-==
-!=
->
-<
->=
-<=<pre></code>
-</details>
+<details><summary>Otros operadores</summary>
 
-<details><summary> Operadores Unarios </summary>
-<code><pre>
-&& 
-||
-</pre></code>
+.code src/3ifops.txt
 </details>
 
 <details><summary>sintaxis de else y else-if</summary>
@@ -176,11 +190,12 @@ Como tal, puede ser asignado a una variable de ese tipo, de esta manera:
 ## 
 <h3><code>for</code></h3>
 
-Lo más fácil es explicarlo mediante un ejemplo.
+Ejecuta un bloque de código una y otra vez mientras la condición sea verdadera.
+La sintaxis incluye la posibilidad de inicializar variables antes de empezar, y también de modificar variables cada vez que se termina de ejecutar el bloque.
 
 .play -edit src/3fori.go /PROG_S/,/PROG_E/
 
-Aquí se inicializa **`i`**, imprime **`i`**, y le suma 1 hasta llegar a diez. 
+Aquí se inicializa <code>i</code>, se verifica que <code>i<10</code>, y se corre el bloque, que ente caso simplemente imprime <code>i</code>. Luego, se le suma 1 y se verifica la condición nuevamente. 
 
 : Problema: aparece mucho syntax sugar de una aca y todavia no lo vimos anteriormente
 
@@ -212,20 +227,21 @@ Ahora en cualquier lugar de nuestro código que queramos sumar dos números, pod
 
 // Conside skipping, unless used
 
+## 
+<h3> Bloques <code>{ }</code> y Scope (alcance) </h3>
+
+.play -edit src/1blocks.go /MAIN_S/,/MAIN_E/
+
+Hay una tres reglas muy simples que indican si se puede acceder a una variable en un cierto lugar o no:
+
+1. El caracter <code>{</code> abre un bloque y <code>}</code> lo cierra. 
+
+2. En una función, una variable se puede utilizar desde que se declara, hasta que cierra el bloque que la contiene.
+
+3. Una variable declara fuera de la función (en el top level) siempre es accesible, independientemente del orden.
+
+
 ## Últimos comentarios
-
-## Declaraciónes acortadas y sintaxis azucarada
-El uso de "var", "=", ":=", y la aclaración del tipo de dato puede resultar confuso.
-// CANA: Consider mentioning the reasons why you would use one way or the other, to complement the examples.  
-
-.play -edit src/2shorthand.go /PROG_S/,/PROG_E/
-.caption *Declaración* *sin* *tipo:* Declaramos un `string`, entero (`int`) y un `float64` sin especificar el tipo.
-
-.play -edit src/2implicit.go /PROG_S/,/PROG_E/
-.caption *Declaración* *corta:*  acorta mucho la cantidad de caracteres a escribir
-
-: Declaración corta no puede usarse fuera de una función y a diferencia de declaración con var, pueden redeclarar variables dado que es una declaración multivariable.
-// CANA: This is edge-casy, consider skipping
 
 ## Charla dada por el product manager de Go (2015)
 : CANA: Add other resources.

@@ -6,13 +6,13 @@ import "fmt"
 
 func main() {
 	// PROG_S OMIT
-	a := 0
-	suma1 := func(n int) int {
-		a += n
+	a := "no, no sé. "
+	mistring := "ya tu sabe"
+	miFuncion := func(arg1 string) string {
+		a += arg1
 		return a
 	}
-	b := suma1(a)
-	fmt.Println(b)
+	fmt.Println(miFuncion(mistring))
 	// PROG_E OMIT
 }
 

@@ -7,13 +7,18 @@ import (
 )
 
 func main() {
-	// PROG_S OMIT
-	var s = "Hola, world"
-	s += "!!!!!!"
-	var i = 20
-	var f = 30.2
-	fmt.Println(i, f, s)
-	// PROG_E OMIT
+	// DECL_S OMIT
+	var s string
+	// DECL_E OMIT
+	// ASSIGN_S OMIT
+	var s string = "Hello world"
+	var s = "Hello World" 
+	s := "Hello World"
+	// ASSIGN_E OMIT
+	// USE_S OMIT
+	s = "Hola Mundo"
+	// USE_E OMIT
+	fmt.Println(s)
 }
 
 // FUNC_S OMIT

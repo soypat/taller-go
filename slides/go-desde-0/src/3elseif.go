@@ -6,16 +6,14 @@ import "fmt"
 
 func main() {
 	// PROG_S OMIT
-	var nota int = 5
-	if nota < 4 {
-		fmt.Println("Desaprobado")
-	} else if nota == 10 {
-		fmt.Println("Excelente! Un diez!")
-	} else if nota >= 4 {
-		fmt.Println("Aprobado!")
+	var a = "papas🍟" 
+		if a=="pizza" {
+			fmt.Println("a es pizza🍕")
+		} else {
+			fmt.Println("a no es pizza 🍕😣")
+		}
+		// PROG_E OMIT
 	}
-	// PROG_E OMIT
-}
 
 /* OPERATORS_S OMIT
 Comparación  y Lógicos | Matemáticos       |  Bits               | Pointers
