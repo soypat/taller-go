@@ -163,27 +163,27 @@ El concepto de un _closure_ solo es útil cuando entran en juego los modificador
 
 ## Interfaces
 
-Una interface es una colección de métodos. Se puede pasar a una función para indicar que ese argumento puede ser cualquier tipo que tenga esos métodos.
+Una interface es una colección de métodos. 
 
-.code src/5interface.go /SORTER_S/,/SORTER_E/
+Así se define una de las interfaces más importantes, la <code>io.Reader</code>
 
-La libería <code>sort</code> define esta interface, la cual se usa para la función <code>Sort()</code>.
+.code src/5interface.go /INTERFACE_S/,/INTERFACE_E/
 
-.code src/5interface.go  /SORTSIGNATURE_S/,/SORTSIGNATURE_E/
+Un tipo interface representa a **cualquier** tipo que tenga implementado ese método con ese nombre y esos argumentos. 
 
-<figcaption style="position:absolute;bottom:1.6em;padding-right:4rem; ">"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck" -<b>James Whitcomb Riley, 1888</b></figcaption> 
+Una función que tome a un tipo interface como argumento es, en efecto, una función que acepta a cualquiera de esos tipos.
 
+## Ejemplo
 
-## Ejemplo de uso de sort
+En el paquete <code>ioutil</code> hay una función llamada <code>ReadAll</code>, que lee todos los contenidos de un <code>io.Reader</code>.
 
-.play -edit src/5interface.go /USG_S/,/USG_E/
-.caption Como `Names` implementa los métodos necesarios, se dice que "Implementa" `sort.Interface`.
+.code src/5interface.go /READALL_S/,/READALL_E/
 
+En la librería estándar hay 31 tipos que cumplen las condiciones del <code>io.Reader</code>:
 
-: Vamos a declarar un tipo Writer que va ser un interface... Y eso se declara pasando los metodos que implementa
-: Es raro al comienzo. Venimos declarando tipos en base a la informacion que tienen y ahora estamos considerando el comportamiento
-: Sigue la logica del poeta ingles James Whitcomb Riley: 
+.code src/5interface.txt
 
+Uno puede llamar a <code>ReadAll</code> con cualquiera de ellos, y la función hace su trabajo sin tener en cuenta si lo que le enviaron un buffer, una respuesta http, un archivo, o lo que sea. 
 
 ## Por qué interfaces?
 
@@ -191,12 +191,9 @@ Es una abstracción que toma en cuenta la ***funcionalidad*** común entre tipos
 
 No tienen mucho uso cuando uno programa en soledad. Se convierten en un abstracción fundamental al programar cuando muchas librerías implementan la interface. 
 
-Muchas librerías en Go usan el `Reader` y `Writer` interface. Esto permite abstraer de qué se está leyendo, sin tener en cuenta si es una respuesta http, un buffer o un archivo.
-
-.code src/5interface.go /INTERFACE_S/,/INTERFACE_E/
-
-: No nos vamos a quedar mucho tiempo aca porque esto no es algo que programarian en Go
-: es comodo trabajar directo sobre los slices para la mayoria de los casos que implementar metodos para cada caso
+Con interfaces:
+* La programadora de funciones puede exigir un comportamiento para su objetivo, siendo lo menos restrictiva posible.
+* La usuaria de las funciones sólo necesita implementar un par de métodos para poder usarlas.
 
 ## Concurrencia
 

@@ -1,0 +1,4 @@
+archive/tar.(*Reader)  bufio.(*Reader)  bufio.ReadWriter  bytes.(*Buffer)  bytes.(*Reader)  compress/flate.Reader   compress/gzip.(*Reader)
+crypto/cipher.StreamReader  crypto/tls.(*Conn)  fmt.ScanState   image/jpeg.Reader   internal/poll.(*FD)
+internal/trace.(*Writer)  math/rand.(*Rand)   mime/multipart.File   mime/multipart.(*Part)  mime/quotedprintable.(*Reader)  net.(*Buffers)
+net.Conn   net.(*IPConn)  net.(*TCPConn)  net.(*UDPConn)  net.(*UnixConn)  net/http.File   os.(*File)  strings.(*Reader)

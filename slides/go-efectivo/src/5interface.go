@@ -8,15 +8,21 @@ import (
 )
 
 // INTERFACE_S OMIT
+// Dentro del paquete io
 type Reader interface {
 	Read(p []byte) (n int, err error)
 }
+// INTERFACE_E OMIT
+
+// READALL_S OMIT
+// Dentro del paquete ioutil
+func ReadAll(r io.Reader) ([]byte, error) {}
+// READALL_E OMIT
 
 type Writer interface {
 	Write(p []byte) (n int, err error)
 }
 
-// INTERFACE_E OMIT
 
 // USG_S OMIT
 type Names []string
