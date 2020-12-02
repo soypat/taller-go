@@ -12,14 +12,12 @@ acanalis@itba.edu.ar
 
 ## ¿Por que Go?
 
-Tomado de un [StackOverflow blogpost](https://stackoverflow.blog/2020/11/02/go-golang-learn-fast-programming-languages/)
-
-
 * Go está diseñado para ingeniería informática moderna
 * Go es simple
 * Go es rápido
 * Escribir programas concurrentes es fácil
 * El ecosistema Go
+* [Más info](https://stackoverflow.blog/2020/11/02/go-golang-learn-fast-programming-languages/)
 
 : Go hace todo lo que hacen los lenguajes de programación comunes
 : El ecosistema Go se refiere a la interacción entre los desarrolladores y el equipo Go. Hay un dialogo activo con mucha ida y vuelta. La comunidad esta sumamente involucrada en los cambios de Go, como veran el los git issues.
@@ -49,30 +47,13 @@ Tomado de un [StackOverflow blogpost](https://stackoverflow.blog/2020/11/02/go-g
 .play -edit src/1helloworld.go /package/,/MAIN_E/
 
 El primer argumento de Printf es un string con el formato que queremos que imprima el resto de los argumentos. 
-
 El %v indica que queremos que se inserte el siguiente argumento con formato de string, y en ese lugar. 
 
 <details><summary> Lista completa de verbos </summary>
 
 .code src/1helloworld.go /FMT_S/,/FMT_E/
 
-[[https://golang.org/pkg/fmt/][Más información]]
 </details>
-
-## Conceptos de Go
-
-## 
-<h3> Bloques <code>{ }</code> y Scope (alcance) </h3>
-
-.play -edit src/1blocks.go /MAIN_S/,/MAIN_E/
-
-Hay una tres reglas muy simples que indican si se puede acceder a una variable en un cierto lugar o no:
-
-1. El caracter <code>{</code> abre un bloque y <code>}</code> lo cierra. 
-
-2. En una función, una variable se puede utilizar desde que se declara, hasta que cierra el bloque que la contiene.
-
-3. Una variable declara fuera de la función (en el top level) siempre es accesible, independientemente del orden.
 
 ## Tipos compuestos
 
@@ -128,28 +109,45 @@ Si eso es lo que buscamos, hay que pasar **referencias** como argumentos, es dec
 .play -edit src/4methodref.go /REFMETHOD_S/,/MAIN_E/
 .caption Probar el código con y sin el asterisco en el receptor para ver la diferencia. Si sabés que son los punteros esto no es nada nuevo. Si no, no pasa nada, no los usaremos.
 
-## Funciones
+## Bloques y Funciones
+
+## 
+<h3> Bloques <code>{ }</code> y Scope (alcance) </h3>
+
+.play -edit src/1blocks.go /MAIN_S/,/MAIN_E/
+
+Hay una tres reglas muy simples que indican si se puede acceder a una variable en un cierto lugar o no:
+
+1. El caracter <code>{</code> abre un bloque y <code>}</code> lo cierra. 
+
+2. En una función, una variable se puede utilizar desde que se declara, hasta que cierra el bloque que la contiene.
+
+3. Una variable declara fuera de la función (en el top level) siempre es accesible, independientemente del orden.
 
 ## Funciones como valores
 
 Las funciones pueden ser guardadas en una variable. En el siguinte ejemplo se asigna y declara
-la variable <code>suma1</code>:
+la variable <code>mas1</code>:
 
-.play -edit src/2closure.go /PROG_S/,/PROG_E/
+.play -edit src/2inlinefunc.go /PROG_S/,/PROG_E/
 
-Una patrón común que usa esto se denomina _closure_ y se usa cuando se quiere que la función pueda acceder a variables definidas por fuera de ésta. 
+Aquí se declara, llama, y devuelve inmediatamente la función
+
+.play -edit src/2inlinereturn.go /PROG_S/,/PROG_E/
+
 
 ## Closures (ejemplo)
 
-Es lo mismo que escribir:
+Una patrón común que usa esto se denomina _closure_ y se usa cuando se quiere que la función acceda a variables definidas por fuera de ésta. En el siguiente ejemplo <code>mas1</code> puede acceder a la variable <code>a</code> definida anteriormente.
 
-.code src/2closure.go /FPROG_S/,/FPROG_E/
-El concepto de un _closure_ solo es útil cuando entran en juego los modificadores de funciones.
+.play -edit src/2closure.go /PROG_S/,/PROG_E/
+El concepto de un _closure_ es especialmente útil cuando entran en juego los modificadores de funciones, <code>defer</code> y <code>go</code>.
 
 : Las funciones son first class citizens en Go. Se pueden usar como variables. Hay veces que tiene sentido pasar una función pero en general el OOP se encarga mejor de eso.
 : Los dos ejemplos de arriba son casi idénticos. El compilador de Go usa function inlining por defecto, no asigna un bloque de memoria para cada función
 : Este ejemplo es testamento a la inutilidad de closures en un lenguaje común. Se imaginan que concepto de Go las puede hacer útiles?
 : Las function modifiers: `go` y `defer`
+
 
 
 ## Funciones variadicas
@@ -260,20 +258,6 @@ Los canales se usan para mandar mensajes entre gorutinas.
 
 : Se parecen más a file descriptors
 
-## Select
-
-## Bloqueo de canales lentos
-
-El siguiente programa es limitado por la gorutina más lenta. 0.5 vs. 2 segundos
-
-.play -edit src/6beforeselect.go /MAIN_S/,/MAIN_E/
-.caption El programa es limitado por la velocidad a la que el canal 2 puede recibir mensajes (`<-c2`)
-
-## Select
-
-La palabra clave select le permite al programa esperar hasta que haya un canal con un mensaje entre varios canales.
-
-.play -edit src/6afterselect.go /MAIN_S/,/MAIN_E/
 
 ## Deadlock
 
@@ -328,6 +312,20 @@ Ahora puede seguir la ejecución después de mandar un mensaje. El tamaño del b
 
 ¡El mensajero/receptor aún bloqueará si se llena el buffer!
 
+## Select
+
+## Bloqueo de canales lentos
+
+El siguiente programa es limitado por la gorutina más lenta. 0.5 vs. 2 segundos
+
+.play -edit src/6beforeselect.go /MAIN_S/,/MAIN_E/
+.caption El programa es limitado por la velocidad a la que el canal 2 puede recibir mensajes (`<-c2`)
+
+## Select
+
+La palabra clave select le permite al programa esperar hasta que haya un canal con un mensaje entre varios canales.
+
+.play -edit src/6afterselect.go /MAIN_S/,/MAIN_E/
 
 ## Paquete os, manejo de errores y lectura de archivos
 

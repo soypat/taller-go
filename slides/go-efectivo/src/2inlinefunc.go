@@ -6,12 +6,11 @@ import "fmt"
 
 func main() {
 	// PROG_S OMIT
-	a := 0
-	mas1 := func() {
-		a++
+	mas1 := func(n int) int {
+		n++
+		return n
 	}
-	mas1()
-	mas1()
+	a := mas1(2)
 	fmt.Println(a)
 	// PROG_E OMIT
 }
@@ -19,7 +18,10 @@ func main() {
 // FUNC_S OMIT
 func ClosureActualWork() {
 	// FPROG_S OMIT
-
+	a := "no, no sé. "
+	mistring := "ya tu sabe"
+	a += mistring
+	fmt.Println(a)
 	// FPROG_E OMIT
 }
 
