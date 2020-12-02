@@ -128,6 +128,37 @@ Si eso es lo que buscamos, hay que pasar **referencias** como argumentos, es dec
 .play -edit src/4methodref.go /REFMETHOD_S/,/MAIN_E/
 .caption Probar el código con y sin el asterisco en el receptor para ver la diferencia. Si sabés que son los punteros esto no es nada nuevo. Si no, no pasa nada, no los usaremos.
 
+## Funciones
+
+## Funciones como valores
+
+Las funciones pueden ser guardadas en una variable. En el siguinte ejemplo se asigna y declara
+la variable <code>suma1</code>:
+
+.play -edit src/2closure.go /PROG_S/,/PROG_E/
+
+Una patrón común que usa esto se denomina _closure_ y se usa cuando se quiere que la función pueda acceder a variables definidas por fuera de ésta. 
+
+## Closures (ejemplo)
+
+Es lo mismo que escribir:
+
+.code src/2closure.go /FPROG_S/,/FPROG_E/
+El concepto de un _closure_ solo es útil cuando entran en juego los modificadores de funciones.
+
+: Las funciones son first class citizens en Go. Se pueden usar como variables. Hay veces que tiene sentido pasar una función pero en general el OOP se encarga mejor de eso.
+: Los dos ejemplos de arriba son casi idénticos. El compilador de Go usa function inlining por defecto, no asigna un bloque de memoria para cada función
+: Este ejemplo es testamento a la inutilidad de closures en un lenguaje común. Se imaginan que concepto de Go las puede hacer útiles?
+: Las function modifiers: `go` y `defer`
+
+
+## Funciones variadicas
+
+.code src/2variadic.go /FUNC_S/,/FUNC_E/
+
+.play -edit src/2variadic.go /PROG_S/,/PROG_E/
+.caption Una función puede tomar un número indefinido de argumentos pero la cantidad a devolver es fija 
+
 ## Interfaces
 
 ## Interfaces
@@ -166,32 +197,6 @@ Muchas librerías en Go usan el `Reader` y `Writer` interface. Esto permite abst
 
 : No nos vamos a quedar mucho tiempo aca porque esto no es algo que programarian en Go
 : es comodo trabajar directo sobre los slices para la mayoria de los casos que implementar metodos para cada caso
-
-## Conceptos de funciones
-
-## Funciones variadicas
-
-.code src/2variadic.go /FUNC_S/,/FUNC_E/
-
-.play -edit src/2variadic.go /PROG_S/,/PROG_E/
-.caption Una función puede tomar un número indefinido de argumentos pero la cantidad a devolver es fija 
-
-## Closures (ejemplo)
-
-Escribir:
-
-.play -edit src/2closure.go /PROG_S/,/PROG_E/
-
-Es lo mismo que escribir:
-
-.code src/2closure.go /FPROG_S/,/FPROG_E/
-El concepto de un _closure_ solo es útil cuando entran en juego los modificadores de funciones.
-
-: Las funciones son first class citizens en Go. Se pueden usar como variables. Hay veces que tiene sentido pasar una función pero en general el OOP se encarga mejor de eso.
-: Los dos ejemplos de arriba son casi idénticos. El compilador de Go usa function inlining por defecto, no asigna un bloque de memoria para cada función
-: Este ejemplo es testamento a la inutilidad de closures en un lenguaje común. Se imaginan que concepto de Go las puede hacer útiles?
-: Las function modifiers: `go` y `defer`
-
 
 ## Concurrencia
 
