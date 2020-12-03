@@ -240,12 +240,25 @@ Cualquier función puede ser llamada con <code>go</code> sin necesidad de modifi
 
 Los canales se usan para mandar mensajes entre gorutinas. 
 
-.code src/6channels.go  /CHAN_S/,/CHAN_E/
+Para inicializar un canal:
+
+.code src/6channels.go  /CHANMAKE_S/,/CHANMAKE_E/
+
+Para enviar un mensaje:
+
+.code src/6channels.go  /CHANSEND_S/,/CHANSEND_E/
+
+Para recibir un mensaje: 
+
+.code src/6channels.go  /CHANREC_S/,/CHANREC_E/
+
+<figcaption> En este caso los mensajes son de tipo <code>string</code>, pero puede usarse cualquier tipo</figcaption>
+
+## Ejemplo 
 
 .play src/6gopizza.go /MAIN_S/,/FUNC_E/
 
 : Se pueden asignar a variables y pasarse como argumentos a funciones y tienen un tipo asignado.
-
 : Se parecen más a file descriptors
 
 
