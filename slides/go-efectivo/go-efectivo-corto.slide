@@ -219,17 +219,17 @@ Si hay más de uno, se puede paralelizar.
 
 ## La palabra clave go
 
-Normalmente, cuando se llama una función el programa se frena hasta que esta termina. Podemos modificar este comportamiento agregando <code>go</code> o la palabra <code>defer</code> antes de la función.
+Normalmente, un programa que llama una función se detiene hasta que la función devuelve su resultado. 
 
-<code>go</code> empieza una "gorutina" ejecutando la función llamada y continua con el programa inmediatamente, sin esperar.
+Podemos modificar este comportamiento agregando <code>go</code> antes de la función.
 
-: las gorutinas son super livianas y no es raro tener miles o ciento de miles corriendo a la vez. Las gorutinas no necesariamente son paralelas, en general comparten un procesador esta nota no se si va aca o en un ejemplo mas adelante. despues veremo
+<code>go</code> ejecuta la función llamada, mientras que el programa continúa inmediatamente sin esperar a que la función termine.
 
-<code>defer</code> pospone la llamada hasta el próximo <code>return</code> 
+En Go, cada uno de los procesos que corren independientemente se llaman "gorutinas"
 
-.code  src/6gofirst.go /FUNC_S/,/FUNC_E/
+: las gorutinas son super livianas y no es raro tener miles o ciento de miles corriendo a la vez. 
 
-*   Cualquier función puede ser llamada con <code>go</code> o <code>defer</code>
+Cualquier función puede ser llamada con <code>go</code> sin necesidad de modificarla.
 
 : A diferencia de otros lenguajes como Javascript y Python, cualquier función se puede correr asincrónicamente sin necesidad de modificarla.
 
