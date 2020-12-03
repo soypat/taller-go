@@ -9,14 +9,16 @@ import (
 
 func main() {
 	// PROG_S OMIT
-	Contar("ovejas")
-	Contar("calamares")
+	// GOLINE_S OMIT
+	Hacer("pizza🍕") 
+	// GOLINE_E OMIT
+	Hacer("pan🍞")
 	// PROG_E OMIT
 }
 
 // FUNC_S OMIT
-func Contar(cosa string) {
-	for i := 0; i <= 5; i++ {
+func Hacer(cosa string) {
+	for i := 1; i <= 5; i++ {
 		fmt.Println(i, cosa)
 		time.Sleep(time.Millisecond * 500)
 	}

@@ -10,6 +10,6 @@ func main() {
 	ch <- "pizza🍕"   
 	// CHANSEND_E OMIT
 	// CHANREC_S OMIT
-	s := <-ch
+	s := <-ch // ahora s vale "pizza🍕"
 	// CHANREC_E OMIT
 }

@@ -10,24 +10,23 @@ import (
 
 // IMPORT_E OMIT
 // MAIN_S OMIT
-// MAIN_S OMIT
 func main() {
 	// PROG_S OMIT
 	ch := make(chan string)
-	go Contar("ovejas", ch)
+	go Hacer("pizza🍕", ch)
 
 	msj := <-ch
 	fmt.Println(msj)
 	// PROG_E OMIT
 }
-
 // MAIN_E OMIT
+
 // FUNC_S OMIT
-func Contar(cosa string, c chan string) {
-	for i := 0; i <= 5; i++ {
-		c <- cosa
+func Hacer(cosa string, c chan string) {
+	for i := 1; i <= 5; i++ {
 		time.Sleep(time.Millisecond * 500)
+		str := fmt.Sprintf("%d %s",i, cosa)
+		c <- str
 	}
 }
-
 // FUNC_E OMIT

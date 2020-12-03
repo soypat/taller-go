@@ -10,15 +10,15 @@ import (
 func main() {
 	// PROG_S OMIT
 	// GOLINE_S OMIT
-	go Contar("ovejas") 
+	go Hacer("pizza🍕") 
 	// GOLINE_E OMIT
-	Contar("calamares")
+	Hacer("pan🍞")
 	// PROG_E OMIT
 }
 
 // FUNC_S OMIT
-func Contar(cosa string) {
-	for i := 0; i <= 5; i++ {
+func Hacer(cosa string) {
+	for i := 1; i <= 5; i++ {
 		fmt.Println(i, cosa)
 		time.Sleep(time.Millisecond * 500)
 	}

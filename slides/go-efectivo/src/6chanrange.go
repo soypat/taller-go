@@ -24,12 +24,13 @@ func main() {
 
 // MAIN_E OMIT
 // FUNC_S OMIT
-func Contar(cosa string, c chan string) {
+func Hacer(cosa string, c chan string) {
 	for i := 1; i <= 5; i++ {
-		c <- cosa
 		time.Sleep(time.Millisecond * 500)
+		str := fmt.Sprintf("%d %s", i, cosa)
+		c <- str
 	}
-	close(c)
+	close(c) // Ahora cerramos el canal al terminar el trabajo!
 }
 
 // FUNC_E OMIT

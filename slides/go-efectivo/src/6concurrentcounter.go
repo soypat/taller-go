@@ -10,19 +10,19 @@ import (
 // MAIN_S OMIT
 func main() {
 	// PROG_S OMIT
-	waitOvejas, waitCalam := true, true
+	waitPizza, waitPan := true, true
 
 	go func() {
-		Contar("ovejas")
-		waitOvejas = false
+		Hacer("pan🍞")
+		waitPan = false
 	}()
 
 	go func() {
-		Contar("calamares")
-		waitCalam = false
+		Hacer("pizza🍕") 
+		waitPizza = false
 	}()
 
-	for waitOvejas || waitCalam {
+	for waitPan || waitPizza {
 		// solo espera
 	}
 	// PROG_E OMIT
@@ -31,11 +31,10 @@ func main() {
 // MAIN_E OMIT
 
 // FUNC_S OMIT
-func Contar(cosa string) {
-	for i := 0; i <= 5; i++ {
+func Hacer(cosa string) {
+	for i := 1; i <= 5; i++ {
 		fmt.Println(i, cosa)
 		time.Sleep(time.Millisecond * 500)
 	}
 }
-
 // FUNC_E OMIT

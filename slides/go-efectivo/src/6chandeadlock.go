@@ -14,7 +14,7 @@ import (
 func main() {
 	// PROG_S OMIT
 	ch := make(chan string)
-	go Contar("ovejas", ch)
+	go Hacer("pizza🍕", ch)
 	for {
 		msj := <-ch
 		fmt.Println(msj)
@@ -24,10 +24,11 @@ func main() {
 
 // MAIN_E OMIT
 // FUNC_S OMIT
-func Contar(cosa string, c chan string) {
+func Hacer(cosa string, c chan string) {
 	for i := 1; i <= 5; i++ {
-		c <- cosa
 		time.Sleep(time.Millisecond * 500)
+		str := fmt.Sprintf("%d %s",i, cosa)
+		c <- str
 	}
 }
 
