@@ -2,6 +2,8 @@
 
 package main
 
+import "fmt"
+
 func main() {
 	// CHANMAKE_S OMIT
 	ch := make(chan string)
@@ -12,4 +14,5 @@ func main() {
 	// CHANREC_S OMIT
 	s := <-ch // ahora s vale "pizza🍕"
 	// CHANREC_E OMIT
+	fmt.Println(s)
 }

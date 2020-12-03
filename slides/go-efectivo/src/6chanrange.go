@@ -14,7 +14,7 @@ import (
 func main() {
 	// PROG_S OMIT
 	ch := make(chan string)
-	go Contar("ovejas", ch)
+	go Hacer("pizza🍕", ch)
 
 	for msj := range ch { // Deja de iterar cuando se cierra el canal
 		fmt.Println(msj)
