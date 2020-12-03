@@ -194,8 +194,8 @@ Es una abstracción que toma en cuenta la ***funcionalidad*** común entre tipos
 No tienen mucho uso cuando uno programa en soledad. Se convierten en un abstracción fundamental al programar cuando muchas librerías implementan la interface. 
 
 Con interfaces:
-* La programadora de funciones puede exigir un comportamiento para su objetivo, siendo lo menos restrictiva posible.
-* La usuaria de las funciones sólo necesita implementar un par de métodos para poder usarlas.
+* La programadora de funciones puede abstraer detalles y dar flexibilidad a las usuarias.
+* La usuaria de las funciones tiene un amplio catálogo de funciones disponibles.
 
 ## Concurrencia
 
