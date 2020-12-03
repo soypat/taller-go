@@ -10,15 +10,13 @@ import (
 
 // IMPORT_E OMIT
 /* MAIN_S */ // OMIT
-/* MAIN_S */ // OMIT
 func main() {
 	// PROG_S OMIT
-	// Declaro un canal con un buffer de 1 mensaje
 	c1 := make(chan string)
 	c2 := make(chan string)
 
-	go PizzeroRapido(c1) // tarda 500ms
-	go PizzeroLento(c2)  // tarda 2000ms
+	go PizzeroRapido(c1) // pizza cada 500ms
+	go PizzeroLento(c2)  // pizza cada 2000ms
 
 	for {
 		fmt.Println(<-c1)

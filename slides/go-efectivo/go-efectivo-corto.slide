@@ -328,14 +328,14 @@ Ahora a puede seguir la ejecución después de mandar un mensaje:
 
 ## Bloqueo de canales lentos
 
-El siguiente programa es limitado por la gorutina más lenta. 0.5 vs. 2 segundos
+El siguiente programa es limitado por la gorutina más lenta.
 
 .play -edit src/6beforeselect.go /MAIN_S/,/MAIN_E/
-.caption El programa es limitado por la velocidad a la que el canal 2 puede recibir mensajes (`<-c2`)
+<figcaption> El programa es limitado por la velocidad a la que el canal 2 puede recibir mensajes (<code><-c2</code>) </figcaption>
 
 ## Select
 
-La palabra clave select le permite al programa esperar hasta que haya un canal con un mensaje entre varios canales.
+<code>select</code> le permite al programa esperar hasta que llegue un mensaje entre varios canales.
 
 .play -edit src/6afterselect.go /MAIN_S/,/MAIN_E/
 
