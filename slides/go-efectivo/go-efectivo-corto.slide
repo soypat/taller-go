@@ -227,7 +227,7 @@ Cualquier función puede ser llamada con <code>go</code> sin necesidad de modifi
 ## Un programa concurrente
 
 .play -edit src/6concurrentcounterpitfall.go
-<figcaption>Modificar la segunda llamada a  <code>go Contar("calamares")</code></figcaption>
+<figcaption>Modificar la línea de <code>main()</code> a <code>go Hacer("pan🍞")</code></figcaption>
 
 ## Intentando sincronizar gorutinas
 
@@ -258,62 +258,72 @@ Para recibir un mensaje:
 
 .play src/6gopizza.go /MAIN_S/,/FUNC_E/
 
+.caption Los canales comunican *y* sincronizan. Dos conceptos muy importantes en Go.
+
 : Se pueden asignar a variables y pasarse como argumentos a funciones y tienen un tipo asignado.
 : Se parecen más a file descriptors
 
+## Sincronizando con canales (intento 1) 
+// Contador con canales
 
-## Deadlock
+.play -edit src/6chancounter.go /MAIN_S/,/FUNC_E/
 
-## Contador con canales
+<code>Hacer</code> se bloquea porque nadie recibe su segundo mensaje. 
 
-.play -edit src/6chancounter.go
-.caption Los canales comunican *y* sincronizan. Dos conceptos muy importantes en Go.
+Esto es porque los canales son bloquean la gorutina hasta que el mensaje es efectivamente recibido o enviado. 
 
-: A diferencia del otro código, este si corre la gorutina. La diferencia es que ahora estamos trabajando con canales. Un canal que recibe es Bloqueante hasta que recibe un mensaje, luego pasa control de vuelta a la función
+.caption más información más adelante
 
-## Deadlock
+## Sincronizando con canales (intento 2) 
 
 .play -edit src/6chandeadlock.go
 
-## Deadlock - explicación
+## All goroutines are asleep - deadlock! - Explicación
 
-La función <code>Contar`</code> termina luego de 5 mensajes. Mientras tanto <code>main</code> se queda esperando un sexto mensaje que nunca llegará! El programa se da cuenta cuando hay un canal bloqueado infinitamente y termina con el error ***deadlock!***.
+La función <code>Contar</code> termina luego de 5 mensajes. Mientras tanto <code>main</code> se queda esperando un sexto mensaje que nunca llegará! El programa se da cuenta cuando hay un canal bloqueado infinitamente y termina con el error ***deadlock!***.
 
-Para prevenir este error, se puede **cerrar** un canal.
+Para prevenir este error, se puede **cerrar** un canal de esta manera:
 
-## Cerrando un canal
+.code src/6chanclose.go /CLOSE_S/,/CLOSE_E/
+
+Y las gorutinas que reciben mensajes de ese canal pueden preguntar si sigue abierto o no: 
+
+.code src/6chanclose.go /ASK_S/,/ASK_E/
+
+El segundo argumento (<code>abierto</code>) es un <code>bool</code> que vale <code>true</code> si el canal está abierto.
+
+## Sincronizando con canales (intento 3)
 
 .play -edit src/6chanclose.go /MAIN_S/,/FUNC_E/
 .caption Una vez cerrado el canal el valor de abierto será falso y sabremos que se ha dejado de enviar mensajes por el canal. OJO! Si se manda un mensaje por un canal cerrado el programa termina con error!
 
-## Range canal
-El siguiente código hace lo mismo que el anterior pero con menos verbosidad.
+## Más elegante: Range canal
+
+Este código es equivalente, pero más corto.
 
 .play -edit src/6chanrange.go /MAIN_S/,/FUNC_E/
 .caption La palabra clave `range` se puede usar para iterar sobre canales, slices y mapas
 
-## Comunicación entre canales
+## Bloqueo de canales
 
-Mandar por un canal no se compara a un tiro de baloncesto. Es más parecido a una entrega de pizza. La mensajera se queda esperando en la puerta a ser atendida.
+* Una gorutina que necesita un mensaje de un canal, y no lo encuentra, se bloquea.
+* Una gorutina que envía un mensaje por un canal, y éste no es recibido por otra se bloquea. 
+
+Mandar por un canal no se compara a un tiro de basketball. Es más parecido a una entrega de pizza. La mensajera se queda esperando en la puerta a ser atendida.
 
 .play -edit src/6chanbuffpitfall.go /MAIN_S/,/MAIN_E/
-.caption Tanto la mensajera como el receptor pueden causar deadlock. Si no hay gorutinas mensajeras un receptor puede quedarse esperando infinitamente!
 
 En este caso la mensajera bloquea el programa y el receptor nunca llega a atenderlo, causando un ***deadlock***.
 
-Esto se puede resolver usando gorutinas o con *buffered channels*.
+.caption esto se resuelve con buffered channels
 
-## Buffered channels
+## Buffered channels 
 
-## Siguiendo la analogía "Delivery de Pizzas"
-
-Si el channel (canal) es la puerta de la casa del receptor, entonces el buffer es una caja donde la mensajera puede dejar la pizza.
+Un buffered channel es un canal que puede guardar un cierto número de mensajes antes de bloquearse. 
 
 .play -edit src/6chanbuff.go /MAIN_S/,/MAIN_E/
 
 Ahora puede seguir la ejecución después de mandar un mensaje. El tamaño del buffer puede ser cualquiera.
-
-¡El mensajero/receptor aún bloqueará si se llena el buffer!
 
 ## Select
 
