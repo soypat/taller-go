@@ -30,7 +30,7 @@ func Hacer(cosa string, c chan string) {
 		str := fmt.Sprintf("%d %s", i, cosa)
 		c <- str
 	}
-	close(c) // Ahora cerramos el canal al terminar el trabajo!
+	close(c) // Cerramos el canal al terminar el trabajo
 }
 
 // FUNC_E OMIT

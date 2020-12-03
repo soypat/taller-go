@@ -12,7 +12,7 @@ import (
 func main() {
 	// PROG_S OMIT
 	ch := make(chan string)
-	ch <- "🍕"
+	ch <- "🏀"
 
 	s := <-ch
 	fmt.Println(s)

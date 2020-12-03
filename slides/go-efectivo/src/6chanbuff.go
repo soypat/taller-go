@@ -12,12 +12,14 @@ import (
 // MAIN_S OMIT
 func main() {
 	// PROG_S OMIT
-	// Declaro un canal con un buffer de 1 mensaje
-	caja := make(chan string, 1)
-	caja <- "🍕"
-
-	yo := <-caja
-	fmt.Println("mmmm, ", yo)
+	// MAKE_S OMIT
+	ch := make(chan string, 2)
+	// MAKE_E OMIT
+	ch <- "🏀"
+	ch <- "🏀"
+	b1 := <-ch
+	b2 := <-ch
+	fmt.Println(b1,b2)
 	// PROG_E OMIT
 }
 
