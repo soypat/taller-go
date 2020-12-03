@@ -199,22 +199,23 @@ Con interfaces:
 
 ## Concurrencia
 
-## Un programa no concurrente
+## Un programa secuencial (no concurrente)
 
 .play src/6nonconcurrentcounter.go
 
 : Este es el error típico que cometen todos cuando escriben su primer programa concurrente. Go no espera a que terminen de correr las funciones concurrentes!
 
-## Qué es la concurrencia
+## Concurrencia
 
-* No es paralelismo
-* 
+La concurrencia es la ejecución de procesos al mismo tiempo.
 
-Rob Pike, uno de los creadores de Go, dice 
+No implica paralelismo, son conceptos distintos.
 
-,,_Concurrency is about dealing with lots of things at once. Parallelism is about doing lots of things at once._"
+En Go, si hay un sólo procesador, las gorutinas se lo reparten entre sí.
 
+Si hay más de uno, se puede paralelizar.
 
+<figcaption style="position: absolute; bottom:40px;"> "Concurrency is about dealing with lots of things at once. Parallelism is about doing lots of things at once." ~ <a href="https://www.youtube.com/watch?v=oV9rvDllKEg"> Rob Pike</a></figcaption>
 
 ## La palabra clave go
 
