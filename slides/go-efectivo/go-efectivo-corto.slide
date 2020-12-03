@@ -203,48 +203,36 @@ Con interfaces:
 
 .play src/6nonconcurrentcounter.go
 
-: Este es el error típico que cometen todos cuando escriben su primer programa concurrente. Go no espera a que terminen de correr las funciones concurrentes!
-
-## Concurrencia
+## 
+<h3> Concurrencia y <code>go</code> </h3>
 
 La concurrencia es la ejecución de procesos al mismo tiempo.
 
-No implica paralelismo, son conceptos distintos.
+En go, esto se logra usando la palabra <code>go</code> antes de las funciones. 
 
-En Go, si hay un sólo procesador, las gorutinas se lo reparten entre sí.
+.code src/6concurrentcounterpitfall.go /GOLINE_S/,/GOLINE_E/
 
-Si hay más de uno, se puede paralelizar.
+<code>go</code> ejecuta la función, mientras que el programa continúa inmediatamente sin esperar a que la función termine.
 
-<figcaption style="position: absolute; bottom:40px;"> "Concurrency is about dealing with lots of things at once. Parallelism is about doing lots of things at once." ~ <a href="https://www.youtube.com/watch?v=oV9rvDllKEg"> Rob Pike</a></figcaption>
-
-## La palabra clave go
-
-Normalmente, un programa que llama una función se detiene hasta que la función devuelve su resultado. 
-
-Podemos modificar este comportamiento agregando <code>go</code> antes de la función.
-
-<code>go</code> ejecuta la función llamada, mientras que el programa continúa inmediatamente sin esperar a que la función termine.
-
-En Go, cada uno de los procesos que corren independientemente se llaman "gorutinas"
+Se llaman **gorutinas** a cada uno de estos procesos independientes.
 
 : las gorutinas son super livianas y no es raro tener miles o ciento de miles corriendo a la vez. 
 
 Cualquier función puede ser llamada con <code>go</code> sin necesidad de modificarla.
 
-: A diferencia de otros lenguajes como Javascript y Python, cualquier función se puede correr asincrónicamente sin necesidad de modificarla.
+: No hay que moficar la función, A diferencia de otros lenguajes como Javascript y Python
 
-## 
+<figcaption style="position: absolute; bottom:40px;"> "Concurrency is about dealing with lots of things at once. Parallelism is about doing lots of things at once." ~ <a href="https://www.youtube.com/watch?v=oV9rvDllKEg"> Rob Pike</a></figcaption>
+
+## Un programa concurrente
 
 .play -edit src/6concurrentcounterpitfall.go
 <figcaption>Modificar la segunda llamada a  <code>go Contar("calamares")</code></figcaption>
 
-
-## Un programa concurrente
+## Intentando sincronizar gorutinas
 
 .play -edit src/6concurrentcounter.go /MAIN_S/,/MAIN_E/
 .caption Si bien el `bool` sirve para sincronizar gorutinas ahora veremos formas más flexibles y poderosas de comunicar *y* sincronizar
-
-
 
 ## Canales (channels)
 

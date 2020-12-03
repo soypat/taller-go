@@ -9,7 +9,9 @@ import (
 
 func main() {
 	// PROG_S OMIT
-	go Contar("ovejas")
+	// GOLINE_S OMIT
+	go Contar("ovejas") 
+	// GOLINE_E OMIT
 	Contar("calamares")
 	// PROG_E OMIT
 }
