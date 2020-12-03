@@ -187,7 +187,7 @@ Uno puede llamar a <code>ReadAll</code> con cualquiera de ellos, y la función h
 
 .play src/5interface.go /ALL_S/,/ALL_E/
 
-## Por qué interfaces?
+## ¿Por qué interfaces?
 
 Es una abstracción que toma en cuenta la ***funcionalidad*** común entre tipos de datos.
 
@@ -236,7 +236,7 @@ Cualquier función puede ser llamada con <code>go</code> sin necesidad de modifi
 
 ## Canales (channels)
 
-## ¿Qué es un canal?
+## Canales
 
 Los canales se usan para mandar mensajes entre gorutinas. 
 
