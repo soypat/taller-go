@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	f, err := os.Open("slides/go-efectivo/src/hello.txt") // f es un *os.File 
+	f, err := os.Open("data/archivo.txt") // f es un *os.File 
 	if err != nil {
 		panic(err)
 	}
@@ -35,7 +35,8 @@ type Reader interface {
 // READALL_S OMIT
 // Dentro del paquete ioutil
 func ReadAll(r io.Reader) ([]byte, error) {
-	return nil, nil
+	return nil, nil // OMIT
+	// ...
 }
 
 // READALL_E OMIT

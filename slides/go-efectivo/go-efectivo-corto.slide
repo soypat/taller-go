@@ -329,9 +329,4 @@ Ahora puede seguir la ejecución después de mandar un mensaje. El tamaño del b
 
 ¡El mensajero/receptor aún bloqueará si se llena el buffer!
 
-
-## Paquete os, manejo de errores y lectura de archivos
-
-.play -edit src/5os.go
-
 ## Preguntas?
