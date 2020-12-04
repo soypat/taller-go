@@ -33,13 +33,13 @@ func main() {
 func DeclarationExample() {
 	// DECL_S OMIT
 	// Forma común
-	a := Pelicula{Nombre: "Un Cuento Chino",Año: 2011, Puntaje: 7.3}
+	p1 := Pelicula{Nombre: "Un Cuento Chino",Año: 2011, Puntaje: 7.3}
 	// Para más legibilidad separado en lineas
-	s := Pelicula{
+	p2 := Pelicula{
 		Nombre:  "El Secreto de sus Ojos",
 		Año: 2009,
 		Puntaje: 8.2,
 	}
 	// DECL_E OMIT
-	fmt.Println(a, s)
+	fmt.Println(p1, p2)
 }
