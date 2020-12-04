@@ -19,7 +19,7 @@ func main() {
 	ch <- "🏀"
 	b1 := <-ch
 	b2 := <-ch
-	fmt.Println(b1,b2)
+	fmt.Println(b1, b2)
 	// PROG_E OMIT
 }
 

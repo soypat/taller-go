@@ -10,18 +10,18 @@ func main() {
 		n++
 		return n
 	}
-	a := mas1(2)
-	fmt.Println(a)
+	b := mas1(2)
+	fmt.Println(b)
 	// PROG_E OMIT
 }
 
 // FUNC_S OMIT
 func ClosureActualWork() {
 	// FPROG_S OMIT
-	a := "no, no sé. "
+	b := "no, no sé. "
 	mistring := "ya tu sabe"
-	a += mistring
-	fmt.Println(a)
+	b += mistring
+	fmt.Println(b)
 	// FPROG_E OMIT
 }
 

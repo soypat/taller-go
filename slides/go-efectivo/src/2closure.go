@@ -6,13 +6,13 @@ import "fmt"
 
 func main() {
 	// PROG_S OMIT
-	a := 0
+	b := 0
 	mas1 := func() {
-		a++
+		b++
 	}
 	mas1()
 	mas1()
-	fmt.Println(a)
+	fmt.Println(b)
 	// PROG_E OMIT
 }
 

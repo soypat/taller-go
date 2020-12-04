@@ -31,11 +31,12 @@ func main() {
 func Hacer(cosa string, c chan string) {
 	for i := 1; i <= 5; i++ {
 		time.Sleep(time.Millisecond * 500)
-		str := fmt.Sprintf("%d %s",i, cosa)
+		str := fmt.Sprintf("%d %s", i, cosa)
 		c <- str
 	}
 	close(c) // Cerramos el canal al terminar el trabajo
 }
+
 // FUNC_E OMIT
 
 // FUNC_DUMMY_S OMIT
@@ -46,7 +47,7 @@ func dummy(c chan string) {
 	// CLOSE_S OMIT
 	close(c)
 	// CLOSE_E OMIT
-	fmt.Println(str,abierto)
+	fmt.Println(str, abierto)
 }
 
 // FUNC_DUMMY_E OMIT

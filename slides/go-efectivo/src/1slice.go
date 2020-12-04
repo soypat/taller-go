@@ -10,11 +10,12 @@ func main() {
 	var beatles = []string{"John", "Paul", "George", "Ringo"}
 
 	// Uso
-	fmt.Println(beatles[0], beatles[1:4])
+	fmt.Println(beatles[0])
+	fmt.Println(beatles[1:4])
 
 	// Modificación
-	beatles[0] = "Palito_Ortega"
-	beatles = append(beatles, "Walrus")
+	beatles[0] = "Niki"
+	beatles = append(beatles, "Nathy")
 	fmt.Println(beatles)
 	// PROG_E OMIT
 }

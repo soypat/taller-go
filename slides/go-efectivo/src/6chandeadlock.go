@@ -27,7 +27,7 @@ func main() {
 func Hacer(cosa string, c chan string) {
 	for i := 1; i <= 5; i++ {
 		time.Sleep(time.Millisecond * 500)
-		str := fmt.Sprintf("%d %s",i, cosa)
+		str := fmt.Sprintf("%d %s", i, cosa)
 		c <- str
 	}
 }

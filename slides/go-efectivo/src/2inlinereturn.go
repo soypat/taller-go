@@ -6,21 +6,22 @@ import "fmt"
 
 func main() {
 	// PROG_S OMIT
-	pedido := func() string {
-		return "🍕"
-	}( /*0 args*/ )
+	b := func(n int) int {
+		n++
+		return n
+	}(2) // la llamo con argumento 2
 
-	fmt.Println(pedido)
+	fmt.Println(b)
 	// PROG_E OMIT
 }
 
 // FUNC_S OMIT
 func ClosureActualWork() {
 	// FPROG_S OMIT
-	a := "no, no sé. "
+	b := "no, no sé. "
 	mistring := "ya tu sabe"
-	a += mistring
-	fmt.Println(a)
+	b += mistring
+	fmt.Println(b)
 	// FPROG_E OMIT
 }
 

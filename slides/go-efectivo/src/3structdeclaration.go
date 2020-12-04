@@ -6,8 +6,9 @@ import (
 	"fmt"
 )
 
-type Película struct {
+type Pelicula struct {
 	Nombre  string
+	Año int
 	Puntaje float32
 }
 
@@ -15,14 +16,13 @@ type Película struct {
 func main() {
 	// PROG_S OMIT
 	// Declaración y asignación
-	p := Película{
-		Nombre:  "Die Hard",
-		Puntaje: 9.5,
+	p := Pelicula{
+		Nombre:  "El Secreto de sus Ojos",
+		Año: 2009,
+		Puntaje: 8.2,
 	}
-
 	// Uso
 	fmt.Println(p.Nombre, p.Puntaje)
-
 	// Modificación
 	p.Nombre = "Die Hard 4"
 	p.Puntaje = 7.9
@@ -30,15 +30,15 @@ func main() {
 }
 
 // MAIN_E OMIT
-
 func DeclarationExample() {
 	// DECL_S OMIT
 	// Forma común
-	a := Película{Nombre: "Annihilation", Puntaje: 8.1}
+	a := Pelicula{Nombre: "Un Cuento Chino",Año: 2011, Puntaje: 7.3}
 	// Para más legibilidad separado en lineas
-	s := Película{
+	s := Pelicula{
 		Nombre:  "El Secreto de sus Ojos",
-		Puntaje: 9.0,
+		Año: 2009,
+		Puntaje: 8.2,
 	}
 	// DECL_E OMIT
 	fmt.Println(a, s)

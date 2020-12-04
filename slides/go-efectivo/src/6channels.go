@@ -9,7 +9,7 @@ func main() {
 	ch := make(chan string)
 	// CHANMAKE_E OMIT
 	// CHANSEND_S OMIT
-	ch <- "pizza🍕"   
+	ch <- "pizza🍕"
 	// CHANSEND_E OMIT
 	// CHANREC_S OMIT
 	s := <-ch // ahora s vale "pizza🍕"

@@ -18,7 +18,7 @@ func main() {
 	}()
 
 	go func() {
-		Hacer("pizza🍕") 
+		Hacer("pizza🍕")
 		waitPizza = false
 	}()
 
@@ -37,4 +37,5 @@ func Hacer(cosa string) {
 		time.Sleep(time.Millisecond * 500)
 	}
 }
+
 // FUNC_E OMIT

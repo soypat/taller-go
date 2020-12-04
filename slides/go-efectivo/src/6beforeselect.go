@@ -9,7 +9,8 @@ import (
 )
 
 // IMPORT_E OMIT
-/* MAIN_S */ // OMIT
+
+// MAIN_S OMIT
 func main() {
 	// PROG_S OMIT
 	c1 := make(chan string)

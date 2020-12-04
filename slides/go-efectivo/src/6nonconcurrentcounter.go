@@ -10,7 +10,7 @@ import (
 func main() {
 	// PROG_S OMIT
 	// GOLINE_S OMIT
-	Hacer("pizza🍕") 
+	Hacer("pizza🍕")
 	// GOLINE_E OMIT
 	Hacer("pan🍞")
 	// PROG_E OMIT

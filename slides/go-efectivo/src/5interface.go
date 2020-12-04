@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	f, err := os.Open("data/archivo.txt") // f es un *os.File 
+	f, err := os.Open("data/archivo.txt") // f es un *os.File
 	if err != nil {
 		panic(err)
 	}

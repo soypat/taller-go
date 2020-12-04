@@ -6,15 +6,16 @@ import (
 	"fmt"
 )
 
-type Película struct {
+type Pelicula struct {
 	Nombre  string
+	Año     int
 	Puntaje float32
 }
 
 // MAIN_S OMIT
 func main() {
 	// PROG_S OMIT
-	p := new(Película)
+	p := new(Pelicula)
 	fmt.Printf("%+v\n", p)
 	p.Nombre, p.Puntaje = "Die Hard", 9.5
 	fmt.Printf("%+v", p)
