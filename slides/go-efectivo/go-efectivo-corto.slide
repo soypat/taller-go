@@ -80,6 +80,14 @@ Un slice es un conjunto de datos del mismo tipo, ordenados secuencialmente.
 
 : Cana. 
 
+## Maps (diccionarios)
+
+Un mapa es una relación entre valores de un tipo y valores de otro. 
+
+.play -edit src/1maps.go /PROG_S/,/PROG_E/
+
+: Cana. Grupo de datos asociados entre sí. 
+
 ## Structs
 
 Un struct es una colección de campos. Un campo es una variable que tiene un determinado nombre y un determinado tipo.
@@ -88,14 +96,6 @@ Un struct es una colección de campos. Un campo es una variable que tiene un det
 
 : Pato. Modelan datos de la realidad 
 : Ej. Agregar campos de Actores, cada Actor puede tener Nombre, Apellido, y así.
-
-## Maps (diccionarios)
-
-Un mapa es una relación entre valores de un tipo y valores de otro. 
-
-.play -edit src/1maps.go /PROG_S/,/PROG_E/
-
-: Cana. Grupo de datos asociados entre sí. 
 
 ## Métodos 
 
