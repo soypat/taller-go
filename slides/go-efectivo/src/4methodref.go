@@ -4,26 +4,30 @@ package main
 
 import "fmt"
 
-type Juego struct {
+type Pelicula struct {
 	Nombre  string
+	Año     int
 	Puntaje float32
-	Año     uint16
 }
 
-func (j Juego) Resumen() string { return fmt.Sprintf("%v [%v] %0.1f/10", j.Nombre, j.Año, j.Puntaje) }
+// Primero va el receptor de método (p Pelicula)
+func (p Pelicula) Resumen() string {
+	fstr := "La película %v se estrenó en %v y recibió un puntaje de %0.1f/10"
+	return fmt.Sprintf(fstr, p.Nombre, p.Año, p.Puntaje)
+}
 
 // REFMETHOD_S OMIT
-func (j *Juego) NuevoPuntaje(p float32) {
-	j.Puntaje = p
+func (p *Pelicula) SetNombre(name string) {
+	p.Nombre = name
 }
 
 //REFMETHOD_E OMIT
 // MAIN_S OMIT
 func main() {
 	// PROG_S OMIT
-	p := Juego{"Counter Strike", 7.5, 1999}
+	p := Pelicula{Nombre: "Un Cuento Chino",Año: 2011, Puntaje: 7.3}
 	fmt.Println(p.Resumen())
-	p.NuevoPuntaje(9)
+	p.SetNombre("El robo del siglo")
 	fmt.Println(p.Resumen())
 	// PROG_E OMIT
 }

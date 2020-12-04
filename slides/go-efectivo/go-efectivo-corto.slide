@@ -114,7 +114,7 @@ Las funciones (y métodos) reciben copias de los argumentos, no los argumentos e
 Si eso es lo que buscamos, hay que pasar **referencias** como argumentos, es decir, punteros. 
 
 .play -edit src/4methodref.go /REFMETHOD_S/,/MAIN_E/
-<figcaption> El <code>*</code> indica que <code>j</code> es de "tipo puntero a una Película" y no "tipo Película". Probar el código con y sin el asterisco en el receptor para ver la diferencia.</figcaption> 
+<figcaption> El <code>*</code> indica que <code>p</code> es de "tipo puntero a una Película" y no "tipo Película". Probar el código con y sin el asterisco en el receptor para ver la diferencia.</figcaption> 
 
 : Pato. Lo mostramos porque es común. Pero pueden ser complicados y no van a aparecer en la presentación. 
 
