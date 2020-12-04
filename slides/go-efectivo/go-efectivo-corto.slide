@@ -53,6 +53,8 @@ El <code>%v</code> indica que queremos que se inserte el siguiente argumento con
 
 .code src/1helloworld.go /FMT_S/,/FMT_E/
 
+: Cana. 
+
 </details>
 
 ## Tipos compuestos
@@ -190,6 +192,8 @@ Representa a **cualquier** tipo que tenga implementado ese método.
 
 Las funciónes que toman un tipo interface como argumento, aceptan a cualquiera de esos tipos.
 
+: Cana. Es una de las interfaces más importantes
+
 ## 
 <h3> Caso <code>ReadAll</code> </h3>
 
@@ -219,17 +223,20 @@ Toman en cuenta la ***funcionalidad*** de los tipos de datos, y abstrae el resto
 Con interfaces:
 * La programadora de funciones puede abstraer detalles y dar flexibilidad a las usuarias.
 * La usuaria de las funciones tiene un amplio catálogo de funciones disponibles.
-* Reutilizar el código de otra es cuestión de implementar los métodos de la interface.
+* Usar las funciones es cuestión de implementar los métodos de la interface.
 
-: Pato. En soledad no tienen mucho uso. 
+: Cana. En soledad no tienen mucho uso. 
 : Toman valor cuando muchas librerías implementan la interface y todo el mundo se pone de acuerdo.
 
 ## Concurrencia
+
+: Pato
 
 ## Un programa secuencial (no concurrente)
 
 .play src/6nonconcurrentcounter.go
 
+: Pato
 : Concurrencia de Go es única, fácil y rica. 
 : Ejemplos simplificados, pero imaginen que los procesos pueden ser requests y ese tipo de cosas que llevan su tiempo.
 
@@ -250,8 +257,8 @@ Cualquier función puede ser llamada con <code>go</code> sin necesidad de modifi
 
 <figcaption style="position: absolute; bottom:40px;"> "Concurrency is about dealing with lots of things at once. Parallelism is about doing lots of things at once." ~ <a href="https://www.youtube.com/watch?v=oV9rvDllKEg"> Rob Pike</a></figcaption>
 
+: Pato
 : Livianas. Miles de gorutinas a la vez. 
-
 : No hay que moficar la función, A diferencia de otros lenguajes como Javascript y Python
 
 ## Un programa concurrente
@@ -259,12 +266,18 @@ Cualquier función puede ser llamada con <code>go</code> sin necesidad de modifi
 .play -edit src/6concurrentcounterpitfall.go
 <figcaption>Modificar la línea de <code>main()</code> a <code>go Hacer("pan🍞")</code></figcaption>
 
+: Pato
+
 ## Sincronizando gorutinas con variables
 
 .play -edit src/6concurrentcounter.go /MAIN_S/,/MAIN_E/
 .caption Si bien esto funciona, hay mejores maneras. 
 
+: Pato
+
 ## Canales (channels)
+
+: Cana 
 
 ## Canales
 
@@ -284,13 +297,16 @@ Para recibir un mensaje:
 
 <figcaption> En este caso los mensajes son de tipo <code>string</code>, pero puede usarse cualquier tipo</figcaption>
 
+: Cana. Este es un tipo nuevo que tiene sintaxis especial. 
+
 ## Ejemplo 
 
 .play src/6gopizza.go /MAIN_S/,/FUNC_E/
 
 .caption Los canales comunican *y* sincronizan.
 
-: Los canales son tipos, se pueden asignar a variables y pasarse como argumentos a funciones.
+: Cana. 
+: Los canales pueden pasarse como argumentos a funciones.
 : Vamos a mostrar cómo resolver problemas comunes, pero uno no tarda mucho en acostumbrarse.
 
 ## Sincronizando con canales
@@ -298,6 +314,8 @@ Para recibir un mensaje:
 .play -edit src/6chandeadlock.go /MAIN_S/,/FUNC_E/
 
 Error 🙃
+
+: Pato
 
 ## Deadlock - Explicación
 
@@ -313,11 +331,13 @@ Y las gorutinas que reciben mensajes de ese canal pueden preguntar si sigue abie
 
 La variable <code>abierto</code> es un <code>bool</code> que vale <code>true</code> si el canal está abierto.
 
+: Pato
+
 ## 
 <h3> Sincronizando gorutinas con <code>close()</code> </h3>
 
 .play -edit src/6chanclose.go /MAIN_S/,/FUNC_E/
-: Es un error mandar mensaje por un canal cerrado
+: Pato. Es un error mandar mensaje por un canal cerrado
 
 ##
 <h3> Sincronizando gorutinas con <code>range</code></h3>
@@ -328,6 +348,8 @@ Este código es equivalente al anterior, pero más corto.
 
 <figcaption> La palabra clave <code>range</code> se puede usar para iterar sobre canales, slices y mapas </figcaption>
 
+: Pato
+
 ## Bloqueo de canales
 
 Una gorutina se bloquea si: 
@@ -336,11 +358,12 @@ Una gorutina se bloquea si:
 
 .play -edit src/6chanbuffpitfall.go /MAIN_S/,/MAIN_E/
 
-: Mandar por un canal no se compara a un tiro de basketball. Es más parecido a una entrega de pizza. La mensajera se queda esperando en la puerta a ser atendida.
-
 En este caso la mensajera bloquea el programa y el receptor nunca llega a atenderlo, causando un ***deadlock***.
 
 Esto se resuelve con buffered channels
+
+: Pato
+: Mandar por un canal no se compara a un tiro de basketball. Es más parecido a una entrega de pizza. La mensajera se queda esperando en la puerta a ser atendida.
 
 ## Buffered channels 
 
@@ -354,7 +377,11 @@ Ahora a puede seguir la ejecución después de mandar un mensaje:
 
 .play -edit src/6chanbuff.go /MAIN_S/,/MAIN_E/
 
+: Pato
+
 ## Select
+
+: Pato
 
 ## Bloqueo de canales lentos
 
@@ -363,12 +390,14 @@ El siguiente programa es limitado por la gorutina más lenta.
 .play -edit src/6beforeselect.go /MAIN_S/,/MAIN_E/
 <figcaption> El programa es limitado por la velocidad a la que el canal 2 puede recibir mensajes (<code><-c2</code>) </figcaption>
 
+: Pato
+
 ## Select
 
 <code>select</code> le permite al programa esperar hasta que llegue un mensaje entre varios canales.
 
 .play -edit src/6afterselect.go /MAIN_S/,/MAIN_E/
 
-: Select decide qué hacer de acuerdo con el canal del que le llega. 
+: Pato. Select decide qué hacer de acuerdo con el canal del que le llega. 
 
 ## Preguntas?
