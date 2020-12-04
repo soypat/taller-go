@@ -98,6 +98,7 @@ Un struct es una colección de campos. Un campo es una variable que tiene un det
 
 : Pato. Modelan datos de la realidad 
 : Ej. Agregar campos de Actores, cada Actor puede tener Nombre, Apellido, y así.
+: STOP
 
 ## Métodos 
 
@@ -119,6 +120,7 @@ Si eso es lo que buscamos, hay que pasar **referencias** como argumentos, es dec
 <figcaption> El <code>*</code> indica que <code>p</code> es de "tipo puntero a una Película" y no "tipo Película". Probar el código con y sin el asterisco en el receptor para ver la diferencia.</figcaption> 
 
 : Pato. Lo mostramos porque es común. Pero pueden ser complicados y no van a aparecer en la presentación. 
+: STOP
 
 ## Bloques y Funciones
 
@@ -161,6 +163,7 @@ Aquí <code>mas1</code> puede acceder a la variable <code>a</code> definida ante
 El concepto de un _closure_ es especialmente útil cuando entran en juego los modificadores de funciones, <code>defer</code> y <code>go</code>.
 
 : Pat: A veces se pueden pasar variables tipo función como parámetros de entrada y salida de una función. 
+: STOP
 
 ## Funciones variadicas
 
@@ -220,6 +223,7 @@ En la librería estándar hay 31 tipos que cumplen las condiciones del <code>io.
 
 : Cana. Usamos Interfaces sin darnos cuenta. 
 : Tangente. Aprovechar hablar de errores. Un err es una variable que tiene tipo error. Muy común preguntar si NO es nil.
+: Ask STOP?
 
 ## ¿Por qué interfaces?
 
@@ -232,7 +236,7 @@ Con interfaces:
 
 : Cana. En soledad no tienen mucho uso. 
 : Toman valor cuando muchas librerías implementan la interface y todo el mundo se pone de acuerdo.
-
+: La lectura de datos es algo ubicuo en la programacion. tiene sentido que exista solo una funcion para leerlos. Solo varia la implementacion.
 ## Concurrencia
 
 : Concurrencia de Go es única, fácil y rica.
@@ -277,9 +281,11 @@ Cualquier función puede ser llamada con <code>go</code> sin necesidad de modifi
 .play -edit src/6concurrentcounterpitfall.go
 <figcaption>Modificar la línea de <code>main()</code> a <code>go Hacer("pan🍞")</code></figcaption>
 
+: Pato
 : Solo cambiamos una linea. Muy fácil hacer concurrencia en Go
 : El programa ahora corre dos veces más rápido!
-: Pato
+: Queremos hacerlo 100% concurrente agregando otro `go`
+: STOP
 
 ## Sincronizando gorutinas con variables
 
@@ -322,7 +328,10 @@ Para recibir un mensaje:
 
 : Cana. 
 : Los canales pueden pasarse como argumentos a funciones.
-: Vamos a mostrar cómo resolver problemas comunes, pero uno no tarda mucho en acostumbrarse.
+: Vamos a mostrar cómo resolver problemas comunes... uno no tarda mucho en acostumbrarse.
+: 
+: STOP->segway: Como leemos todos los mensajes de `Hacer`?
+
 
 ## Sincronizando con canales
 
@@ -331,6 +340,8 @@ Para recibir un mensaje:
 Error 🙃
 
 : Pato
+: Intentamos recibir en un canal que nunca mas iba a recibir un mensaje
+
 
 ## Deadlock - Explicación
 
@@ -347,6 +358,7 @@ Y las gorutinas que reciben mensajes de ese canal pueden preguntar si sigue abie
 La variable <code>abierto</code> es un <code>bool</code> que vale <code>true</code> si el canal está abierto.
 
 : Pato
+: STOP?
 
 ## 
 <h3> Sincronizando gorutinas con <code>close()</code> </h3>
@@ -364,6 +376,7 @@ Este código es equivalente al anterior, pero más corto.
 <figcaption> La palabra clave <code>range</code> se puede usar para iterar sobre canales, slices y mapas </figcaption>
 
 : Pato
+: STOP
 
 ## Bloqueo de canales
 
@@ -414,5 +427,5 @@ El siguiente programa es limitado por la gorutina más lenta.
 .play -edit src/6afterselect.go /MAIN_S/,/MAIN_E/
 
 : Pato. Select decide qué hacer de acuerdo con el canal del que le llega. 
-
+: STOP
 ## Preguntas?
