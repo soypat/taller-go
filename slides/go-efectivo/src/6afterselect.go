@@ -13,7 +13,6 @@ import (
 // MAIN_S OMIT
 func main() {
 	// PROG_S OMIT
-	// Declaro un canal con un buffer de 1 mensaje
 	c1, c2 := make(chan string), make(chan string)
 
 	go PizzeroRapido(c1)
