@@ -177,6 +177,7 @@ La cantidad a devolver es fija.
 ## Interfaces
 
 : Cana. Hablar de OOP. No existen Clases. No existe Inheritance. El modelo es distinto.
+: El modelo de OOP de Go lo hace particular.
 
 ## Interfaces
 
@@ -190,6 +191,10 @@ Representa a **cualquier** tipo que tenga implementado ese método.
 
 Las funciónes que toman un tipo interface como argumento, aceptan a cualquiera de esos tipos.
 
+<figcaption style="position:absolute;bottom:1em;margin-right:4em;margin-left:-1em;">"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck." ~James Whitcomb Riley 1888<figcaption>
+
+: "Cuando veo un pajaro que camina como un pato, nada como un pato y suena igual a un pato, llamo ese pajaro un pato" ~James Whitcomb Riley 1888
+: 
 ## 
 <h3> Caso <code>ReadAll</code> </h3>
 
@@ -226,11 +231,15 @@ Con interfaces:
 
 ## Concurrencia
 
+: Concurrencia de Go es única, fácil y rica.
+: Concurrencia no es nada nuevo, Go tambien toma inspiracion de un lenguaje viejo para los conceptos que veremos (newsqueak).
+
+
 ## Un programa secuencial (no concurrente)
 
 .play src/6nonconcurrentcounter.go
 
-: Concurrencia de Go es única, fácil y rica. 
+
 : Ejemplos simplificados, pero imaginen que los procesos pueden ser requests y ese tipo de cosas que llevan su tiempo.
 
 ## 
@@ -252,17 +261,24 @@ Cualquier función puede ser llamada con <code>go</code> sin necesidad de modifi
 
 : Livianas. Miles de gorutinas a la vez. 
 
-: No hay que moficar la función, A diferencia de otros lenguajes como Javascript y Python
+: No hay que modificar la función, A diferencia de otros lenguajes como Javascript y Python
+: segway: Como modificar funcion Hacer -> concurrente?
 
 ## Un programa concurrente
 
 .play -edit src/6concurrentcounterpitfall.go
 <figcaption>Modificar la línea de <code>main()</code> a <code>go Hacer("pan🍞")</code></figcaption>
 
+: Solo cambiamos una linea. Muy fácil hacer concurrencia en Go
+: El programa ahora corre dos veces más rápido!
+
 ## Sincronizando gorutinas con variables
 
 .play -edit src/6concurrentcounter.go /MAIN_S/,/MAIN_E/
 .caption Si bien esto funciona, hay mejores maneras. 
+
+: variables que sirven de señal de espera
+: 
 
 ## Canales (channels)
 
