@@ -1,6 +1,13 @@
 # Taller de go
 
-## `present` protips
+Uses [go-presentx](https://github.com/soypat/go-presentx) tool. Install it and run the following in directory with `./templates` and `./static` folders:
+
+```console
+go-presentx
+```
+
+
+## Creating presentations using `present`
 [Full documentation can be found here](https://godoc.org/golang.org/x/tools/present)
 
 First two blocks are structure information on
@@ -33,7 +40,7 @@ Been working on slides. Here's a bullet point list:
 .image https://golang.org/lib/godoc/images/go-logo-blue.svg 200 _
 ```
 
-## How to install `present` with syntax highlighting
+## How to install `go-present` with syntax highlighting
 Requires:
 * [Go](https://golang.org)
 
@@ -48,7 +55,7 @@ go install .
 To run: 
 
 ```bash
-go-presentx -base .
+go-presentx
 ```
 
 ## Installing Go's official `present`
