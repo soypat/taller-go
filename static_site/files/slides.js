@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-var PERMANENT_URL_PREFIX = '/Go%20desde%20cero_files/';
+var PERMANENT_URL_PREFIX = 'files/';
 
 var SLIDE_CLASSES = ['far-past', 'past', 'current', 'next', 'far-next'];
 
