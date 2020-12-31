@@ -1,4 +1,4 @@
 /.vscode
 *.html
 !docs/**
-# !docs/*.html
+!static_site/*.html
