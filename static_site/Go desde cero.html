@@ -99,7 +99,7 @@ manejo de memoria (garbage collection) y buen manejo en equipos grandes.</p>
     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>            
 <span class="token punctuation">}</span>
 </pre>
-</code></pre></div><div class="buttons"><button class="run">Run</button></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+</code></pre></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
 <p>La primera línea establece el nombre del paquete que estamos ecribiendo:</p>
 
 <div class="code noedit"><pre><code class="code language-go">
@@ -174,7 +174,7 @@ func main() {
     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>             
 </pre>
 <pre style="display: none"><span>} 
-</span></pre></code></pre></div><div class="buttons"><button class="run" style="display: inline-block;">Run</button></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre><span class="stderr"># _/tmp/present-492636790
+</span></pre></code></pre></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre><span class="stderr"># _/tmp/present-492636790
 ./prog.go:13:7: cannot use 1 (type untyped int) as type string in assignment
 </span><span class="system">
 Program exited: exit status 2</span></pre></div>
@@ -242,7 +242,17 @@ import "fmt"
     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </pre>
-</code></pre></div><div class="buttons"><button class="run" style="display: inline-block;">Run</button></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre><span class="stdout">6
+</code></pre></div><div class="ui-resizable output" style="display: none;">
+  
+  <div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div>
+  <div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div>
+  <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div>
+  
+  <div class="buttons">
+    <button class="run">Run</button>
+    <button class="kill">Kill</button>
+    <button class="close">Close</button>
+  </div><pre><span class="stdout">6
 </span><span class="system">
 Program exited.</span></pre></div>
 <p>Más corto, usando lo anterior:</p>
@@ -259,7 +269,7 @@ import "fmt"
     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </pre>
-</code></pre></div><div class="buttons"><button class="run">Run</button></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+</code></pre></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
 
       
       <span class="pagenumber">10</span>
@@ -287,7 +297,7 @@ func main() {
     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>greeting<span class="token punctuation">)</span>
 </pre>
 <pre style="display: none"><span>}
-</span></pre></code></pre></div><div class="buttons"><button class="run">Run</button></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+</span></pre></code></pre></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
 <p>Hay otros tipos básicos además del <code>string</code> e <code>int</code>. Lista completa:</p>
 
 <div class="code noedit"><pre><code class="code language-go">
@@ -335,7 +345,7 @@ func main() {
     <span class="token punctuation">}</span>
 </pre>
 <pre style="display: none"><span>}
-</span></pre></code></pre></div><div class="buttons"><button class="run">Run</button></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+</span></pre></code></pre></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
 <p>El bloque delimitado por <code>{}</code> se ejecuta sólamente si <code>a</code> es igual a <code>pizza</code>.</p>
 <details><summary>Valores de tipo <code>bool</code></summary>
 La expresión <code>a=="pizza"</code> es un valor de tipo <code>bool</code>, y puede tener el valor de <code>true</code> o <code>false</code>. 
@@ -377,7 +387,7 @@ Comparación  y Lógicos | Matemáticos       |  Bits               | Pointers
 &gt;=  &lt;=  !=             |  +=  -=   *=  /=  |  &amp;= |=  ^=          |  Canales
 ||  &amp;&amp;   !             |  %        %=      |  &lt;&lt;  &gt;&gt;  &lt;&lt;=  &gt;&gt;=   |  &lt;-  -&gt;
 */ // OPERATORS_E OMIT
-</span></pre></code></pre></div><div class="buttons"><button class="run">Run</button></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+</span></pre></code></pre></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
 </details>
       
       <span class="pagenumber">13</span>
@@ -415,7 +425,7 @@ Comparación  y Lógicos | Matemáticos       |  Bits               | Pointers
 &gt;=  &lt;=  !=             |  +=  -=   *=  /=  |  &amp;= |=  ^=          |  Canales
 ||  &amp;&amp;   !             |  %        %=      |  &lt;&lt;  &gt;&gt;  &lt;&lt;=  &gt;&gt;=   |  &lt;-  -&gt;
 */ // OPERATORS_E OMIT
-</span></pre></code></pre></div><div class="buttons"><button class="run">Run</button></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+</span></pre></code></pre></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
 <p>Aquí se inicializa <code>i</code>, se verifica que <code>i&lt;10</code>, y se corre el bloque, que ente caso simplemente imprime <code>i</code>. Luego, se le suma 1 y se verifica la condición nuevamente.</p>
 
       
@@ -460,7 +470,7 @@ func Sumar(x int, y int) int {
     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>suma<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </pre>
-</code></pre></div><div class="buttons"><button class="run">Run</button></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+</code></pre></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
 <figcaption>Las funciones se pueden asignar a variables y ser argumentos de otras funciones.</figcaption>
       
       <span class="pagenumber">15</span>
@@ -488,7 +498,7 @@ func Sumar(x int, y int) int {
     <span class="token keyword">return</span> div<span class="token punctuation">,</span> resta
 <span class="token punctuation">}</span>
 </pre>
-</code></pre></div><div class="buttons"><button class="run">Run</button></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+</code></pre></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
 
       
       <span class="pagenumber">16</span>
@@ -517,7 +527,7 @@ import "fmt"
 </pre>
 <pre style="display: none"><span>// FUNC_S OMIT
 // FUNC_E OMIT
-</span></pre></code></pre></div><div class="buttons"><button class="run">Run</button></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+</span></pre></code></pre></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
 <p>Hay una tres reglas muy simples que indican si se puede acceder a una variable en un cierto lugar o no:</p>
 <ol>
 <li>
