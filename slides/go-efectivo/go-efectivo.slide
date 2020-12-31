@@ -1,5 +1,4 @@
 # Go efectivo
-Go para entendidos
 20 Nov 2020
 Tags: curso,avanzado,efectivo
 Summary: Desarrollado para un curso de WIE ITBA.
@@ -13,183 +12,93 @@ acanalis@itba.edu.ar
 
 ## ¿Por que Go?
 
-Tomado de un [StackOverflow blogpost](https://stackoverflow.blog/2020/11/02/go-golang-learn-fast-programming-languages/)
-
-
-* Go es diseñado para ingeniería informática moderna
+* Go está diseñado para ingeniería informática moderna
 * Go es simple
 * Go es rápido
-* Implementación de concurrencia fácil
+* Escribir programas concurrentes es fácil
 * El ecosistema Go
+* [Más info](https://stackoverflow.blog/2020/11/02/go-golang-learn-fast-programming-languages/)
 
-: Go hace todo lo que hacen los lenguajes de programación comunes
-: El ecosistema Go se refiere a la interacción entre los desarrolladores y el equipo Go. Hay un dialogo activo con mucha ida y vuelta. La comunidad esta sumamente involucrada en los cambios de Go, como veran el los git issues.
+: Pat. Pocos keywords. Spec breve. Compila rápido. 
+: Fácil compartir librerías. 
 
 ## Casos de uso
 
 * Web development
-    * Con librerías como [`http`](https://golang.org/pkg/net/http/), [`pion`](https://github.com/pion/webrtc#readme) (webrtc) y [`gorilla`](https://github.com/gorilla/)
-    * Con frameworks. [`gin`](https://github.com/gin-gonic) y [`buffalo`](https://gobuffalo.io/en/)
-    * Generación de sitios estáticos. [`HUGO`](https://gohugo.io/)
+    * Librerías: [`http`](https://golang.org/pkg/net/http/), [`pion`](https://github.com/pion/webrtc#readme) (webrtc) y [`gorilla`](https://github.com/gorilla/)
+    * Framework. [`gin`](https://github.com/gin-gonic) y [`buffalo`](https://gobuffalo.io/en/)
 
 * Programas CLI
-    * Librerías [`pflags`](https://github.com/spf13/pflag#readme), [`termbox`](https://github.com/nsf/termbox-go#readme)
-    * Con frameworks. [`cobra`](https://github.com/spf13/cobra#readme)
+    * Librerías: [`pflags`](https://github.com/spf13/pflag#readme), [`termbox`](https://github.com/nsf/termbox-go#readme)
+    * Frameworks: [`cobra`](https://github.com/spf13/cobra#readme)
 
-* Servicios de cloud y red
-    * [Docker](https://www.docker.com/) y [Kubernetes](https://kubernetes.io/)
 
 * [Cientos de otras cosas](https://github.com/avelino/awesome-go#awesome-go)
 
-: Antes de empezar con un framework se recomienda FUERTEMENTE aprender los patterns de Go bien. Después se te va complicar como hacer ciertas cosas y la vas a pasar mal sin conocimiento profundo previo de Go.
-
-: Muy recomendado buffalo para programar un sitio completo frontend-backend. Tiene bootstrap integrado con posibilidad de integrar Vue.js. Postgres, mysql, sqlite3, etc para DB. Muy inspirado en ruby, los que vengan de Ruby on rails estarán muy afamiliarizados con el flujo de desarrollo.
-
+: Pat. Mencionar experiencia con el curso de go usando Buffalo.  
+: Tiene bootstrap integrado con posibilidad de integrar Vue.js. Postgres, mysql, sqlite3, etc para DB. Muy inspirado en ruby, los que vengan de Ruby on rails estarán muy afamiliarizados con el flujo de desarrollo.
 
 ## Hello World
+
+: Cana. Clase anterior. Variables, Tipos, If, For, Func. Experiencia Programando. Charla tiempo limitado. Ver las diferencias de Go. 
 
 ## Hello World
 
 .play -edit src/1helloworld.go /package/,/MAIN_E/
 
-El primer argumento de Printf es un string con el formato que queremos que imprima el resto de los argumentos. 
-
-El %v indica que queremos que se inserte el siguiente argumento con formato de string, y en ese lugar. 
+El primer argumento de <code>Printf</code> es un string con el formato que queremos que imprima el resto de los argumentos. 
+El <code>%v</code> indica que queremos que se inserte el siguiente argumento con formato de string, y en ese lugar. 
 
 <details><summary> Lista completa de verbos </summary>
 
 .code src/1helloworld.go /FMT_S/,/FMT_E/
 
-[[https://golang.org/pkg/fmt/][Más información]]
+: Cana. 
+
 </details>
-
-## Conceptos de Go
-
-##
-<h3><code>gofmt</code></h3>
-
-Todo código de Go
-
-.code src/1gofmt.txt
-
-.code src/1gofmt.go
-
-// ## Zero value
-// .play -edit src/1zerovalues.go /PROG_S/,/PROG_E/
-// .caption Los valores de inicialización para tipos numéricos, bools y strings son 0, falso y "" (string vacío), respectivamente
-
-## Zero value
-Los tipos primitivos de Go son persistentes, no existe un string/valor 'nulo'.
-
-.play -edit src/1zerovalues.go /PROG_S/,/PROG_E/
-.caption Los valores de inicialización para tipos numéricos, bools y strings son 0, falso y "" (string vacío), respectivamente
-
-## Comentarios
-
-Hay dos tipos de comentarios en Go. Toda documentación de funciones/variables va antes de la declaración y se suele usar solo "//" a estos efectos.
-
-.code src/1comments.go
-
-
-## 
-<h3> Bloques <code>{ }</code> y Scope (alcance) </h3>
-
-.play -edit src/1blocks.go /MAIN_S/,/MAIN_E/
-
-Hay una dos reglas muy simples que indican si se puede acceder a una variable en un cierto lugar o no:
-
-1. En una función, una variable se puede utilizar desde que se declara, hasta el siguiente caracter `}`
-
-2. Siempre se pueden acceder a las variable declarada afuera del cuerpo de una función.
-
-
-## Terminación de programa
-
-.play -edit src/1termination.go /MAIN_S/,/MAIN_E/
-.caption Una lista de formas de terminar un programa.
-
 
 ## Tipos compuestos
 
+: Cana. Int, String. Compuestos contienen más información
 ## Tipos compuestos
 
 Un tipo compuesto es un tipo de dato que puede ser construido con los tipos primitivos de un lenguaje.
 
-* Structs 
 * Slices (listas/vector)
+* Structs 
 * Maps (dicts)
 * Interfaces
-
-: Nos vamos a enfocar más en structs, métodos e interfaces que es donde Go brilla. Go no tiene Inheritance ni clases, pero se arregla con el concepto de interfaz y method set, respectivamente. Los slices son parecidos a los otros lenguajes no valen la pena hablar ahora. Se necesita entendimiento básico del lenguaje. 
 
 .image /assets/go-img/gopher.png 200 _
 .caption Diseño del _Gopher_ hecho por [[https://instagram.com/reneefrench][Renee French]]
 
-## Structs
-
-
-.play -edit src/3structdeclaration.go /type Pel/,/MAIN_E/
-
-## Declaración con new (pointer)
-
-.play -edit src/3structnew.go
-.caption Observen que se imprime la struct con el prefijo "`&`". Este es el operador dereferencia. Indica que `p` es un puntero a un datatype. Si no está seguro de la diferencia, no use `new` .
-
-: Si no están afamiliarizado con pointers, descuiden. No haremos hincapié en este curso en punteros porque no es algo crítico para programar en Go.
-
+: Cana. Familiares a otros lenguages.
 
 ## Slices
 
-Aquí se comienza declarando un *slice*. Por detrás se crea un arreglo y se toma la referencia.
+Un slice es un conjunto de datos del mismo tipo, ordenados secuencialmente. 
 
 .play -edit src/1slice.go /PROG_S/,/PROG_E/
 
-: Cuando se usa append no se crea un nuevo arreglo, se crea un nuevo slice. Por eso no es un método la función append
-
-// Se pueden obviar los límites superiores o inferiores tomando indices de arreglos o slices. Los siguientes son equivalentes para un arreglo de longitud 5:
-
-// .code src/1slice.go /IDX_S/,/IDX_E/
-// .caption El resultado de un rango de índices siempre es un *slice*
-
-: slice es más usado que los arreglos pero conlleva sus cuidados especiales (null pointer dereference)
-
-## Slice: Referencias
-.play -edit src/1shorthandslice.go /PROG_S/,/PROG_E/
-
-Aquí tenemos un slice llamado **`beatles`** del cual tomamos referencia del primer al tercer elemento
-
-Cuando asignamos a la referencia **`beatleSlice`** en verdad ***estamos modificando el arreglo original***
-
-Cuidado con esto!
-
-
-: La declaración corta ahorra mucho espacio y hace que el código sea más legible pero puede resultar confuso!
-: Vamos a alternar entre formas de declarar para que se vayan acostumbrando a Go. Puede llevar un tiempo acostumbrarse a las varias formas de declarar variables
-: Esto ocurre para prevenir el copiado inecesario de arreglos. Si uno en verdad quiere copiar un arreglo puede usar la librería reflect. 
-: Esto no solo pasa en Go, las listas de Python funcionan de la misma forma!
-
+: Cana. 
 
 ## Maps (diccionarios)
 
+Un mapa es una relación entre valores de un tipo y valores de otro. 
+
 .play -edit src/1maps.go /PROG_S/,/PROG_E/
 
-// Se puede eliminar un conjunto clave-valor con **`delete`**
-// .code src/1maps.go /DEL_S/,/DEL_E/
+: Cana. Grupo de datos asociados entre sí. 
 
+## Structs
 
-## Pitfalls con mapas
+Un struct es una colección de campos. Un campo es una variable que tiene un determinado nombre y un determinado tipo.
 
-El siguiente programa compila sin problemas pero falla al ser corrido. Es necesario inicializar un mapa antes de usarlo. Esto se puede hacer con la declaración tipo compuesto.
+.play -edit src/3structdeclaration.go /type Pel/,/MAIN_E/
 
-.play -edit src/1mapnilderef.go /PROG_S/,/PROG_E/
-.caption Nos olvidamos de inicializar el mapa
-
-<details><summary>Respuesta</summary>
-
-Declarar el mapa con: <code>beatles := map[string]string{} </code>
-</details>
-
-### Fin de tipos agregados
+: Pato. Modelan datos de la realidad 
+: Ej. Agregar campos de Actores, cada Actor puede tener Nombre, Apellido, y así.
+: STOP
 
 ## Métodos 
 
@@ -199,219 +108,324 @@ Un método es una función que está ligada a un cierto tipo.
 
 .play -edit src/4method.go /type/,/MAIN_E/
 
+: Pato. Agrega comportamiento a nuestros tipos.
+
 ## Pasando referencias
 
 Las funciones (y métodos) reciben copias de los argumentos, no los argumentos en sí. Por eso, modificarlos adentro de una función no tiene ningún efecto. (Ver ejemplo sin asterisco)
 
 Si eso es lo que buscamos, hay que pasar **referencias** como argumentos, es decir, punteros. 
 
-.play -edit src/4methodref.go /func/,/MAIN_E/
-.caption Probar el código con y sin el asterisco en el receptor para ver la diferencia.
+.play -edit src/4methodref.go /REFMETHOD_S/,/MAIN_E/
+<figcaption> El <code>*</code> indica que <code>p</code> es de "tipo puntero a una Película" y no "tipo Película". Probar el código con y sin el asterisco en el receptor para ver la diferencia.</figcaption> 
 
-## Interfaces
+: Pato. Lo mostramos porque es común. Pero pueden ser complicados y no van a aparecer en la presentación. 
+: STOP
 
-## Interfaces
+## Bloques y Funciones
 
-Un tipo interface es una colección de métodos. Se puede pasar a una función para indicar que ese argumento puede ser cualquier tipo que tenga esos métodos.
+## 
+<h3> Bloques <code>{ }</code> y Scope (alcance) </h3>
 
+.play -edit src/1blocks.go /MAIN_S/,/MAIN_E/
 
+Hay una tres reglas muy simples que indican si se puede acceder a una variable en un cierto lugar o no:
 
-.code src/5interface.go /SORTER_S/,/SORTER_E/
+1. El caracter <code>{</code> abre un bloque y <code>}</code> lo cierra. 
 
+2. En una función, una variable se puede utilizar desde que se declara, hasta que cierra el bloque que la contiene.
 
-La libería <code>sort</code> define esta interface, la cual se usa para la función <code>Sort()</code>.
+3. Una variable declara fuera de la función (en el top level) siempre es accesible, independientemente del orden.
 
-.code src/5interface.go  /SORTSIGNATURE_S/,/SORTSIGNATURE_E/
+: Cana. Por si alguien no vino ayer, probablemente se tope con esto. Variables no siempre accesibles. 
 
-<figcaption style="position:absolute;bottom:1.6em;padding-right:4rem; ">"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck" -<b>James Whitcomb Riley, 1888</b></figcaption> 
+## Funciones como tipos
 
+Las funciones pueden ser guardadas en una variable de tipo "función".
 
-## Ejemplo de uso de sort
+Aquí se asigna y se declara la variable <code>mas1</code>:
 
-.play -edit src/5interface.go /USG_S/,/USG_E/
-.caption Como `Names` implementa los métodos necesarios, se dice que "Implementa" `sort.Interface`.
+.play -edit src/2inlinefunc.go /PROG_S/,/PROG_E/
 
+Se puede llamar a la función inmediatamente después de la declaración: 
 
-: Vamos a declarar un tipo Writer que va ser un interface... Y eso se declara pasando los metodos que implementa
-: Es raro al comienzo. Venimos declarando tipos en base a la informacion que tienen y ahora estamos considerando el comportamiento
-: Sigue la logica del poeta ingles James Whitcomb Riley: 
+.play -edit src/2inlinereturn.go /PROG_S/,/PROG_E/
 
+: Cana. Detalles de funciones. Mencionamos esto para usarlo más adelante.
 
-## Por qué interfaces?
+## Closures (ejemplo)
 
-Es una abstracción que toma en cuenta la ***funcionalidad*** común entre tipos de datos.
+Una patrón común que usa esto se denomina _closure_ y se usa cuando se quiere que la función acceda a variables definidas por fuera de ésta. 
 
-No tienen mucho uso cuando uno programa en soledad. Se convierten en un abstracción fundamental al programar cuando muchas librerías implementan la interface. 
+Aquí <code>mas1</code> puede acceder a la variable <code>a</code> definida anteriormente.
 
-Muchas librerías en Go usan el `Reader` y `Writer` interface. Esto permite abstraer de qué se está leyendo, sin tener en cuenta si es una respuesta http, un buffer o un archivo.
+.play -edit src/2closure.go /PROG_S/,/PROG_E/
+El concepto de un _closure_ es especialmente útil cuando entran en juego los modificadores de funciones, <code>defer</code> y <code>go</code>.
 
-.code src/5interface.go /INTERFACE_S/,/INTERFACE_E/
-
-
-// Supongamos que quiero crear mi propia interface para que el resto del mundo la use. En el ejemplo siguiente se declara una interface llamada **`Stacker`** que tiene dos métodos propios de un LIFO Stack.
-// .code src/4stacker.go /INTERFACE_S/,/INTERFACE_E/
-//El éxito del interface depende de cuantos lo adopten y lo incluyan como argumentos en sus funciones.
-//## Implementación de un LIFO stack interface
-//.play -edit src/4stacker.go /type Stack /,/MAIN_E/
-: No nos vamos a quedar mucho tiempo aca porque esto no es algo que programarian en Go
-: es comodo trabajar directo sobre los slices para la mayoria de los casos que implementar metodos para cada caso
-
-
-
-
-## Conceptos de funciones
+: Pat: A veces se pueden pasar variables tipo función como parámetros de entrada y salida de una función. 
+: STOP
 
 ## Funciones variadicas
+
+Una función variádica puede tomar cualquier cantidad de argumentos. 
+
+La cantidad a devolver es fija. 
 
 .code src/2variadic.go /FUNC_S/,/FUNC_E/
 
 .play -edit src/2variadic.go /PROG_S/,/PROG_E/
-.caption Una función puede tomar un número indefinido de argumentos pero la cantidad a devolver es fija 
 
-## Closures (ejemplo tonto)
+<figcaption>La familia de funciones <code>fmt.Print</code> son todas variádicas</figcaption>
 
-Escribir:
+: Pato. 
 
-.play -edit src/2closure.go /PROG_S/,/PROG_E/
+## Interfaces
 
-Es lo mismo que escribir:
+: Cana. Hablar de OOP. No existen Clases. No existe Inheritance. El modelo es distinto.
+: El modelo de OOP de Go lo hace particular.
 
-.code src/2closure.go /FPROG_S/,/FPROG_E/
-El concepto de un _closure_ solo es útil cuando entran en juego los modificadores de funciones.
+## Interfaces
 
-: Las funciones son first class citizens en Go. Se pueden usar como variables. Hay veces que tiene sentido pasar una función pero en general el OOP se encarga mejor de eso.
-: Los dos ejemplos de arriba son casi idénticos. El compilador de Go usa function inlining por defecto, no asigna un bloque de memoria para cada función
-: Este ejemplo es testamento a la inutilidad de closures en un lenguaje común. Se imaginan que concepto de Go las puede hacer útiles?
-: Las function modifiers: `go` y `defer`
+Una interface es una colección de métodos. 
 
-## Closure error wrapping
+Así se define una de las interfaces más importantes, la <code>io.Reader</code>
 
-.code src/2closurewrap.go /FUNC_S/,/FUNC_E/ 
-.caption El proposito del defer aquí es poder hacerle un posprocesado a los datos una vez que termina la función. En este caso es para generar un error más util para el usuario de la librería/programa.
-.play -edit src/2closurewrap.go /PROG_S/,/PROG_E/ 
+.code src/5interface.go /INTERFACE_S/,/INTERFACE_E/
 
+Representa a **cualquier** tipo que tenga implementado ese método. 
+
+Las funciónes que toman un tipo interface como argumento, aceptan a cualquiera de esos tipos.
+
+<figcaption style="position:absolute;bottom:1em;margin-right:4em;margin-left:-1em;">"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck." ~James Whitcomb Riley 1888<figcaption>
+
+: "Cuando veo un pajaro que camina como un pato, nada como un pato y suena igual a un pato, llamo ese pajaro un pato" ~James Whitcomb Riley 1888
+: 
+: Cana. Es una de las interfaces más importantes
+
+## 
+<h3> Caso <code>ReadAll</code> </h3>
+
+En el paquete <code>ioutil</code> hay una función llamada <code>ReadAll</code>, que lee todos los contenidos de un <code>io.Reader</code>.
+
+.code src/5interface.go /READALL_S/,/READALL_E/
+
+En la librería estándar hay 31 tipos que cumplen las condiciones del <code>io.Reader</code>:
+
+.code src/5interface.txt
+
+<code>ReadAll</code> hace su trabajo con cualquiera de ellos.
+
+: Cana. No importa si es un buffer, una respuesta http, o un archivo.
+
+## Ejemplo completo
+
+.play src/5interface.go /ALL_S/,/ALL_E/
+
+: Cana. Usamos Interfaces sin darnos cuenta. 
+: Tangente. Aprovechar hablar de errores. Un err es una variable que tiene tipo error. Muy común preguntar si NO es nil.
+: Ask STOP?
+
+## ¿Por qué interfaces?
+
+Toman en cuenta la ***funcionalidad*** de los tipos de datos, y abstrae el resto de los detalles.
+
+Con interfaces:
+* La programadora de funciones puede abstraer detalles y dar flexibilidad a las usuarias.
+* La usuaria de las funciones tiene un amplio catálogo de funciones disponibles.
+* Usar las funciones es cuestión de implementar los métodos de la interface.
+
+: Cana. En soledad no tienen mucho uso. 
+: Toman valor cuando muchas librerías implementan la interface y todo el mundo se pone de acuerdo.
+: La lectura de datos es algo ubicuo en la programacion. tiene sentido que exista solo una funcion para leerlos. Solo varia la implementacion.
 ## Concurrencia
 
-## Un programa no concurrente
+: Concurrencia de Go es única, fácil y rica.
+: Concurrencia no es nada nuevo, Go tambien toma inspiracion de un lenguaje viejo para los conceptos que veremos (newsqueak).
+
+: Pato
+
+## Un programa secuencial (no concurrente)
 
 .play src/6nonconcurrentcounter.go
 
-: Este es el error típico que cometen todos cuando escriben su primer programa concurrente. Go no espera a que terminen de correr las funciones concurrentes!
 
-## Qué es la concurrencia
-
-* No es paralelismo
-* 
-
-Rob Pike, uno de los creadores de Go, dice 
-
-,,_Concurrency is about dealing with lots of things at once. Parallelism is about doing lots of things at once._"
-
-
-
-## La palabra clave go
-
-**`go`** hace que la función devuelva ejecución a la función circundante inmediatamente
-
-* Funciona para cualquier función
-
-.code  src/6gofirst.go /FUNC_S/,/FUNC_E/
-
-: A diferencia de otros lenguajes como Javascript y Python, cualquier función se puede correr asincrónicamente sin necesidad de modificarla.
+: Pato
+: Concurrencia de Go es única, fácil y rica. 
+: Ejemplos simplificados, pero imaginen que los procesos pueden ser requests y ese tipo de cosas que llevan su tiempo.
 
 ## 
+<h3> Concurrencia y <code>go</code> </h3>
 
-.play -edit src/6concurrentcounterpitfall.go
-.caption Un programa 100% concurrente no es una buena idea
+La concurrencia es la ejecución de procesos al mismo tiempo.
+
+En go, esto se logra usando la palabra <code>go</code> antes de las funciones. 
+
+.code src/6concurrentcounterpitfall.go /GOLINE_S/,/GOLINE_E/
+
+<code>go</code> ejecuta la función, mientras que el programa continúa inmediatamente sin esperar a que la función termine.
+
+Se llaman **gorutinas** a cada uno de estos procesos independientes.
+
+Cualquier función puede ser llamada con <code>go</code> sin necesidad de modificarla.
+
+<figcaption style="position: absolute; bottom:40px;"> "Concurrency is about dealing with lots of things at once. Parallelism is about doing lots of things at once." ~ <a href="https://www.youtube.com/watch?v=oV9rvDllKEg"> Rob Pike</a></figcaption>
+
+: Pato
+: Livianas. Miles de gorutinas a la vez. 
+
+: No hay que modificar la función, A diferencia de otros lenguajes como Javascript y Python
+: segway: Como modificar funcion Hacer -> concurrente?
 
 ## Un programa concurrente
 
-.play -edit src/6concurrentcounter.go /package/,/MAIN_E/
-.caption Si bien el `bool` sirve para sincronizar gorutinas ahora veremos formas más flexibles y poderosas de comunicar *y* sincronizar
+.play -edit src/6concurrentcounterpitfall.go
+<figcaption>Modificar la línea de <code>main()</code> a <code>go Hacer("pan🍞")</code></figcaption>
 
+: Pato
+: Solo cambiamos una linea. Muy fácil hacer concurrencia en Go
+: El programa ahora corre dos veces más rápido!
+: Queremos hacerlo 100% concurrente agregando otro `go`
+: STOP
 
+## Sincronizando gorutinas con variables
+
+.play -edit src/6concurrentcounter.go /MAIN_S/,/MAIN_E/
+.caption Si bien esto funciona, hay mejores maneras. 
+
+: variables que sirven de señal de espera
+: 
+: Pato
+
+## Canales (channels)
+
+: Cana 
 
 ## Canales
 
-## ¿Qué es un canal?
+Los canales se usan para mandar mensajes entre gorutinas. 
 
-Los canales se usan para mandar mensajes entre gorutinas. Se pueden asignar a variables y pasarse como argumentos a funciones y tienen un tipo asignado.
+Para inicializar un canal:
 
-.code src/6channels.go  /CHAN_S/,/CHAN_E/
+.code src/6channels.go  /CHANMAKE_S/,/CHANMAKE_E/
 
-* Los canales ***no*** son memoria compartida
+Para enviar un mensaje:
 
-* La acción de mandar/recibir de un canal es **bloqueante**. El programa espera hasta que alguna gorutina reciba o mande el mensaje (respectivamente).
+.code src/6channels.go  /CHANSEND_S/,/CHANSEND_E/
 
-: Se parecen más a file descriptors
+Para recibir un mensaje: 
+
+.code src/6channels.go  /CHANREC_S/,/CHANREC_E/
+
+<figcaption> En este caso los mensajes son de tipo <code>string</code>, pero puede usarse cualquier tipo</figcaption>
+
+: Cana. Este es un tipo nuevo que tiene sintaxis especial. 
+
+## Ejemplo 
+
+.play src/6gopizza.go /MAIN_S/,/FUNC_E/
+
+.caption Los canales comunican *y* sincronizan.
+
+: Cana. 
+: Los canales pueden pasarse como argumentos a funciones.
+: Vamos a mostrar cómo resolver problemas comunes... uno no tarda mucho en acostumbrarse.
+: 
+: STOP->segway: Como leemos todos los mensajes de `Hacer`?
 
 
-## Contador con canales
+## Sincronizando con canales
 
-.play -edit src/6chancounter.go
-.caption Los canales comunican *y* sincronizan. Dos conceptos muy importantes en Go.
+.play -edit src/6chandeadlock.go /MAIN_S/,/FUNC_E/
 
-: A diferencia del otro código, este si corre la gorutina. La diferencia es que ahora estamos trabajando con canales. Un canal que recibe es Bloqueante hasta que recibe un mensaje, luego pasa control de vuelta a la función
+Error 🙃
 
-## Deadlock
+: Pato
+: Intentamos recibir en un canal que nunca mas iba a recibir un mensaje
 
-.play -edit src/6chandeadlock.go
 
-## Deadlock - explicación
+## Deadlock - Explicación
 
-La función **`Contar`** termina luego de 5 mensajes. Mientras tanto **`main`** se queda esperando un sexto mensaje que nunca llegará! El programa se da cuenta cuando hay un canal bloqueado infinitamente y termina con el error ***deadlock!***.
+<code>main</code> se queda esperando el sexto mensaje que nunca llegará. El Go se da cuenta de que todas las gorutinas están bloqueadas y termina con el error ***deadlock!***.
 
-## Cerrando un canal
+Para prevenir este error, se puede avisar que ya no hay más mensajes **cerrando** el canal:
+
+.code src/6chanclose.go /CLOSE_S/,/CLOSE_E/
+
+Y las gorutinas que reciben mensajes de ese canal pueden preguntar si sigue abierto o no: 
+
+.code src/6chanclose.go /ASK_S/,/ASK_E/
+
+La variable <code>abierto</code> es un <code>bool</code> que vale <code>true</code> si el canal está abierto.
+
+: Pato
+: STOP?
+
+## 
+<h3> Sincronizando gorutinas con <code>close()</code> </h3>
 
 .play -edit src/6chanclose.go /MAIN_S/,/FUNC_E/
-.caption Una vez cerrado el canal el valor de abierto será falso y sabremos que se ha dejado de enviar mensajes por el canal. OJO! Si se manda un mensaje por un canal cerrado el programa termina con error!
+: Pato. Es un error mandar mensaje por un canal cerrado
 
-## Range canal
-El siguiente código hace lo mismo que el anterior pero con menos verbosidad.
+##
+<h3> Sincronizando gorutinas con <code>range</code></h3>
+
+Este código es equivalente al anterior, pero más corto.
 
 .play -edit src/6chanrange.go /MAIN_S/,/FUNC_E/
-.caption La palabra clave `range` se puede usar para iterar sobre canales, slices y mapas
 
-## Comunicación entre canales
+<figcaption> La palabra clave <code>range</code> se puede usar para iterar sobre canales, slices y mapas </figcaption>
 
-Mandar por un canal no se compara a un tiro de baloncesto. Es más parecido a una entrega de amazon. El mensajero se queda esperando a que el receptor lo atienda.
+: Pato
+: STOP
+
+## Bloqueo de canales
+
+Una gorutina se bloquea si: 
+* Necesita recibir un mensaje, pero no hay ninguno disponibles
+* Envía un mensaje, pero no hay nadie quien lo reciba. 
 
 .play -edit src/6chanbuffpitfall.go /MAIN_S/,/MAIN_E/
-.caption Tanto el mensajero como el receptor pueden causar deadlock. Si no hay gorutinas mensajeras un receptor puede quedarse esperando infinitamente!
 
-En este caso el mensajero bloquea el programa y el receptor nunca llega a atenderlo, causando un ***deadlock***.
+En este caso la mensajera bloquea el programa y el receptor nunca llega a atenderlo, causando un ***deadlock***.
 
-Esto se puede resolver usando gorutinas o con *buffered channels*.
+Esto se resuelve con buffered channels
 
-## Buffered channels
+: Pato
+: Mandar por un canal no se compara a un tiro de basketball. Es más parecido a una entrega de pizza. La mensajera se queda esperando en la puerta a ser atendida.
 
-## Siguiendo la analogía de Amazon Delivery
+## Buffered channels 
 
-Si el channel (canal) es la puerta de la casa del receptor, entonces el buffer es una caja donde el mensajero puede dejar los mensajes.
+Un buffered channel es un canal que puede guardar un cierto número de mensajes antes de bloquearse. 
+
+Este buffered channel puede recibir 2 mensajes antes de bloquear la gorutina.
+
+.code src/6chanbuff.go /MAKE_S/,/MAKE_E/
+
+Ahora a puede seguir la ejecución después de mandar un mensaje:
 
 .play -edit src/6chanbuff.go /MAIN_S/,/MAIN_E/
 
-Ahora puede seguir la ejecución después de mandar un mensaje. El tamaño del buffer puede ser cualquiera.
-
-¡El mensajero/receptor aún bloqueará si se llena el buffer!
+: Pato
 
 ## Select
+
+: Pato
 
 ## Bloqueo de canales lentos
 
-El siguiente programa es limitado por la gorutina más lenta. 0.5 vs. 2 segundos
+El siguiente programa es limitado por la gorutina más lenta.
 
-.play -edit src/6beforeselect.go /MAIN_S/,/FUNC_E/
-.caption El programa es limitado por la velocidad a la que el canal 2 puede recibir mensajes (`<-c2`)
+.play -edit src/6beforeselect.go /MAIN_S/,/MAIN_E/
+<figcaption> El programa es limitado por la velocidad a la que el canal 2 puede recibir mensajes (<code><-c2</code>) </figcaption>
+
+: Pato
 
 ## Select
 
-La palabra clave select le permite al programa esperar hasta que haya un canal con un mensaje entre varios canales.
+<code>select</code> le permite al programa esperar hasta que llegue un mensaje entre varios canales.
 
 .play -edit src/6afterselect.go /MAIN_S/,/MAIN_E/
 
-## Paquete os, manejo de errores y lectura de archivos
-
-.play -edit src/5os.go
-
+: Pato. Select decide qué hacer de acuerdo con el canal del que le llega. 
+: STOP
 ## Preguntas?
