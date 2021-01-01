@@ -739,6 +739,23 @@ net<span class="token punctuation">.</span>Conn   net<span class="token punctuat
 <span class="token punctuation">}</span>
 
 <span class="token comment">// READALL_E OMIT</span>
+<pre style="display: none;">// THINGS_S OMIT
+  func init() {
+    os.Mkdir("data", os.ModeDevice)
+    f, err := os.Create("data/archivo.txt")
+    if err != nil {
+      panic(err)
+    }
+    f.Write([]byte(`Contengo datos muy importantes:
+  
+    creado: 14/11/2020
+    modificado: 22/11/2020
+    contenido: Saludos de parte del Seminario de Go
+    autores: Patricio Whittingslow, Agustín Canalis
+    
+    fin`))
+  }
+  // THINGS_E OMIT</pre>
 </pre></code></pre></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
 
       

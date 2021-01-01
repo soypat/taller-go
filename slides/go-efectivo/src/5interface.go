@@ -1,5 +1,3 @@
-//+build os OMIT
-
 // ALL_S OMIT
 package main
 
@@ -40,3 +38,21 @@ func ReadAll(r io.Reader) ([]byte, error) {
 }
 
 // READALL_E OMIT
+
+// THINGS_S OMIT
+func init() {
+	os.Mkdir("data", os.ModeDevice)
+	f, err := os.Create("data/archivo.txt")
+	if err != nil {
+		panic(err)
+	}
+	f.Write([]byte(`Contengo datos muy importantes:
+
+	creado: 14/11/2020
+	modificado: 22/11/2020
+	contenido: Saludos de parte del Seminario de Go
+	autores: Patricio Whittingslow, Agustín Canalis
+	
+	fin`))
+}
+// THINGS_E OMIT
