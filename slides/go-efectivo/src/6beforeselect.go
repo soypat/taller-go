@@ -5,6 +5,7 @@ package main
 // IMPORT_S OMIT
 import (
 	"fmt"
+	"log" // OMIT
 	"time"
 )
 
@@ -45,3 +46,13 @@ func PizzeroLento(c chan string) {
 }
 
 // FUNC_E OMIT
+
+// TIMEOUT_S OMIT
+
+func init() {
+	go main()
+	time.Sleep(30 * time.Second)
+	log.Fatal("timeout after 30 seconds")
+}
+
+// TIMEOUT_E OMIT

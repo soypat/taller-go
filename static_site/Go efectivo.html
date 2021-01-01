@@ -8,25 +8,7 @@
     </script>
     <script src="files/slides.js"></script>
     <link href="files/prism-github-dark.css" rel="stylesheet">
-    
 
-    <script>
-      
-      if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
-        var _gaq = _gaq || [];
-        _gaq.push(["_setAccount", "UA-11222381-6"]);
-        _gaq.push(["b._setAccount", "UA-49880327-6"]);
-        window.trackPageview = function() {
-          _gaq.push(["_trackPageview", location.pathname+location.hash]);
-          _gaq.push(["b._trackPageview", location.pathname+location.hash]);
-        };
-        window.trackPageview();
-        window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
-          _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
-          _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
-        };
-      }
-    </script>
   <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"><meta name="apple-mobile-web-app-capable" content="yes"></head>
 
   <body style="display: none" class="loaded">
@@ -1267,51 +1249,60 @@ import (
         <h3>Bloqueo de canales lentos</h3>
         <p>El siguiente programa es limitado por la gorutina más lenta.</p>
 
-<div class="code edit playground" spellcheck="false" contenteditable="true"><pre spellcheck="false" contenteditable="true"><code class="code language-go">
-<pre style="display: none"><span>//+build ignore OMIT
+        <div class="code edit playground" contenteditable="true" spellcheck="false"><pre spellcheck="false"><code class="code language-go"><pre style="display: none" contenteditable="false"><span>package main
+          
+          // IMPORT_S OMIT
+          import (
+            &#34;fmt&#34;
+            &#34;log&#34; // OMIT
+            &#34;time&#34;
+          )
+          
+          // IMPORT_E OMIT
+          
+          </span></pre><pre contenteditable="true" spellcheck="false"><span num="15">func main() {</span>
+          <span num="17">    c1 := make(chan string)</span>
+          <span num="18">    c2 := make(chan string)</span>
+          <span num="19"></span>
+          <span num="20">    go PizzeroRapido(c1) // pizza cada 500ms</span>
+          <span num="21">    go PizzeroLento(c2)  // pizza cada 2000ms</span>
+          <span num="22"></span>
+          <span num="23">    for {</span>
+          <span num="24">        fmt.Println(&lt;-c1)</span>
+          <span num="25">        fmt.Println(&lt;-c2)</span>
+          <span num="26">    }</span>
+          <span num="28">}</span></pre><pre style="display: none" contenteditable="false"><span>// FUNC_S OMIT
+          
+          func PizzeroRapido(c chan string) {
+            t := 500
+            for {
+              c &lt;- fmt.Sprintf(&#34;🍕 cada %vms&#34;, t)
+              time.Sleep(time.Millisecond * time.Duration(t))
+            }
+          }
+          func PizzeroLento(c chan string) {
+            t := 2000
+            for {
+              c &lt;- fmt.Sprintf(&#34;🍕 cada %vms&#34;, t)
+              time.Sleep(time.Millisecond * time.Duration(t))
+            }
+          }
+          
+          // FUNC_E OMIT
+          
+          // TIMEOUT_S OMIT
+          
+          func init() {
+            go main()
+            time.Sleep(30 * time.Second)
+            log.Fatal(&#34;timeout after 30 seconds&#34;)
+          }
+          
+          // TIMEOUT_E OMIT
+          </span></pre></code></pre></div>
 
-package main
 
-// IMPORT_S OMIT
-import (
-	"fmt"
-	"time"
-)
-
-// IMPORT_E OMIT
-
-</span></pre><pre spellcheck="false" class=" language-go" contenteditable="true"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    c1 <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
-    c2 <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">go</span> <span class="token function">PizzeroRapido</span><span class="token punctuation">(</span>c1<span class="token punctuation">)</span> <span class="token comment">// pizza cada 500ms</span>
-    <span class="token keyword">go</span> <span class="token function">PizzeroLento</span><span class="token punctuation">(</span>c2<span class="token punctuation">)</span>  <span class="token comment">// pizza cada 2000ms</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">{</span>
-        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token operator">&lt;-</span>c1<span class="token punctuation">)</span>
-        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token operator">&lt;-</span>c2<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</pre>
-<pre style="display: none"><span>// FUNC_S OMIT
-
-func PizzeroRapido(c chan string) {
-	t := 500
-	for {
-		c &lt;- fmt.Sprintf("🍕 cada %vms", t)
-		time.Sleep(time.Millisecond * time.Duration(t))
-	}
-}
-func PizzeroLento(c chan string) {
-	t := 2000
-	for {
-		c &lt;- fmt.Sprintf("🍕 cada %vms", t)
-		time.Sleep(time.Millisecond * time.Duration(t))
-	}
-}
-
-// FUNC_E OMIT
-</span></pre></code></pre></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+<div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
 <figcaption> El programa es limitado por la velocidad a la que el canal 2 puede recibir mensajes (<code>&lt;-c2</code>) </figcaption>
       
       <span class="pagenumber">39</span>
@@ -1324,54 +1315,63 @@ func PizzeroLento(c chan string) {
         <h3>Select</h3>
         <p><code>select</code> le permite al programa esperar hasta que llegue un mensaje entre varios canales.</p>
 
-<div class="code edit playground" spellcheck="false" contenteditable="true"><pre spellcheck="false" contenteditable="true"><code class="code language-go">
-<pre style="display: none"><span>//+build ignore OMIT
+        <div class="code edit playground" contenteditable="true" spellcheck="false"><pre contenteditable="true" spellcheck="false"><code class="code language-go"><pre style="display: none" contenteditable="false"><span>//&#43;build ignore OMIT
+          
+          package main
+          
+          // IMPORT_S OMIT
+          import (
+            &#34;fmt&#34;
+            &#34;log&#34; // OMIT
+            &#34;time&#34;
+          )
+          
+          // IMPORT_E OMIT
+          </span></pre><pre contenteditable="true" spellcheck="false"><span num="15">func main() {</span>
+          <span num="17">    c1, c2 := make(chan string), make(chan string)</span>
+          <span num="18"></span>
+          <span num="19">    go PizzeroRapido(c1)</span>
+          <span num="20">    go PizzeroLento(c2)</span>
+          <span num="21"></span>
+          <span num="22">    for {</span>
+          <span num="23">        select {</span>
+          <span num="24">        case msj := &lt;-c1:</span>
+          <span num="25">            fmt.Println(msj)</span>
+          <span num="26">        case msj := &lt;-c2:</span>
+          <span num="27">            fmt.Println(msj)</span>
+          <span num="28">        }</span>
+          <span num="29">    }</span>
+          <span num="31">}</span></pre><pre style="display: none"><span>// FUNC_S OMIT
+          func PizzeroRapido(c chan string) {
+            t := 500
+            for {
+              c &lt;- fmt.Sprintf(&#34;🍕 cada %vms&#34;, t)
+              time.Sleep(time.Millisecond * time.Duration(t))
+            }
+          }
+          func PizzeroLento(c chan string) {
+            t := 2000
+            for {
+              c &lt;- fmt.Sprintf(&#34;🍕 cada %vms&#34;, t)
+              time.Sleep(time.Millisecond * time.Duration(t))
+            }
+          }
+          
+          // FUNC_E OMIT
+          
+          // FUNC_E OMIT
+          // TIMEOUT_S OMIT
+          
+          func init() {
+            go main()
+            time.Sleep(30 * time.Second)
+            log.Fatal(&#34;timeout after 30 seconds&#34;)
+          }
+          
+          // TIMEOUT_E OMIT
+          </span></pre></code></pre></div>
 
-package main
-
-// IMPORT_S OMIT
-import (
-	"fmt"
-	"time"
-)
-
-// IMPORT_E OMIT
-</span></pre><pre spellcheck="false" class=" language-go" contenteditable="true"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    c1<span class="token punctuation">,</span> c2 <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">go</span> <span class="token function">PizzeroRapido</span><span class="token punctuation">(</span>c1<span class="token punctuation">)</span>
-    <span class="token keyword">go</span> <span class="token function">PizzeroLento</span><span class="token punctuation">(</span>c2<span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">{</span>
-        <span class="token keyword">select</span> <span class="token punctuation">{</span>
-        <span class="token keyword">case</span> msj <span class="token operator">:=</span> <span class="token operator">&lt;-</span>c1<span class="token punctuation">:</span>
-            fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>msj<span class="token punctuation">)</span>
-        <span class="token keyword">case</span> msj <span class="token operator">:=</span> <span class="token operator">&lt;-</span>c2<span class="token punctuation">:</span>
-            fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>msj<span class="token punctuation">)</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</pre>
-<pre style="display: none"><span>// FUNC_S OMIT
-func PizzeroRapido(c chan string) {
-	t := 500
-	for {
-		c &lt;- fmt.Sprintf("🍕 cada %vms", t)
-		time.Sleep(time.Millisecond * time.Duration(t))
-	}
-}
-func PizzeroLento(c chan string) {
-	t := 2000
-	for {
-		c &lt;- fmt.Sprintf("🍕 cada %vms", t)
-		time.Sleep(time.Millisecond * time.Duration(t))
-	}
-}
-
-// FUNC_E OMIT
-
-// FUNC_E OMIT
-</span></pre></code></pre></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+        <div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="run">Run</button><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
 
       
       <span class="pagenumber">40</span>
@@ -1423,17 +1423,6 @@ func PizzeroLento(c chan string) {
 
     </script>
     
-
-    <script>
-      (function() {
-        
-        if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
-          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
-          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
-          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
-        }
-      })();
-    </script>
 
     <script>
   Prism.plugins.NormalizeWhitespace.setDefaults({
