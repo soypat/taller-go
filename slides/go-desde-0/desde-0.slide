@@ -89,7 +89,7 @@ Una variable es un identificador que representa un valor.
 
 Toda variable tiene un tipo, en otras palabras información acerca de qué valores pueden ser guardados y cuales no.
 
-.play -edit src/1helloworldfail.go /MAIN_S/,/MAIN_E/
+.play -edit src/1helloworldfail.go /START/,/END/
 
 Aquí <code>s</code> es de tipo <code>string</code> y guarda el valor "Hello World".
 
@@ -103,15 +103,16 @@ Intentar asignarle un valor de 1 (un <code>int</code>) es un error.
 
 .code src/2shorthand.go /DECL_S/,/DECL_E/
 
+* Para **asignar** solamente (cambiar el valor que ya tiene):
+
+.code src/2shorthand.go /USE_S/,/USE_E/
+
 * Para **declarar Y asignar**:
 
 .code src/2shorthand.go /ASSIGN_S/,/ASSIGN_E/
 
 Las tres son equivalentes. El compilador puede inferir que "Hello World" es un string, por eso no hace falta aclarar. <code>s:=</code> es sólo una sintaxis más corta para <code>var s =</code>.
 
-* Para **asignar** solamente (cambiar el valor que ya tiene):
-
-.code src/2shorthand.go /USE_S/,/USE_E/
 
 <figcaption> Para una variable típica primero se usa <code>:=</code> y a partir de ahí se usa el <code>=</code>. </figcaption>
 
@@ -120,11 +121,11 @@ Las tres son equivalentes. El compilador puede inferir que "Hello World" es un s
 
 Go tiene los siguientes operadores básicos para números enteros: **`+ - * / %`**
 
-.play -edit  src/1numbers.go /MAIN_S/,/MAIN_E/
+.play -edit  src/1numbers.go /PROG_S/,/PROG_E/
 
 Más corto, usando lo anterior:
 
-.play -edit  src/1numberssimple.go /MAIN_S/,/MAIN_E/
+.play -edit  src/1numberssimple.go /PROG_S/,/PROG_E/
 
 : PATO :Acuerdense que todo programa corre adentro de la función main(). De ahora en adelante obviaremos esta parte del código para algunos ejemplos
 : empieza a parecerse a python el código de a poco
@@ -145,7 +146,7 @@ Hay otros tipos básicos además del <code>string</code> e <code>int</code>. Lis
 
 .code src/0types.txt
 
-## if, for, y func
+## Estructuras de control
 
 ## 
 
@@ -163,29 +164,39 @@ La expresión <code>a=="pizza"</code> es un valor de tipo <code>bool</code>, y p
 Como tal, se puede guardar en una variable, de esta manera: 
 
 <code>var b bool = a=="pizza"</code>
- </details>
+</details>
 
 <details><summary>Otros operadores</summary>
 
 .code src/3ifops.txt
 </details>
 
-<details><summary>sintaxis de else y else-if</summary>
+//<details><summary>sintaxis de else y else-if</summary>
 
-.play -edit src/3elseif.go /PROG_S/,/PROG_E/
-</details>
+//.play -edit src/3elseif.go /PROG_S/,/PROG_E/
+//</details>
 
+.image /assets/go-img/enterprise-gopher.png 300 _
 ## 
 <h3><code>for</code></h3>
 
 Ejecuta un bloque de código una y otra vez mientras la condición sea verdadera.
-La sintaxis incluye la posibilidad de inicializar variables antes de empezar, y también de modificar variables cada vez que se termina de ejecutar el bloque.
 
-.play -edit src/3fori.go /PROG_S/,/PROG_E/
+.play -edit src/3while.go /PROG_S/,/PROG_E/
 
-Aquí se inicializa <code>i</code>, se verifica que <code>i<10</code>, y se corre el bloque, que ente caso simplemente imprime <code>i</code>. Luego, se le suma 1 y se verifica la condición nuevamente. 
+1. <code>i</code> igual a cero
+2. se verifica que <code>i<=10</code>si la condición es verdadera se corre el bloque interno
+3. El bloque interno imprime el valor de <code>i</code> y agrega uno a <code>i</code>
+4. Si al final del bloque <code>for</code> se sigue cumpliendo la condición, se vuelve a correr el bloque interno
 
 : Problema: aparece mucho syntax sugar de una aca y todavia no lo vimos anteriormente
+
+##
+Este for hace lo mismo que el anterior y resulta más corto de escribir
+
+.play -edit src/3for.go /PROG_S/,/PROG_E/
+
+.image /assets/go-img/camera-gopher.png 480 _
 
 // Un for que recorre un arreglo
 //.play -edit src/3forrange.go /PROG_S/,/PROG_E/
@@ -199,15 +210,32 @@ Una función es un bloque de código que queremos reutilizar. Un ejemplo clásic
 
 : en este ejemplo trivial x e y son los inputs y la salida es la suma de los dos
 
+## 
+
 Ahora en cualquier lugar de nuestro código que queramos sumar dos números, podemos hacerlo de esta manera: 
 
-.play -edit src/2func.go /FUNC_S/,/FUNC_E/
+.play -edit src/2func.go
 
 .caption Las funciones se pueden asignar a variables y ser argumentos de otras funciones.
 
 : Se dieron cuenta que asigne con los dos puntos? El siguiente slide veremos las varias formas 
 : Que quede claro donde defino las funciones. son por afuera de main... aunque no hay nada que me impida de definirla adentro
 // CANA: Consider skipping, unless we use it in the future
+
+
+## Charla dada por el product manager de Go (2015)
+: CANA: Add other resources.
+
+Un video que todo gopher debería ver. Se trata sobre el origen de Go.
+
+.iframe https://www.youtube.com/embed/sX8r6zATHGU 500 800
+
+## Preguntas? 
+
+.image /assets/go-img/portrait.jpg 480 _
+.caption Diseño del _Gopher_ hecho por [[https://instagram.com/reneefrench][Renee French]]. Crédito a Mat Ryer por la WebApp [[https://gopherize.me/][Gopherize me]]
+
+## Anexo
 
 ## Retorno de múltiples valores
 
@@ -227,19 +255,3 @@ Hay una tres reglas muy simples que indican si se puede acceder a una variable e
 2. En una función, una variable se puede utilizar desde que se declara, hasta que cierra el bloque que la contiene.
 
 3. Una variable declara fuera de la función (en el top level) siempre es accesible, independientemente del orden.
-
-
-## Últimos comentarios
-
-## Charla dada por el product manager de Go (2015)
-: CANA: Add other resources.
-
-Un video que todo gopher debería ver. Se trata sobre el origen de Go.
-
-.iframe https://www.youtube.com/embed/sX8r6zATHGU 500 800
-
-## Preguntas? 
-
-.image /assets/go-img/purple-pacman-nerd.png 480 _
-.caption Diseño del _Gopher_ hecho por [[https://instagram.com/reneefrench][Renee French]]. Crédito a Mat Ryer por la WebApp [[https://gopherize.me/][Gopherize me]]
-

@@ -1,4 +1,5 @@
-//+build ignore OMIT
+//go:build OMIT
+// +build OMIT
 
 package main
 
@@ -6,9 +7,9 @@ import "fmt"
 
 func main() {
 	// PROG_S OMIT
-	var greeting string
-	greeting = "Hola "
-	greeting = greeting + "Roberto Bolaño"
-	fmt.Println(greeting)
+	saludo := "Hola "
+	nombre := "Roberto Bolaño"
+	saludo = saludo + nombre
+	fmt.Println(saludo)
 	// PROG_E OMIT
 }

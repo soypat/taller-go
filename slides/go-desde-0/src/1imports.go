@@ -1,4 +1,5 @@
-//+build non-slide OMIT
+//go:build OMIT
+// +build OMIT
 
 package main
 

@@ -1,4 +1,7 @@
-//+build ignore OMIT
+//go:build ignore || OMIT
+//go:build OMIT
+// +build OMIT
+// +build ignore OMIT
 
 package main
 
@@ -12,10 +15,10 @@ func main() {
 }
 
 // FUNC_S OMIT
-func DivResta(x int, y int) (float64, int) {
-	div := float64(x) / float64(y)
-	resta := x % y
-	return div, resta
+func DivResta(x int, y int) (div int, resta int) {
+	div = x / y
+	resta = x % y
+	return
 }
 
 // FUNC_E OMIT

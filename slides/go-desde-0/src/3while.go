@@ -5,15 +5,12 @@ package main
 
 import "fmt"
 
-// MAIN_S OMIT
 func main() {
 	// PROG_S OMIT
-	var a, b, c int
-	a = 2
-	b = 4
-	c = a + b
-	fmt.Println(c)
+	i := 0
+	for i <= 10 {
+		fmt.Println("i es", i)
+		i++
+	}
 	// PROG_E OMIT
 }
-
-// MAIN_E OMIT

@@ -1,4 +1,6 @@
-//+build non-slide OMIT
+//go:build OMIT
+// +build OMIT
+
 package keywords
 
 /* KW_S OMIT

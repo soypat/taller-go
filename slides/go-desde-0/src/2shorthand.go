@@ -1,4 +1,5 @@
-//+build ignore OMIT
+//go:build OMIT
+// +build OMIT
 
 package main
 
@@ -12,7 +13,7 @@ func main() {
 	// DECL_E OMIT
 	// ASSIGN_S OMIT
 	var s string = "Hello world"
-	var s = "Hello World" 
+	var s = "Hello World"
 	s := "Hello World"
 	// ASSIGN_E OMIT
 	// USE_S OMIT
