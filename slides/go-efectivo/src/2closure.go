@@ -1,4 +1,6 @@
-//+build ignore OMIT
+//go:build ignore || OMIT
+//go:build OMIT
+// +build OMIT OMIT
 
 package main
 
@@ -6,13 +8,14 @@ import "fmt"
 
 func main() {
 	// PROG_S OMIT
-	b := 0
+	a := 0
 	mas1 := func() {
-		b++
+		a++
 	}
+
 	mas1()
 	mas1()
-	fmt.Println(b)
+	fmt.Println(a)
 	// PROG_E OMIT
 }
 

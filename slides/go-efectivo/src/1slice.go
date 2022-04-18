@@ -1,4 +1,6 @@
-//+build ignore OMIT
+//go:build ignore || OMIT
+//go:build OMIT
+// +build OMIT OMIT
 
 package main
 
@@ -7,7 +9,7 @@ import "fmt"
 func main() {
 	// PROG_S OMIT
 	// Declaración y Asignación
-	var beatles = []string{"John", "Paul", "George", "Ringo"}
+	beatles := []string{"John", "Paul", "George", "Ringo"}
 
 	// Uso
 	fmt.Println(beatles[0])

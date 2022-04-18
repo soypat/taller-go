@@ -10,7 +10,7 @@ func main() {
 	i := 0
 	for i <= 10 {
 		fmt.Println("i es", i)
-		i++
+		i = i + 1
 	}
 	// PROG_E OMIT
 }

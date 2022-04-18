@@ -1,4 +1,6 @@
-//+build ignore OMIT
+//go:build ignore || OMIT
+//go:build OMIT
+// +build OMIT OMIT
 
 package main
 
@@ -18,7 +20,7 @@ func main() {
 	c2 := make(chan string)
 
 	go PizzeroRapido(c1) // pizza cada 500ms
-	go PizzeroLento(c2)  // pizza cada 2000ms
+	go PanaderoLento(c2) // pizza cada 2000ms
 
 	for {
 		fmt.Println(<-c1)
@@ -37,10 +39,11 @@ func PizzeroRapido(c chan string) {
 		time.Sleep(time.Millisecond * time.Duration(t))
 	}
 }
-func PizzeroLento(c chan string) {
+
+func PanaderoLento(c chan string) {
 	t := 2000
 	for {
-		c <- fmt.Sprintf("🍕 cada %vms", t)
+		c <- fmt.Sprintf("🍞 cada %vms", t)
 		time.Sleep(time.Millisecond * time.Duration(t))
 	}
 }

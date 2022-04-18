@@ -429,3 +429,14 @@ El siguiente programa es limitado por la gorutina más lenta.
 : Pato. Select decide qué hacer de acuerdo con el canal del que le llega. 
 : STOP
 ## Preguntas?
+
+## Anexo
+
+## File scanner
+.play -edit src/9_filescan.go
+
+.caption Este ejemplo descarta el valor del error de `os.Open`, lo cual no se debería hacer en aplicaciones serias.
+
+## ReadAll the file!
+.play -edit src/9_filereadall.go
+

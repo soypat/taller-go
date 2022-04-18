@@ -4,19 +4,12 @@ package main
 import (
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 )
 
 func main() {
-	f, err := os.Open("data/archivo.txt") // f es un *os.File
-	if err != nil {
-		panic(err)
-	}
-	b, err := ioutil.ReadAll(f) // ReadAll acepta a f como argumento
-	if err != nil {
-		panic(err)
-	}
+	f, _ := os.Open("data/archivo.txt") // f es un *os.File
+	b, _ := io.ReadAll(f)               // ReadAll acepta a f como argumento
 	fmt.Printf("%s", b)
 }
 
@@ -55,4 +48,5 @@ func init() {
 	
 	fin`))
 }
+
 // THINGS_E OMIT
